@@ -3,17 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: THY's Blog
 subtitle:
 description:
 keywords:
 author: John Doe
-language: en
+# language: en
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+# url: http://yoursite.com
+url: http://hytu99.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -29,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year-:month-:day-:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -39,7 +41,8 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  # enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
@@ -50,7 +53,7 @@ highlight:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 12
   order_by: -date
   
 # Category & Tag
@@ -67,13 +70,13 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 12
 pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -81,3 +84,31 @@ deploy:
   type: git
   repository: https://github.com/hytu99/hytu99.github.io
   branch: master
+  
+##
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
+  
+search:
+  path: search.xml
+  field: post
+  
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+  
+wordCount:
+  enable: false # Set this value to true.
+  postWordCount: true
+  min2read: true
+  totalCount: true
