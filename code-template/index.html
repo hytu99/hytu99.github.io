@@ -1,0 +1,2402 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="机试模板整理, THY&#39;s Blog">
+    <meta name="description" content="
+这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。
+今年清华机试一">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>机试模板整理 | THY&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">THY's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/" class="waves-effect waves-light">
+						
+						<i class="fa fa-home"></i>
+						
+						<span>首页</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/tags" class="waves-effect waves-light">
+						
+						<i class="fa fa-tags"></i>
+						
+						<span>标签</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/categories" class="waves-effect waves-light">
+						
+						<i class="fa fa-bookmark"></i>
+						
+						<span>分类</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/archives" class="waves-effect waves-light">
+						
+						<i class="fa fa-archive"></i>
+						
+						<span>归档</span>
+					</a>
+          
+        </li>
+    
+	<li class="hide-on-med-and-down nav-item" >
+		
+					  <a href="/about" class="waves-effect waves-light">
+						
+						<i class="fa fa-user-circle-o"></i>
+						
+						<span>关于</span>
+					</a>
+          
+        </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">THY's Blog</div>
+        <div class="logo-desc">
+            
+            水远，怎知流水外，却是乱山尤远。
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa fa-fw fa-user-circle-o"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/hytu99" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/hytu99" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        机试模板整理
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/保研/" target="_blank">
+                                <span class="chip bg-color">保研</span>
+                            </a>
+                        
+                            <a href="/tags/机试/" target="_blank">
+                                <span class="chip bg-color">机试</span>
+                            </a>
+                        
+                            <a href="/tags/编程/" target="_blank">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/程序设计/" class="post-category" target="_blank">
+                                程序设计
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-10-02
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        1.5k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分<a href="#refer">参考链接</a>在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。</p>
+<p>今年清华机试一反常态难度大大降低，满分的似乎都有25%，我当时在测试数据上也是取得了满分（之后有空把原题也整理一下放上来）。不过最后因为其他一些原因，也没有去报名清华九月的推免，也就没能去成清华。不过这些算法模板作为学习材料还是很不错的（说不定以后什么时候又用上了）。</p>
+</blockquote>
+<p>[TOC]</p>
+<h1 id="0-头文件"><a href="#0-头文件" class="headerlink" title="0. 头文件"></a>0. 头文件</h1><pre class=" language-c++"><code class="language-c++">#define _CRT_SBCURE_NO_DEPRECATE
+#include <set>
+#include <cmath>
+#include <queue>
+#include <stack>
+#include <vector>
+#include <string>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <algorithm>
+#include <functional>
+
+using namespace std;
+
+const int maxn = 110;
+const int INF = 0x3f3f3f3f;</code></pre>
+<h1 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h1><h2 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1. 1. 埃拉托斯特尼筛法"></a>1. 1. 埃拉托斯特尼筛法</h2><pre class=" language-c++"><code class="language-c++">/*
+    |埃式筛法|
+    |快速筛选素数|
+*/
+int prime[maxn];  
+bool is_prime[maxn];
+
+int sieve(int n){
+    int p = 0;
+    for(int i = 0; i <= n; ++i)
+        is_prime[i] = true;
+    is_prime[0] = is_prime[1] = false;
+    for (int i = 2; i <= n; ++i){   //  注意数组大小是n
+        if(is_prime[i]){
+            prime[p++] = i;
+            for(int j = i + i; j <= n; j += i)  //  轻剪枝，j必定是i的倍数
+                is_prime[j] = false;
+        }
+    }
+    return p;   //  返回素数个数
+}</code></pre>
+<h2 id="1-2-快速幂"><a href="#1-2-快速幂" class="headerlink" title="1.2. 快速幂"></a>1.2. 快速幂</h2><pre class=" language-c++"><code class="language-c++">typedef long long LL;   //  视数据大小的情况而定
+
+LL powerMod(LL x, LL n, LL m)
+{
+    LL res = 1;
+    while (n > 0){
+        if  (n & 1) //  判断是否为奇数，若是则true
+            res = (res * x) % m;
+        x = (x * x) % m;
+        n >>= 1;    //  相当于n /= 2;
+    }
+    return res;
+}</code></pre>
+<h2 id="1-3-大数模拟"><a href="#1-3-大数模拟" class="headerlink" title="1.3. 大数模拟"></a>1.3. 大数模拟</h2><h3 id="1-3-1-大数加法"><a href="#1-3-1-大数加法" class="headerlink" title="1.3.1. 大数加法"></a>1.3.1. 大数加法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |大数模拟加法|
+    |用string模拟|
+*/
+string add1(string s1, string s2)
+{
+    if (s1 == "" && s2 == "")   return "0";
+    if (s1 == "")   return s2;
+    if (s2 == "")   return s1;
+    string maxx = s1, minn = s2;
+    if (s1.length() < s2.length()){
+        maxx = s2;
+        minn = s1;
+    }
+    int a = maxx.length() - 1, b = minn.length() - 1;
+    for (int i = b; i >= 0; --i){
+        maxx[a--] += minn[i] - '0'; //  a一直在减 ， 额外还要减个'0'
+    }
+    for (int i = maxx.length()-1; i > 0;--i){
+        if (maxx[i] > '9'){
+            maxx[i] -= 10;//注意这个是减10
+            maxx[i - 1]++;
+        }
+    }
+    if (maxx[0] > '9'){
+        maxx[0] -= 10;
+        maxx = '1' + maxx;
+    }
+    return maxx;
+}</code></pre>
+<h3 id="1-3-2-大数阶乘"><a href="#1-3-2-大数阶乘" class="headerlink" title="1.3.2. 大数阶乘"></a>1.3.2. 大数阶乘</h3><pre class=" language-c++"><code class="language-c++">/*
+    |大数模拟阶乘|
+|用数组模拟|
+*/
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+typedef long long LL;
+
+const int maxn = 100010;
+int num[maxn], len;
+/*
+    在mult函数中，形参部分：len每次调用函数都会发生改变，n表示每次要乘以的数，最终返回的是结果的长度
+    tip: 阶乘都是先求之前的(n-1)!来求n!
+    初始化Init函数很重要，不要落下
+*/
+
+void Init() {
+    len = 1;
+    num[0] = 1;
+}
+
+int mult(int num[], int len, int n) {
+    LL tmp = 0;
+    for(LL i = 0; i < len; ++i) {
+         tmp = tmp + num[i] * n;    //从最低位开始，等号左边的tmp表示当前位，右边的tmp表示进位（之前进的位）
+         num[i] = tmp % 10; //  保存在对应的数组位置，即去掉进位后的一位数
+         tmp = tmp / 10;    //  取整用于再次循环,与n和下一个位置的乘积相加
+    }
+    while(tmp) {    //  之后的进位处理
+         num[len++] = tmp % 10;
+         tmp = tmp / 10;
+    }
+    return len;
+}
+
+int main() {
+    Init();
+    int n;
+    n = 1977; // 求的阶乘数
+    for(int i = 2; i <= n; ++i) {
+        len = mult(num, len, i);
+    }
+    for(int i = len - 1; i >= 0; --i)
+        printf("%d",num[i]);    //  从最高位依次输出,数据比较多采用printf输出
+    printf("\n");
+    return 0;
+}</code></pre>
+<h2 id="1-4-最大公约数（GCD）"><a href="#1-4-最大公约数（GCD）" class="headerlink" title="1.4. 最大公约数（GCD）"></a>1.4. 最大公约数（GCD）</h2><pre class=" language-c++"><code class="language-c++">/*
+    |辗转相除法|
+    |欧几里得算法|
+|求最大公约数|
+*/
+int gcd(int big, int small)
+{
+    if (small > big) 
+        swap(big, small);
+    int temp;
+    while (small != 0){ //  辗转相除法
+        if (small > big) 
+            swap(big, small);
+        temp = big % small;
+        big = small;
+        small = temp;
+    }
+    return(big);
+}</code></pre>
+<h2 id="1-5-最小公倍数（LCM）"><a href="#1-5-最小公倍数（LCM）" class="headerlink" title="1.5. 最小公倍数（LCM）"></a>1.5. 最小公倍数（LCM）</h2><pre class=" language-c++"><code class="language-c++">int lcm (int big, int small) 
+{
+    return big * small / gcd(big, small);
+}</code></pre>
+<h2 id="1-6-全排列"><a href="#1-6-全排列" class="headerlink" title="1.6. 全排列"></a>1.6. 全排列</h2><pre class=" language-c++"><code class="language-c++">/*
+    |求1到n的全排列, 有条件|
+*/
+void Pern(int list[], int k, int n) {   //  k表示前k个数不动仅移动后面n-k位数
+    if (k == n - 1) {
+        for (int i = 0; i < n; i++) {
+            printf("%d", list[i]);
+        }
+        printf("\n");
+    }
+    else {
+        for (int i = k; i < n; i++) {   //  输出的是满足移动条件所有全排列
+            swap(list[k], list[i]);
+            Pern(list, k + 1, n);
+            swap(list[k], list[i]);
+        }
+    }
+}</code></pre>
+<h2 id="1-7-二分搜索"><a href="#1-7-二分搜索" class="headerlink" title="1.7. 二分搜索"></a>1.7. 二分搜索</h2><pre class=" language-c++"><code class="language-c++">/*
+    |二分搜索|
+    |要求：先排序|
+*/
+//  left为最开始元素, right是末尾元素的下一个数，x是要找的数
+int bsearch(int *A, int left, int right, int x){
+    int m;
+    while (left < right){
+        m = left + (right - left) / 2;
+        if (A[m] >= x)  
+            right = m;   
+        else 
+            left = m + 1;    
+        // 如果要替换为 upper_bound, 改为:if (A[m] <= v) x = m+1; else y = m;     
+    }
+    return left;
+}
+/*
+    最后left == right  
+    如果找有多少的x，可以用lower_bound查找一遍，upper_bound查找一遍，下标相减。 
+    C++自带的lower_bound(a,a+n,x)返回数组中第一个x的地址, upper_bound(a,a+n,x)返回数组中最后一个x的下一个数的地址。如果a+n内没有找到x或x的下一个地址，返回a+n的地址  
+*/</code></pre>
+<h1 id="2-数据结构"><a href="#2-数据结构" class="headerlink" title="2. 数据结构"></a>2. 数据结构</h1><h2 id="2-1-并查集"><a href="#2-1-并查集" class="headerlink" title="2.1. 并查集"></a>2.1. 并查集</h2><pre class=" language-c++"><code class="language-c++">/*
+    |合并节点操作|
+    |16/11/05ztx, thanks to chaixiaojun|
+*/
+int father[maxn];   //  储存i的father父节点  
+
+void makeSet() {  
+    for (int i = 0; i < maxn; i++)   
+        father[i] = i;  
+}  
+
+int findRoot(int x) {   //  迭代找根节点
+    int root = x; // 根节点  
+    while (root != father[root]) { // 寻找根节点  
+        root = father[root];  
+    }  
+    while (x != root) {  
+        int tmp = father[x];  
+        father[x] = root; // 根节点赋值  
+        x = tmp;  
+    }  
+    return root;  
+}  
+
+int findRoot(int x) {   //  迭代找根节点
+    if (x == father[x])
+        return x;
+    else
+        return father[x] = findRoot(father[x]);
+}  
+
+void Union(int x, int y) {  //  将x所在的集合和y所在的集合整合起来形成一个集合。  
+    int a, b;  
+    a = findRoot(x);  
+    b = findRoot(y);  
+    father[a] = b;  // y连在x的根节点上   或father[b] = a为x连在y的根节点上；  
+} </code></pre>
+<h2 id="2-2-最小生成树"><a href="#2-2-最小生成树" class="headerlink" title="2.2. 最小生成树"></a>2.2. 最小生成树</h2><h3 id="2-2-1-Kruskal算法"><a href="#2-2-1-Kruskal算法" class="headerlink" title="2.2.1. Kruskal算法"></a>2.2.1. Kruskal算法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |Kruskal算法|
+    |适用于 稀疏图 求最小生成树|
+*/
+/*
+    第一步：点、边、加入vector，把所有边按从小到大排序
+    第二步：并查集部分 + 下面的code
+*/
+void Kruskal() {    
+    ans = 0;    
+    for (int i = 0; i<len; i++) {    
+        if (Find(edge[i].a) != Find(edge[i].b)) {    
+            Union(edge[i].a, edge[i].b);    
+            ans += edge[i].len;    
+        }    
+    }    
+} </code></pre>
+<h3 id="2-2-2-Prim算法"><a href="#2-2-2-Prim算法" class="headerlink" title="2.2.2. Prim算法"></a>2.2.2. Prim算法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |Prim算法|
+    |适用于 稠密图 求最小生成树|
+    |堆优化版，时间复杂度：O(elgn)|
+*/
+//优先队列自定义比较函数
+struct cmp {
+    bool operator()(int &a, int &b) const {
+        return a < b;
+    }
+};
+
+struct node {  
+    int v, len;  
+    node(int v = 0, int len = 0) :v(v), len(len) {}  
+    bool operator < (const node &a)const {  // 加入队列的元素自动按距离从小到大排序  
+        return len> a.len;  
+    }  
+};
+
+vector<node> G[maxn];
+int vis[maxn];
+int dis[maxn];
+
+void init() {  
+    for (int i = 0; i<maxn; i++) {  
+        G[i].clear();  
+        dis[i] = INF;  
+        vis[i] = false;  
+    }  
+} 
+
+int Prim(int s) {  
+    priority_queue<node>Q; // 定义优先队列  
+    int ans = 0;  
+    Q.push(node(s,0));  // 起点加入队列  
+    while (!Q.empty()) {   
+        node now = Q.top(); Q.pop();  // 取出距离最小的点  
+        int v = now.v;  
+        if (vis[v]) continue;  // 同一个节点，可能会推入2次或2次以上队列，这样第一个被标记后，剩下的需要直接跳过。  
+        vis[v] = true;  // 标记一下  
+        ans += now.len;  
+        for (int i = 0; i<G[v].size(); i++) {  // 开始更新  
+            int v2 = G[v][i].v;  
+            int len = G[v][i].len;  
+            if (!vis[v2] && dis[v2] > len) {   
+                dis[v2] = len;  
+                Q.push(node(v2, dis[v2]));  // 更新的点加入队列并排序  
+            }  
+        }  
+    }  
+    return ans; 
+}</code></pre>
+<h2 id="2-3-单源最短路径"><a href="#2-3-单源最短路径" class="headerlink" title="2.3. 单源最短路径"></a>2.3. 单源最短路径</h2><h3 id="2-3-1-Dijkstra算法"><a href="#2-3-1-Dijkstra算法" class="headerlink" title="2.3.1. Dijkstra算法"></a>2.3.1. Dijkstra算法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |Dijkstra算法|
+    |适用于边权为正的有向图或者无向图|
+    |求从单个源点出发，到所有节点的最短路|
+    |优化版：时间复杂度 O(elbn)|
+*/
+struct node {  
+    int v, len;  
+    node(int v = 0, int len = 0) :v(v), len(len) {}  
+    bool operator < (const node &a)const {  //  距离从小到大排序  
+        return len > a.len;  
+    }  
+};  
+
+vector<node>G[maxn];  
+bool vis[maxn];  
+int dis[maxn];
+
+void init() {  
+    for (int i = 0; i<maxn; i++) {  
+        G[i].clear();  
+        vis[i] = false;  
+        dis[i] = INF;  
+    }  
+} 
+
+int dijkstra(int s, int e) {  
+    priority_queue<node>Q;  
+    Q.push(node(s, 0)); //  加入队列并排序  
+    dis[s] = 0;  
+    while (!Q.empty()) {  
+        node now = Q.top();     //  取出当前最小的  
+        Q.pop();  
+        int v = now.v;  
+        if (vis[v]) continue;   //  如果标记过了, 直接continue  
+        vis[v] = true;  
+        for (int i = 0; i<G[v].size(); i++) {   //  更新  
+            int v2 = G[v][i].v;  
+            int len = G[v][i].len;  
+            if (!vis[v2] && dis[v2] > dis[v] + len) {  
+                dis[v2] = dis[v] + len;  
+                Q.push(node(v2, dis[v2]));  
+            }  
+        }  
+    }  
+    return dis[e];  
+} </code></pre>
+<h2 id="2-3-2-SPFA算法"><a href="#2-3-2-SPFA算法" class="headerlink" title="2.3.2. SPFA算法"></a>2.3.2. SPFA算法</h2><pre class=" language-c++"><code class="language-c++">// 最短路径快速算法（Shortest Path Faster Algorithm）
+/*
+    |SPFA算法|
+    |队列优化|
+    |可处理负环|
+*/
+vector<node> G[maxn];
+bool inqueue[maxn];
+int dist[maxn];
+
+void Init()  
+{  
+    for(int i = 0 ; i < maxn ; ++i){  
+        G[i].clear();  
+        dist[i] = INF;  
+    }  
+}  
+int SPFA(int s,int e)  
+{  
+    int v1,v2,weight;  
+    queue<int> Q;  
+    memset(inqueue,false,sizeof(inqueue)); // 标记是否在队列中  
+    memset(cnt,0,sizeof(cnt)); // 加入队列的次数  
+    dist[s] = 0;  
+    Q.push(s); // 起点加入队列  
+    inqueue[s] = true; // 标记  
+    while(!Q.empty()){  
+        v1 = Q.front();  
+        Q.pop();  
+        inqueue[v1] = false; // 取消标记  
+        for(int i = 0 ; i < G[v1].size() ; ++i){ // 搜索v1的链表  
+            v2 = G[v1][i].vex;  
+            weight = G[v1][i].weight;  
+            if(dist[v2] > dist[v1] + weight){ // 松弛操作  
+                dist[v2] = dist[v1] + weight;  
+                if(inqueue[v2] == false){  // 再次加入队列  
+                    inqueue[v2] = true;  
+                    //cnt[v2]++;  // 判负环  
+                    //if(cnt[v2] > n) return -1;  
+                    Q.push(v2);  
+                } } }  
+    }  
+    return dist[e];  
+}
+/*
+    不断的将s的邻接点加入队列，取出不断的进行松弛操作，直到队列为空  
+    如果一个结点被加入队列超过n-1次，那么显然图中有负环  
+*/</code></pre>
+<h3 id="2-3-3-Floyd算法"><a href="#2-3-3-Floyd算法" class="headerlink" title="2.3.3. Floyd算法"></a>2.3.3. Floyd算法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |Floyd算法|
+    |任意点对最短路算法|
+    |求图中任意两点的最短距离的算法|
+*/
+for (int i = 0; i < n; i++) {   //  初始化为0  
+    for (int j = 0; j < n; j++)  
+        scanf("%lf", &dis[i][j]);  
+}
+
+for (int k = 0; k < n; k++) {  
+    for (int i = 0; i < n; i++) {  
+        for (int j = 0; j < n; j++) {  
+            dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);  
+        }  
+    }
+}</code></pre>
+<h2 id="2-4-二分图"><a href="#2-4-二分图" class="headerlink" title="2.4. 二分图"></a>2.4. 二分图</h2><h3 id="2-4-1-染色法"><a href="#2-4-1-染色法" class="headerlink" title="2.4.1. 染色法"></a>2.4.1. 染色法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |交叉染色法判断二分图|
+*/
+int bipartite(int s) {  
+    int u, v;  
+    queue<int>Q;  
+    color[s] = 1;  
+    Q.push(s);  
+    while (!Q.empty()) {  
+        u = Q.front();  
+        Q.pop();  
+        for (int i = 0; i < G[u].size(); i++) {  
+            v = G[u][i];  
+            if (color[v] == 0) {  
+                color[v] = -color[u];  
+                Q.push(v);  
+            }  
+            else if (color[v] == color[u])  
+                return 0;  
+        }  
+    }  
+    return 1;  
+} </code></pre>
+<h3 id="2-4-2-匈牙利算法"><a href="#2-4-2-匈牙利算法" class="headerlink" title="2.4.2. 匈牙利算法"></a>2.4.2. 匈牙利算法</h3><pre class=" language-c++"><code class="language-c++">/*
+    |求解最大匹配问题|
+    |递归实现|
+*/
+vector<int>G[maxn];  
+bool inpath[maxn];  //  标记  
+int match[maxn];    //  记录匹配对象 
+
+void init() {  
+    memset(match, -1, sizeof(match));  
+    for (int i = 0; i < maxn; ++i) {  
+        G[i].clear();  
+    }  
+}
+
+bool findpath(int k) {  
+    for (int i = 0; i < G[k].size(); ++i) {  
+        int v = G[k][i];  
+        if (!inpath[v]) {  
+            inpath[v] = true;  
+            if (match[v] == -1 || findpath(match[v])) { // 递归  
+                match[v] = k; // 即匹配对象是“k妹子”的  
+                return true;  
+            }  
+        }  
+    }  
+    return false;  
+}  
+
+void hungary() {  
+    int cnt = 0;  
+    for (int i = 1; i <= m; i++) {  // m为需要匹配的“妹子”数  
+        memset(inpath, false, sizeof(inpath)); // 每次都要初始化  
+        if (findpath(i)) cnt++;  
+    }  
+    cout << cnt << endl;  
+}</code></pre>
+<pre class=" language-c++"><code class="language-c++">/*
+    |求解最大匹配问题|
+    |dfs实现|
+*/
+int v1, v2;  
+bool Map[501][501];  
+bool visit[501];  
+int link[501];  
+int result;  
+
+bool dfs(int x) {  
+    for (int y = 1; y <= v2; ++y) {  
+        if (Map[x][y] && !visit[y]) {  
+            visit[y] = true;  
+            if (link[y] == 0 || dfs(link[y])) {  
+                link[y] = x;  
+                return true;  
+            } } }  
+    return false;  
+}  
+
+void Search()  {  
+    for (int x = 1; x <= v1; x++) {  
+        memset(visit,false,sizeof(visit));  
+        if (dfs(x))  
+            result++;  
+    }
+}</code></pre>
+<h1 id="3-动态规划"><a href="#3-动态规划" class="headerlink" title="3. 动态规划"></a>3. 动态规划</h1><h2 id="3-1-背包问题"><a href="#3-1-背包问题" class="headerlink" title="3.1. 背包问题"></a>3.1. 背包问题</h2><pre class=" language-c++"><code class="language-c++">/*
+    |01背包|
+    |完全背包|
+    |多重背包|
+*/
+//  01背包：  
+void bag01(int cost,int weight) {  
+    for(i = v; i >= cost; --i)  
+    dp[i] = max(dp[i], dp[i-cost]+weight);  
+}  
+
+//  完全背包：  
+void complete(int cost, int weight) {  
+    for(i = cost ; i <= v; ++i)  
+    dp[i] = max(dp[i], dp[i - cost] + weight);  
+}  
+
+//  多重背包：  
+void multiply(int cost, int weight, int amount) {  
+    if(cost * amount >= v)  
+        complete(cost, weight);  
+    else{  
+        k = 1;  
+        while (k < amount){  
+            bag01(k * cost, k * weight);  
+            amount -= k;  
+            k += k;  
+        }  
+        bag01(cost * amount, weight * amount);  
+    }  
+}  </code></pre>
+<h2 id="3-2-最长上升子序列（LIS）"><a href="#3-2-最长上升子序列（LIS）" class="headerlink" title="3.2. 最长上升子序列（LIS）"></a>3.2. 最长上升子序列（LIS）</h2><pre class=" language-c++"><code class="language-c++">/*
+    |最长上升子序列|
+    |状态转移|
+*/
+/*
+    状态转移dp[i] = max{1, dp[j] + 1 };  j<i; a[j]<a[i];
+    d[i]是以i结尾的最长上升子序列
+    与i之前的 每个a[j]<a[i]的 j的位置的最长上升子序列+1后的值比较
+*/
+void solve() {   // 参考挑战程序设计入门经典;
+    for(int i = 0; i < n; ++i){  
+        dp[i] = 1;  
+        for(int j = 0; j < i; ++j){  
+            if(a[j] < a[i]){  
+                dp[i] = max(dp[i], dp[j] + 1);  
+            }
+        } 
+    }
+}  
+
+/* 
+    优化方法：
+    dp[i]表示长度为i+1的上升子序列的最末尾元素  
+    找到第一个比dp末尾大的来代替 
+*/
+void solve() {  
+    for (int i = 0; i < n; ++i){
+        dp[i] = INF;
+    }
+    for (int i = 0; i < n; ++i) {  
+        *lower_bound(dp, dp + n, a[i]) = a[i];  //  返回一个指针  
+    }  
+    printf("%d\n", *lower_bound(dp, dp + n, INF) - dp;  
+}
+/*  
+    函数lower_bound()返回一个 iterator 它指向在[first,last)标记的有序序列中可以插入value，而不会破坏容器顺序的第一个位置，而这个位置标记了一个不小于value的值。
+*/</code></pre>
+<h2 id="3-3-最长公共子序列（LCS）"><a href="#3-3-最长公共子序列（LCS）" class="headerlink" title="3.3. 最长公共子序列（LCS）"></a>3.3. 最长公共子序列（LCS）</h2><pre class=" language-c++"><code class="language-c++">/*
+    |求最长公共子序列|
+    |递推形式|
+*/
+void solve() {  
+    for (int i = 0; i < n; ++i) {  
+        for (int j = 0; j < m; ++j) {  
+            if (s1[i] == s2[j]) {  
+                dp[i + 1][j + 1] = dp[i][j] + 1;  
+            }
+            else {  
+                dp[i + 1][j + 1] = max(dp[i][j + 1], dp[i + 1][j]);  
+            } 
+        } 
+    }
+}  </code></pre>
+<h1 id="4-字符串"><a href="#4-字符串" class="headerlink" title="4. 字符串"></a>4. 字符串</h1><h2 id="4-1-kmp算法"><a href="#4-1-kmp算法" class="headerlink" title="4.1. kmp算法"></a>4.1. kmp算法</h2><pre class=" language-c++"><code class="language-c++">/*
+    |kmp算法|
+    |字符串匹配|
+*/
+void getnext(char str[maxn], int nextt[maxn]) {
+    int j = 0, k = -1;
+    nextt[0] = -1;
+    while (j < m) {
+        if (k == -1 || str[j] == str[k]) {
+            j++;
+            k++;
+            nextt[j] = k;
+        }
+        else
+            k = nextt[k];
+    }
+}
+
+void kmp(int a[maxn], int b[maxn]) {    
+    int nextt[maxm];    
+    int i = 0, j = 0;    
+    getnext(b, nextt);    
+    while (i < n) {    
+        if (j == -1 || a[i] == b[j]) { // 母串不动，子串移动    
+            j++;    
+            i++;    
+        }    
+        else {    
+            // i不需要回溯了    
+            // i = i - j + 1;    
+            j = nextt[j];    
+        }    
+        if (j == m) {    
+            printf("%d\n", i - m + 1); // 母串的位置减去子串的长度+1    
+            return;    
+        }    
+    }    
+    printf("-1\n");
+}</code></pre>
+<h2 id="4-2-kmp扩展算法"><a href="#4-2-kmp扩展算法" class="headerlink" title="4.2. kmp扩展算法"></a>4.2. kmp扩展算法</h2><pre class=" language-c++"><code class="language-c++">const int MM=100005;    
+
+int next[MM],extend[MM];    
+char S[MM],T[MM];    
+
+void GetNext(const char *T) {    
+    int len = strlen(T), a = 0;    
+    next[0] = len;    
+    while(a < len - 1 && T[a] == T[a + 1]) a++;    
+    next[1] = a;    
+    a = 1;    
+    for(int k = 2; k < len; k++) {    
+        int p = a + next[a] - 1, L = next[k - a];    
+        if((k - 1) + L >= p) {    
+            int j = (p - k + 1) > 0 ? (p - k + 1) : 0;    
+            while(k + j < len && T[k + j] == T[j]) j++;    
+            next[k] = j;    
+            a = k;    
+        }
+        else 
+            next[k] = L;    
+    }    
+} 
+
+void GetExtend(const char *S, const char *T) {    
+    GetNext(T);    
+    int slen = strlen(S), tlen = strlen(T), a = 0;    
+    int MinLen = slen < tlen ? slen : tlen;    
+    while(a < MinLen && S[a] == T[a]) a++;    
+    extend[0] = a;     
+    a = 0;    
+    for(int k = 1; k < slen; k++) {    
+        int p = a + extend[a] - 1, L = next[k - a];    
+        if((k - 1) + L >= p) {    
+            int j = (p - k + 1) > 0 ? (p - k + 1) : 0;    
+            while(k + j < slen && j < tlen && S[k + j] == T[j]) j++;    
+            extend[k] = j;    
+            a = k;    
+        } 
+        else    
+            extend[k] = L;    
+    }    
+}    
+
+void show(const int *s,int len){    
+    for(int i = 0; i < len; i++)    
+        cout << s[i] << ' ';    
+    cout << endl;    
+}    
+
+int main() {    
+    while(cin >> S >> T) {    
+        GetExtend(S,T);    
+        show(next,strlen(T));    
+        show(extend,strlen(S));    
+    }    
+    return 0;    
+}</code></pre>
+<h1 id="5-字典树"><a href="#5-字典树" class="headerlink" title="5. 字典树"></a>5. 字典树</h1><pre class=" language-c++"><code class="language-c++">struct Trie {  
+    int cnt;  
+    Trie *next[maxn];  
+    Trie(){  
+        cnt = 0;  
+        memset(next,0,sizeof(next));  
+    }  
+};  
+
+Trie *root;  
+
+void Insert(char *word) {  
+    Trie *tem = root;  
+    while(*word != '\0') {  
+        int x = *word - 'a';  
+        if(tem->next[x] == NULL)  
+            tem->next[x] = new Trie;  
+        tem = tem->next[x];  
+        tem->cnt++;  
+        word++;  
+    }  
+}  
+
+int Search(char *word) {  
+    Trie *tem = root;  
+    for(int i = 0; word[i] != '\0'; i++) {  
+        int x = word[i]-'a';  
+        if(tem->next[x] == NULL)  
+            return 0;  
+        tem = tem->next[x];  
+    }  
+    return tem->cnt;  
+}  
+
+void Delete(char *word,int t) {  
+    Trie *tem = root;  
+    for(int i = 0; word[i] != '\0'; i++) {  
+        int x = word[i]-'a';  
+        tem = tem->next[x];  
+        (tem->cnt) -= t;  
+    }  
+    for(int i = 0; i < maxn; i++)  
+        tem->next[i] = NULL;  
+}  
+
+int main() {  
+    int n;  
+    char str1[50];  
+    char str2[50];  
+    while(scanf("%d", &n)!=EOF) {  
+        root = new Trie;  
+        while(n--) {  
+            scanf("%s %s",str1,str2);  
+            if(str1[0] == 'i') {
+                Insert(str2); 
+            }
+            else if(str1[0] == 's') {  
+                if(Search(str2))  
+                    printf("Yes\n");  
+                else  
+                    printf("No\n");  
+            }
+            else {  
+                int t = Search(str2);  
+                if(t)  
+                    Delete(str2,t);  
+            } 
+        } 
+    }  
+    return 0;  
+}  </code></pre>
+<h1 id="6-线段树"><a href="#6-线段树" class="headerlink" title="6.  线段树"></a>6.  线段树</h1><h2 id="6-1-点更新"><a href="#6-1-点更新" class="headerlink" title="6.1. 点更新"></a>6.1. 点更新</h2><pre class=" language-c++"><code class="language-c++">struct node
+{
+    int left, right;
+    int max, sum;
+};
+
+node tree[maxn << 2];
+int a[maxn];
+int n;
+int k = 1;
+int p, q;
+string str;
+
+void build(int m, int l, int r)//m 是 树的标号
+{
+    tree[m].left = l;
+    tree[m].right = r;
+    if (l == r) {
+        tree[m].max = a[l];
+        tree[m].sum = a[l];
+        return;
+    }
+    int mid = (l + r) >> 1;
+    build(m << 1, l, mid);
+    build(m << 1 | 1, mid + 1, r);
+    tree[m].max = max(tree[m << 1].max, tree[m << 1 | 1].max);
+    tree[m].sum = tree[m << 1].sum + tree[m << 1 | 1].sum;
+}
+
+void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值（加减的值）
+{
+    if (tree[m].left == a && tree[m].right == a) {
+        tree[m].max += val;
+        tree[m].sum += val;
+        return;
+    }
+    int mid = (tree[m].left + tree[m].right) >> 1;
+    if (a <= mid) {
+        update(m << 1, a, val);
+    }
+    else {
+        update(m << 1 | 1, a, val);
+    }
+    tree[m].max = max(tree[m << 1].max, tree[m << 1 | 1].max);
+    tree[m].sum = tree[m << 1].sum + tree[m << 1 | 1].sum;
+}
+
+int querySum(int m, int l, int r)
+{
+    if (l == tree[m].left && r == tree[m].right) {
+        return tree[m].sum;
+    }
+    int mid = (tree[m].left + tree[m].right) >> 1;
+    if (r <= mid) {
+        return querySum(m << 1, l, r);
+    }
+    else if (l > mid) {
+        return querySum(m << 1 | 1, l, r);
+    }
+    return querySum(m << 1, l, mid) + querySum(m << 1 | 1, mid + 1, r);
+}
+
+int queryMax(int m, int l, int r)
+{
+    if (l == tree[m].left && r == tree[m].right) {
+        return tree[m].max;
+    }
+    int mid = (tree[m].left + tree[m].right) >> 1;
+    if (r <= mid) {
+        return queryMax(m << 1, l, r);
+    }
+    else if (l > mid) {
+        return queryMax(m << 1 | 1, l, r);
+    }
+    return max(queryMax(m << 1, l, mid), queryMax(m << 1 | 1, mid + 1, r));
+} 
+
+build(1,1,n);  
+update(1,a,b);  
+query(1,a,b); </code></pre>
+<h2 id="6-2-区间更新"><a href="#6-2-区间更新" class="headerlink" title="6.2. 区间更新"></a>6.2. 区间更新</h2><pre class=" language-c++"><code class="language-c++">typedef long long ll;  
+const int maxn = 100010;  
+
+int t,n,q;  
+ll anssum;  
+
+struct node{  
+    ll l, r;  
+    ll addv, sum;  
+}tree[maxn<<2];  
+
+void maintain(int id) {  
+    if(tree[id].l >= tree[id].r)  
+        return ;  
+    tree[id].sum = tree[id<<1].sum + tree[id<<1 | 1].sum;  
+}  
+
+void pushdown(int id) {  
+    if(tree[id].l >= tree[id].r)  
+        return ;  
+    if(tree[id].addv){  
+        int tmp = tree[id].addv;  
+        tree[id<<1].addv += tmp;  
+        tree[id<<1|1].addv += tmp;  
+        tree[id<<1].sum += (tree[id<<1].r - tree[id<<1].l + 1) * tmp;  
+        tree[id<<1|1].sum += (tree[id<<1|1].r - tree[id<<1|1].l + 1) * tmp;  
+        tree[id].addv = 0;  
+    }  
+}  
+
+void build(int id,ll l, ll r) {  
+    tree[id].l = l;  
+    tree[id].r = r;  
+    tree[id].addv = 0;  
+    tree[id].sum = 0;  
+    if(l==r) {  
+        tree[id].sum = 0;  
+        return;  
+    }  
+    ll mid = (l+r)>>1;  
+    build(id<<1, l, mid);  
+    build(id<<1 | 1, mid + 1, r);  
+    maintain(id);  
+}  
+
+void updateAdd(int id,ll l,ll r,ll val) {  
+    if(tree[id].l >= l && tree[id].r <= r)  
+    {  
+        tree[id].addv += val;  
+        tree[id].sum += (tree[id].r - tree[id].l + 1) * val;  
+        return;  
+    }  
+    pushdown(id);  
+    ll mid = (tree[id].l + tree[id].r)>>1;  
+    if(l <= mid)  
+        updateAdd(id<<1, l, r, val);  
+    if(mid < r)  
+        updateAdd(id<<1 | 1, l, r, val);  
+    maintain(id);  
+}  
+
+void query(int id, ll l, ll r) {  
+    if(tree[id].l >= l && tree[id].r <= r){  
+        anssum += tree[id].sum;  
+        return;  
+    }  
+    pushdown(id);  
+    ll mid = (tree[id].l + tree[id].r)>>1;  
+    if(l <= mid)  
+        query(id<<1, l, r);  
+    if(mid < r)  
+        query(id<<1 | 1, l, r);  
+    maintain(id);  
+}  
+
+int main() {  
+    scanf("%d", &t);  
+    int kase = 0;  
+    while(t--) {  
+        scanf("%d %d", &n, &q);  
+        build(1, 1, n);  
+        int id;  
+        ll x, y;  
+        ll val;  
+        printf("Case %d:\n", ++kase);  
+        while(q--) {  
+            scanf("%d", &id);  
+            if(id==0) {  
+                scanf("%lld %lld %lld", &x, &y, &val);  
+                updateAdd(1, x+1, y+1, val);  
+            }  
+            else {  
+                scanf("%lld %lld", &x, &y);  
+                anssum = 0;  
+                query(1, x+1, y+1);  
+                printf("%lld\n", anssum);  
+            } 
+        } 
+    }  
+    return 0;  
+}  </code></pre>
+<h1 id="7-树状数组"><a href="#7-树状数组" class="headerlink" title="7. 树状数组"></a>7. 树状数组</h1><pre class=" language-c++"><code class="language-c++">typedef long long ll;
+
+const int maxn = 50005;
+
+int a[maxn];
+int n;
+
+int lowbit(const int t) {
+    return t & (-t);
+}
+
+void insert(int t, int d) {
+    while (t <= n){
+        a[t] += d;
+        t = t + lowbit(t);
+    }
+}
+
+ll getSum(int t) {
+    ll sum = 0;
+    while (t > 0){
+        sum += a[t];
+        t = t - lowbit(t);
+    }
+    return sum;
+}
+
+int main() {
+    int t, k, d;
+    scanf("%d", &t);
+    k= 1;
+    while (t--){
+        memset(a, 0, sizeof(a));
+        scanf("%d", &n);
+        for (int i = 1; i <= n; ++i) {
+            scanf("%d", &d);
+            insert(i, d);
+        }
+        string str;
+        printf("Case %d:\n", k++);
+        while (cin >> str) {
+            if (str == "End")   break;
+            int x, y;
+            scanf("%d %d", &x, &y);
+            if (str == "Query")
+                printf("%lld\n", getSum(y) - getSum(x - 1));
+            else if (str == "Add")
+                insert(x, y);
+            else if (str == "Sub")
+                insert(x, -y);
+        }
+    }
+    return 0;
+}</code></pre>
+<pre class=" language-c++"><code class="language-c++">// 求逆序对
+for(int i = 1; i <= n; i++)
+    {
+        scanf("%d", &a);
+        node[i].index = i;
+        node[i].v = a;
+    }
+    sort(node + 1, node + 1 + n);
+    long long ans=0;
+    for(int i = 1; i <= n; i++)
+    { 
+        add(node[i].index);  //离散化结果—— 下标等效于数值
+        ans += i - sum(node[i].index); //得到之前有多少个比你大的数（逆序对）
+    }
+    cout<<ans;</code></pre>
+<h1 id="8-中国剩余定理（孙子定理）"><a href="#8-中国剩余定理（孙子定理）" class="headerlink" title="8. 中国剩余定理（孙子定理）"></a>8. 中国剩余定理（孙子定理）</h1><pre class=" language-c++"><code class="language-c++">int CRT(int a[],int m[],int n)  {    
+    int M = 1;    
+    int ans = 0;    
+    for(int i=1; i<=n; i++)    
+        M *= m[i];    
+    for(int i=1; i<=n; i++)  {    
+        int x, y;    
+        int Mi = M / m[i];    
+        extend_Euclid(Mi, m[i], x, y);    
+        ans = (ans + Mi * x * a[i]) % M;    
+    }    
+    if(ans < 0) ans += M;    
+    return ans;    
+}  
+
+void extend_Euclid(int a, int b, int &x, int &y)  {  
+    if(b == 0) {  
+        x = 1;  
+        y = 0;  
+        return;  
+    }  
+    extend_Euclid(b, a % b, x, y);  
+    int tmp = x;  
+    x = y;  
+    y = tmp - (a / b) * y;  
+}  </code></pre>
+<h1 id="9-最大流-最大权闭合子图"><a href="#9-最大流-最大权闭合子图" class="headerlink" title="9. 最大流/最大权闭合子图"></a>9. 最大流/最大权闭合子图</h1><pre class=" language-c++"><code class="language-c++">//从源点s向每个正权点连一条容量为权值的边，每个负权点向汇点t连一条容量为权值的绝对值的边，有向图原来的边容量全部为无限大。
+//最大权闭合子图=（正权之和-不选的正权之和-要选的负权绝对值之和）=正权值和-最小割/最大流
+#define maxn 5010     //课程
+#define maxm 50100    //用户
+#define inf 0x3f3f3f3f  
+using namespace std;  
+
+struct Edge {  
+    int v,c,next;  
+    Edge(int v,int c, int next): v(v), c(c), next(next) {}  
+    Edge(){}  
+}e[maxm * 6 + maxn * 2];  
+int p[maxn + maxm];  
+int cnt, n, m, T;  
+
+void init() {  
+    cnt=0;  
+    memset(p, -1, sizeof(p));  
+} 
+
+void insert(int u, int v, int c) {  
+    e[cnt] = Edge(v, c, p[u]);  
+    p[u] = cnt++;  // 顶点u的上一条相邻的边 
+} 
+
+int d[maxn + maxm];  
+bool bfs() {  
+    memset(d, -1, sizeof(d));  
+    queue<int> q;  
+    d[0] = 0;  
+    q.push(0);  
+    while(!q.empty()) {  
+        int u = q.front();
+        q.pop();  
+        for(int i = p[u]; i != -1; i = e[i].next) {  
+            int v = e[i].v;  
+            if(e[i].c > 0 && d[v] == -1){  
+                //printf("%d->%d(%d)\n", u, v, d[u] + 1);  
+                d[v] = d[u] + 1;  
+                q.push(v);  
+            }  
+        }  
+    }  
+    return d[T] != -1;  
+} 
+
+int dfs(int u, int flow){  
+    if(u == T)
+        return flow;  
+    int res = 0;  
+    for(int i = p[u]; i != -1; i = e[i].next){  
+        int v = e[i].v;  
+        if(e[i].c > 0 && d[v] == d[u] + 1){  
+            int tmp = dfs(v, min(flow, e[i].c));  
+            e[i].c -= tmp;  
+            flow -= tmp;  
+            e[i^1].c += tmp;  
+            res += tmp;  
+            if(flow == 0)  
+                break;  
+        }  
+    }  
+    if(res == 0)  
+        d[u] = -1;  
+    return res;  
+}  
+
+int dinic() {  
+    int res = 0;  
+    while(bfs()){  
+   //   printf("here!\n");  
+        res += dfs(0, inf);  
+    }  
+    return res;  
+}  
+
+int main() {  
+    init();  
+    int p, a, b, c, sum=0;  
+    scanf("%d%d", &n, &m);  
+    T = n + m + 1;//汇点  
+    for(int i = 1; i <= n; i++){  
+        scanf("%d", &p);  
+        insert(i + m, T, p);  //课程放右边
+        insert(T, i + m, 0);  
+    }  
+    for(int i = 1; i <= m; i++){  
+        scanf("%d%d%d", &a, &b, &c);  
+        sum += c;  
+        insert(i, a + m, inf);   
+        insert(a + m, i, 0);  
+        insert(i, b + m, inf);  
+        insert(b + m, i, 0);  
+        insert(0, i, c);   //用户放左边
+        insert(i, 0, 0);  
+    }  
+    printf("%d\n", sum - dinic());  
+    return 0;  </code></pre>
+<h1 id="10-拓扑排序-AOE网络-关键路径"><a href="#10-拓扑排序-AOE网络-关键路径" class="headerlink" title="10. 拓扑排序/AOE网络/关键路径"></a>10. 拓扑排序/AOE网络/关键路径</h1><pre class=" language-c++"><code class="language-c++">const int maxn=110;
+const int INF=1e4;
+int N,M;
+struct Node{
+    //vector<int> child;
+    int id; 
+    int length;
+};
+//Node graph[maxn]; 
+vector<Node> Adj[maxn];
+//int e[maxn]; //边上活动最早开始时间 
+//int l[maxn]; //边上活动最晚开始时间
+int ve[maxn];   //顶点上活动最早开始时间 
+int vl[maxn];  //顶点上活动最晚开始时间
+int in[maxn];  // 每个结点的入度，为0时入队
+stack<int> s;
+
+bool TopologicalSort(int N)
+{
+    queue<int> q;
+    memset(ve, 0, sizeof(ve));
+    //memset(inq,0,sizeof(inq));
+    /*先找出所有初始时入度为0的结点*/
+    for(int i = 1; i <= N; i++)  
+    {
+        if(in[i] == 0)
+        {
+            q.push(i);
+            //s.push(i);
+            //inq[i] = true;
+            //ve[i] = 0; 
+        }
+    }
+    /*每次将所有入度为0的结点入栈，拓扑序*/
+    while(!q.empty())
+    {
+        int tmp = q.front();
+        q.pop();    
+        s.push(tmp); // num++；
+        //cout << "tmp:" << tmp << endl;
+        for(int i = 0; i < Adj[tmp].size(); i++)
+        {
+            int id = Adj[tmp][i].id;
+            if(--in[id] == 0) //入度减为0 加入拓扑排序 
+            {
+                q.push(id);
+                //s.push(i);
+                //inq[i]=true;
+            }
+            if(ve[tmp] + Adj[tmp][i].length > ve[id]) //更新ve值 >
+            ve[id] = ve[tmp] + Adj[tmp][i].length;
+
+        }
+     } 
+     //cout<<"size: "<<s.size()<<endl;
+     if(s.size() == N) return true;
+     else return false;
+} 
+
+void calc_path(int N)
+{
+    if(TopologicalSort(N) == false)
+    {
+        printf("0\n");
+        return;
+    }
+     /*寻找拓扑序列最后一个结点，即开始时间最晚的一个结点*/
+     int max = -1, u = -1;
+     for(int i = 1; i <= N; i++)
+     {
+         if(ve[i] > max)
+       {
+            max = ve[i];
+            u = i;
+       } 
+     }
+      //fill(vl, vl + maxn, INF); 
+      //vl[u] = ve[u];
+      fill(vl, vl + maxn, ve[u]); 
+      printf("%d\n", ve[u]);
+
+     /*元素逐个出栈，即为逆拓扑序列，构造vl数组*/
+     while(!s.empty())
+     {
+         int tmp = s.top();
+         s.pop();
+         //int min = INF, u;
+         for(int i = 0; i < Adj[tmp].size(); i++)
+         {
+             int id = Adj[tmp][i].id;
+             if(vl[id] - Adj[tmp][i].length < vl[tmp])
+             {
+                 vl[tmp] = vl[id] - Adj[tmp][i].length;
+             }
+         }
+     }
+     /*遍历邻接点每条边，计算每项活动的最早和最晚开始时间*/
+     for(int i = 1; i <= N; i++)
+     {
+         for(int j = Adj[i].size() - 1; j >= 0; j--)
+         {
+             int id = Adj[i][j].id;
+             int e = ve[i];
+             int l = vl[id]-Adj[i][j].length;
+             if(e == l) printf("%d->%d\n", i, id); 
+         }
+     }
+ } 
+
+int main()
+{
+    while(scanf("%d%d", &N, &M) != EOF)
+    {
+        int v, w, len;
+        for(int i = 1; i <= N; i++)
+        Adj[i].clear();
+        memset(in, 0, sizeof(in));
+        for(int i = 0; i < M; i++)
+        {
+            scanf("%d%d%d", &v, &w, &len);
+            Node tmp;
+            tmp.id = w;
+            tmp.length = len;
+            Adj[v].push_back(tmp); //有向图只要添加单向边即可 
+            in[w]++; 
+        }
+        while(!s.empty())
+        s.pop();
+        calc_path(N);
+        //cout<<"end!!"<<endl;
+    }
+    return 0;
+}</code></pre>
+<h1 id="11-强连通分量"><a href="#11-强连通分量" class="headerlink" title="11. 强连通分量"></a>11. 强连通分量</h1><pre class=" language-c++"><code class="language-c++">const int N=100010;
+struct data
+{
+    int to, next;
+} tu[N*2];
+int head[N];
+int ip;
+int dfn[N], low[N];///dfn[]表示深搜的步数，low[u]表示u或u的子树能够追溯到的最早的栈中节点的次序号
+int sccno[N];///缩点数组，表示某个点对应的缩点值
+int step;
+int scc_cnt;///强连通分量个数
+
+void init()
+{
+    ip=0;
+    memset(head, -1, sizeof(head));
+}
+
+void add(int u, int v)
+{
+    tu[ip].to = v;
+    tu[ip].next = head[u];
+    head[u] = ip++;
+}
+
+vector<int> scc[N];///得出来的缩点，scc[i]里面存i这个缩点具体缩了哪些点
+stack<int> S;
+void dfs(int u)
+{
+    dfn[u] = low[u] = ++step;
+    S.push(u);
+    for (int i = head[u]; i != -1; i = tu[i].next)
+    {
+        int v = tu[i].to;
+        if (!dfn[v])
+        {
+            dfs(v);
+            low[u] = min(low[u], low[v]);
+        }
+        else if (!sccno[v])
+            low[u] = min(low[u], dfn[v]);
+    }
+    if (low[u] == dfn[u])
+    {
+        scc_cnt += 1;
+        scc[scc_cnt].clear();
+        while(1)
+        {
+            int x = S.top();
+            S.pop();
+            if (sccno[x] != scc_cnt) scc[scc_cnt].push_back(x);
+            sccno[x] = scc_cnt;
+            if (x == u) break;
+        }
+    }
+}
+
+void tarjan(int n)
+{
+    memset(sccno, 0, sizeof(sccno));
+    memset(dfn, 0, sizeof(dfn));
+    step = scc_cnt = 0;
+    for (int i = 1; i <= n; i++)
+        if (!dfn[i]) dfs(i);
+}</code></pre>
+<h1 id="12-日期星期"><a href="#12-日期星期" class="headerlink" title="12. 日期星期"></a>12. 日期星期</h1><pre class=" language-c++"><code class="language-c++">int getDayofWeek(int y, int m, int d){
+    if(m == 1 || m == 2) {
+        m += 12;
+        y--;
+    }
+    return (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400+1)%7;
+} </code></pre>
+<p><span id="refer"> </span></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><p><a href="https://blog.csdn.net/qq_32265245/article/details/53046750" target="_blank" rel="noopener">ACM算法模板</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/m0_38033475/article/details/80173037" target="_blank" rel="noopener">dinic求最大权闭合子图</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/weixin_42584977/article/details/92001428" target="_blank" rel="noopener">拓扑排序+AOE网络+关键路径</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/martinue/article/details/51315574" target="_blank" rel="noopener">tarjan模板</a></p>
+</li>
+<li><p><a href="[https://zh.wikipedia.org/wiki/%E8%94%A1%E5%8B%92%E5%85%AC%E5%BC%8F](https://zh.wikipedia.org/wiki/蔡勒公式)">蔡勒公式</a></p>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt=""
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
+                </a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">
+                    《机试模板整理》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/code-template/" property="cc:attributionName"
+               rel="cc:attributionURL">
+                ustcthy
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/code-template/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机试模板整理">
+                        
+                        <span class="card-title">机试模板整理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。
+今年清华机试一
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/程序设计/" class="post-category" target="_blank">
+                                    程序设计
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/保研/" target="_blank">
+                        <span class="chip bg-color">保研</span>
+                    </a>
+                    
+                    <a href="/tags/机试/" target="_blank">
+                        <span class="chip bg-color">机试</span>
+                    </a>
+                    
+                    <a href="/tags/编程/" target="_blank">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/first-article/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="终于弄好博客啦">
+                        
+                        <span class="card-title">终于弄好博客啦</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程超详细Hexo+Github博客搭建小白教程!
+
+其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。不过目前水平有限，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/随笔/" class="post-category" target="_blank">
+                                    随笔
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/随笔/" target="_blank">
+                        <span class="chip bg-color">随笔</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: THY's Blog<br />'
+            + '作者: ustcthy<br />'
+            + '链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy; 2019 ustcthy. 
+			&nbsp;Powered by 
+            <a href="https://hexo.io/" target="_blank">Hexo.</a>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+			by <a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>
+            <br>
+            
+            &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">1.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="fa fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fa fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            <br>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+
+                function createtime() {
+                    var grt = new Date("10/01/2019 22:00:00");
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML = "本站已运行 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+            
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
