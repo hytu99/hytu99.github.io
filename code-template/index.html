@@ -432,7 +432,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        33 分
+                        34 分
                     </div>
                     
                 
@@ -452,7 +452,7 @@
 <p>这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分<a href="#参考">参考链接</a>在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。</p>
 <p>今年清华机试一反常态难度大大降低，满分的似乎都有25%，我当时在测试数据上也是取得了满分（之后有空把原题也整理一下放上来）。不过最后因为其他一些原因，也没有去报名清华九月的推免，也就没能去成清华。不过这些算法模板作为学习材料还是很不错的（说不定以后什么时候又用上了）。</p>
 </blockquote>
-<h1 id="0-头文件"><a href="#0-头文件" class="headerlink" title="0. 头文件"></a>0. 头文件</h1><pre class=" language-c++"><code class="language-c++">#define _CRT_SBCURE_NO_DEPRECATE
+<h2 id="0-头文件"><a href="#0-头文件" class="headerlink" title="0. 头文件"></a>0. 头文件</h2><pre class=" language-c++"><code class="language-c++">#define _CRT_SBCURE_NO_DEPRECATE
 #include &lt;set&gt;
 #include &lt;cmath&gt;
 #include &lt;queue&gt;
@@ -469,7 +469,7 @@
 using namespace std;
 
 const int INF = 0x3f3f3f3f;</code></pre>
-<h1 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h1><h2 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1.1. 埃拉托斯特尼筛法"></a>1.1. 埃拉托斯特尼筛法</h2><pre class=" language-c++"><code class="language-c++">/*
+<h2 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h2><h3 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1.1. 埃拉托斯特尼筛法"></a>1.1. 埃拉托斯特尼筛法</h3><pre class=" language-c++"><code class="language-c++">/*
     |埃式筛法|
     |快速筛选素数|
 */
@@ -490,26 +490,26 @@ int sieve(int n){
     }
     return p;   //  返回素数个数
 }</code></pre>
-<h2 id="1-2-快速幂"><a href="#1-2-快速幂" class="headerlink" title="1.2. 快速幂"></a>1.2. 快速幂</h2><pre class=" language-c++"><code class="language-c++">typedef long long LL;   //  视数据大小的情况而定
+<h3 id="1-2-快速幂"><a href="#1-2-快速幂" class="headerlink" title="1.2. 快速幂"></a>1.2. 快速幂</h3><pre class=" language-c++"><code class="language-c++">typedef long long LL;   //  视数据大小的情况而定
 
 LL powerMod(LL x, LL n, LL m)
 {
     LL res = 1;
     while (n &gt; 0){
-        if  (n & 1) //  判断是否为奇数，若是则true
+        if  (n &amp; 1) //  判断是否为奇数，若是则true
             res = (res * x) % m;
         x = (x * x) % m;
         n &gt;&gt;= 1;    //  相当于n /= 2;
     }
     return res;
 }</code></pre>
-<h2 id="1-3-大数模拟"><a href="#1-3-大数模拟" class="headerlink" title="1.3. 大数模拟"></a>1.3. 大数模拟</h2><h3 id="1-3-1-大数加法"><a href="#1-3-1-大数加法" class="headerlink" title="1.3.1. 大数加法"></a>1.3.1. 大数加法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="1-3-大数模拟"><a href="#1-3-大数模拟" class="headerlink" title="1.3. 大数模拟"></a>1.3. 大数模拟</h3><h4 id="1-3-1-大数加法"><a href="#1-3-1-大数加法" class="headerlink" title="1.3.1. 大数加法"></a>1.3.1. 大数加法</h4><pre class=" language-c++"><code class="language-c++">/*
     |大数模拟加法|
     |用string模拟|
 */
 string add1(string s1, string s2)
 {
-    if (s1 == "" && s2 == "")   return "0";
+    if (s1 == "" &amp;&amp; s2 == "")   return "0";
     if (s1 == "")   return s2;
     if (s2 == "")   return s1;
     string maxx = s1, minn = s2;
@@ -533,7 +533,7 @@ string add1(string s1, string s2)
     }
     return maxx;
 }</code></pre>
-<h3 id="1-3-2-大数阶乘"><a href="#1-3-2-大数阶乘" class="headerlink" title="1.3.2. 大数阶乘"></a>1.3.2. 大数阶乘</h3><pre class=" language-c++"><code class="language-c++">/*
+<h4 id="1-3-2-大数阶乘"><a href="#1-3-2-大数阶乘" class="headerlink" title="1.3.2. 大数阶乘"></a>1.3.2. 大数阶乘</h4><pre class=" language-c++"><code class="language-c++">/*
     |大数模拟阶乘|
 |用数组模拟|
 */
@@ -583,7 +583,7 @@ int main() {
     printf("\n");
     return 0;
 }</code></pre>
-<h2 id="1-4-最大公约数（GCD）"><a href="#1-4-最大公约数（GCD）" class="headerlink" title="1.4. 最大公约数（GCD）"></a>1.4. 最大公约数（GCD）</h2><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="1-4-最大公约数（GCD）"><a href="#1-4-最大公约数（GCD）" class="headerlink" title="1.4. 最大公约数（GCD）"></a>1.4. 最大公约数（GCD）</h3><pre class=" language-c++"><code class="language-c++">/*
     |辗转相除法|
     |欧几里得算法|
 |求最大公约数|
@@ -602,11 +602,11 @@ int gcd(int big, int small)
     }
     return(big);
 }</code></pre>
-<h2 id="1-5-最小公倍数（LCM）"><a href="#1-5-最小公倍数（LCM）" class="headerlink" title="1.5. 最小公倍数（LCM）"></a>1.5. 最小公倍数（LCM）</h2><pre class=" language-c++"><code class="language-c++">int lcm (int big, int small) 
+<h3 id="1-5-最小公倍数（LCM）"><a href="#1-5-最小公倍数（LCM）" class="headerlink" title="1.5. 最小公倍数（LCM）"></a>1.5. 最小公倍数（LCM）</h3><pre class=" language-c++"><code class="language-c++">int lcm (int big, int small) 
 {
     return big * small / gcd(big, small);
 }</code></pre>
-<h2 id="1-6-全排列"><a href="#1-6-全排列" class="headerlink" title="1.6. 全排列"></a>1.6. 全排列</h2><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="1-6-全排列"><a href="#1-6-全排列" class="headerlink" title="1.6. 全排列"></a>1.6. 全排列</h3><pre class=" language-c++"><code class="language-c++">/*
     |求1到n的全排列, 有条件|
 */
 void Pern(int list[], int k, int n) {   //  k表示前k个数不动仅移动后面n-k位数
@@ -624,7 +624,7 @@ void Pern(int list[], int k, int n) {   //  k表示前k个数不动仅移动后�
         }
     }
 }</code></pre>
-<h2 id="1-7-二分搜索"><a href="#1-7-二分搜索" class="headerlink" title="1.7. 二分搜索"></a>1.7. 二分搜索</h2><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="1-7-二分搜索"><a href="#1-7-二分搜索" class="headerlink" title="1.7. 二分搜索"></a>1.7. 二分搜索</h3><pre class=" language-c++"><code class="language-c++">/*
     |二分搜索|
     |要求：先排序|
 */
@@ -646,7 +646,7 @@ int bsearch(int *A, int left, int right, int x){
     如果找有多少的x，可以用lower_bound查找一遍，upper_bound查找一遍，下标相减。 
     C++自带的lower_bound(a,a+n,x)返回数组中第一个x的地址, upper_bound(a,a+n,x)返回数组中最后一个x的下一个数的地址。如果a+n内没有找到x或x的下一个地址，返回a+n的地址  
 */</code></pre>
-<h1 id="2-数据结构"><a href="#2-数据结构" class="headerlink" title="2. 数据结构"></a>2. 数据结构</h1><h2 id="2-1-并查集"><a href="#2-1-并查集" class="headerlink" title="2.1. 并查集"></a>2.1. 并查集</h2><pre class=" language-c++"><code class="language-c++">/*
+<h2 id="2-数据结构"><a href="#2-数据结构" class="headerlink" title="2. 数据结构"></a>2. 数据结构</h2><h3 id="2-1-并查集"><a href="#2-1-并查集" class="headerlink" title="2.1. 并查集"></a>2.1. 并查集</h3><pre class=" language-c++"><code class="language-c++">/*
     |合并节点操作|
     |16/11/05ztx, thanks to chaixiaojun|
 */
@@ -683,7 +683,7 @@ void Union(int x, int y) {  //  将x所在的集合和y所在的集合整合起�
     b = findRoot(y);  
     father[a] = b;  // y连在x的根节点上   或father[b] = a为x连在y的根节点上；  
 } </code></pre>
-<h2 id="2-2-最小生成树"><a href="#2-2-最小生成树" class="headerlink" title="2.2. 最小生成树"></a>2.2. 最小生成树</h2><h3 id="2-2-1-Kruskal算法"><a href="#2-2-1-Kruskal算法" class="headerlink" title="2.2.1. Kruskal算法"></a>2.2.1. Kruskal算法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="2-2-最小生成树"><a href="#2-2-最小生成树" class="headerlink" title="2.2. 最小生成树"></a>2.2. 最小生成树</h3><h4 id="2-2-1-Kruskal算法"><a href="#2-2-1-Kruskal算法" class="headerlink" title="2.2.1. Kruskal算法"></a>2.2.1. Kruskal算法</h4><pre class=" language-c++"><code class="language-c++">/*
     |Kruskal算法|
     |适用于 稀疏图 求最小生成树|
 */
@@ -700,14 +700,14 @@ void Kruskal() {
         }    
     }    
 } </code></pre>
-<h3 id="2-2-2-Prim算法"><a href="#2-2-2-Prim算法" class="headerlink" title="2.2.2. Prim算法"></a>2.2.2. Prim算法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h4 id="2-2-2-Prim算法"><a href="#2-2-2-Prim算法" class="headerlink" title="2.2.2. Prim算法"></a>2.2.2. Prim算法</h4><pre class=" language-c++"><code class="language-c++">/*
     |Prim算法|
     |适用于 稠密图 求最小生成树|
     |堆优化版，时间复杂度：O(elgn)|
 */
 //优先队列自定义比较函数
 struct cmp {
-    bool operator()(int &a, int &b) const {
+    bool operator()(int &amp;a, int &amp;b) const {
         return a &lt; b;
     }
 };
@@ -715,7 +715,7 @@ struct cmp {
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator &lt; (const node &a) const {  // 加入队列的元素自动按距离从小到大排序  
+    bool operator &lt; (const node &amp;a) const {  // 加入队列的元素自动按距离从小到大排序  
         return len &gt; a.len;  
     }  
 };
@@ -745,7 +745,7 @@ int Prim(int s) {
         for (int i = 0; i &lt; G[v].size(); i++) {  // 开始更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] && dis[v2] &gt; len) {   
+            if (!vis[v2] &amp;&amp; dis[v2] &gt; len) {   
                 dis[v2] = len;  
                 Q.push(node(v2, dis[v2]));  // 更新的点加入队列并排序  
             }  
@@ -753,7 +753,7 @@ int Prim(int s) {
     }  
     return ans; 
 }</code></pre>
-<h2 id="2-3-单源最短路径"><a href="#2-3-单源最短路径" class="headerlink" title="2.3. 单源最短路径"></a>2.3. 单源最短路径</h2><h3 id="2-3-1-Dijkstra算法"><a href="#2-3-1-Dijkstra算法" class="headerlink" title="2.3.1. Dijkstra算法"></a>2.3.1. Dijkstra算法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="2-3-单源最短路径"><a href="#2-3-单源最短路径" class="headerlink" title="2.3. 单源最短路径"></a>2.3. 单源最短路径</h3><h4 id="2-3-1-Dijkstra算法"><a href="#2-3-1-Dijkstra算法" class="headerlink" title="2.3.1. Dijkstra算法"></a>2.3.1. Dijkstra算法</h4><pre class=" language-c++"><code class="language-c++">/*
     |Dijkstra算法|
     |适用于边权为正的有向图或者无向图|
     |求从单个源点出发，到所有节点的最短路|
@@ -762,7 +762,7 @@ int Prim(int s) {
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator &lt; (const node &a)const {  //  距离从小到大排序  
+    bool operator &lt; (const node &amp;a)const {  //  距离从小到大排序  
         return len &gt; a.len;  
     }  
 };  
@@ -792,7 +792,7 @@ int dijkstra(int s, int e) {
         for (int i = 0; i&lt;G[v].size(); i++) {   //  更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] && dis[v2] &gt; dis[v] + len) {  
+            if (!vis[v2] &amp;&amp; dis[v2] &gt; dis[v] + len) {  
                 dis[v2] = dis[v] + len;  
                 Q.push(node(v2, dis[v2]));  
             }  
@@ -800,7 +800,7 @@ int dijkstra(int s, int e) {
     }  
     return dis[e];  
 } </code></pre>
-<h3 id="2-3-2-SPFA算法"><a href="#2-3-2-SPFA算法" class="headerlink" title="2.3.2. SPFA算法"></a>2.3.2. SPFA算法</h3><pre class=" language-c++"><code class="language-c++">// 最短路径快速算法（Shortest Path Faster Algorithm）
+<h4 id="2-3-2-SPFA算法"><a href="#2-3-2-SPFA算法" class="headerlink" title="2.3.2. SPFA算法"></a>2.3.2. SPFA算法</h4><pre class=" language-c++"><code class="language-c++">// 最短路径快速算法（Shortest Path Faster Algorithm）
 /*
     |SPFA算法|
     |队列优化|
@@ -848,14 +848,14 @@ int SPFA(int s,int e)
     不断的将s的邻接点加入队列，取出不断的进行松弛操作，直到队列为空  
     如果一个结点被加入队列超过n-1次，那么显然图中有负环  
 */</code></pre>
-<h3 id="2-3-3-Floyd算法"><a href="#2-3-3-Floyd算法" class="headerlink" title="2.3.3. Floyd算法"></a>2.3.3. Floyd算法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h4 id="2-3-3-Floyd算法"><a href="#2-3-3-Floyd算法" class="headerlink" title="2.3.3. Floyd算法"></a>2.3.3. Floyd算法</h4><pre class=" language-c++"><code class="language-c++">/*
     |Floyd算法|
     |任意点对最短路算法|
     |求图中任意两点的最短距离的算法|
 */
 for (int i = 0; i &lt; n; i++) {   //  初始化为0  
     for (int j = 0; j &lt; n; j++)  
-        scanf("%lf", &dis[i][j]);  
+        scanf("%lf", &amp;dis[i][j]);  
 }
 
 for (int k = 0; k &lt; n; k++) {  
@@ -865,7 +865,7 @@ for (int k = 0; k &lt; n; k++) {
         }  
     }
 }</code></pre>
-<h2 id="2-4-二分图"><a href="#2-4-二分图" class="headerlink" title="2.4. 二分图"></a>2.4. 二分图</h2><h3 id="2-4-1-染色法"><a href="#2-4-1-染色法" class="headerlink" title="2.4.1. 染色法"></a>2.4.1. 染色法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="2-4-二分图"><a href="#2-4-二分图" class="headerlink" title="2.4. 二分图"></a>2.4. 二分图</h3><h4 id="2-4-1-染色法"><a href="#2-4-1-染色法" class="headerlink" title="2.4.1. 染色法"></a>2.4.1. 染色法</h4><pre class=" language-c++"><code class="language-c++">/*
     |交叉染色法判断二分图|
 */
 int bipartite(int s) {  
@@ -888,7 +888,7 @@ int bipartite(int s) {
     }  
     return 1;  
 } </code></pre>
-<h3 id="2-4-2-匈牙利算法"><a href="#2-4-2-匈牙利算法" class="headerlink" title="2.4.2. 匈牙利算法"></a>2.4.2. 匈牙利算法</h3><pre class=" language-c++"><code class="language-c++">/*
+<h4 id="2-4-2-匈牙利算法"><a href="#2-4-2-匈牙利算法" class="headerlink" title="2.4.2. 匈牙利算法"></a>2.4.2. 匈牙利算法</h4><pre class=" language-c++"><code class="language-c++">/*
     |求解最大匹配问题|
     |递归实现|
 */
@@ -937,7 +937,7 @@ int result;
 
 bool dfs(int x) {  
     for (int y = 1; y &lt;= v2; ++y) {  
-        if (Map[x][y] && !visit[y]) {  
+        if (Map[x][y] &amp;&amp; !visit[y]) {  
             visit[y] = true;  
             if (link[y] == 0 || dfs(link[y])) {  
                 link[y] = x;  
@@ -953,7 +953,7 @@ void Search()  {
             result++;  
     }
 }</code></pre>
-<h1 id="3-动态规划"><a href="#3-动态规划" class="headerlink" title="3. 动态规划"></a>3. 动态规划</h1><h2 id="3-1-背包问题"><a href="#3-1-背包问题" class="headerlink" title="3.1. 背包问题"></a>3.1. 背包问题</h2><pre class=" language-c++"><code class="language-c++">/*
+<h2 id="3-动态规划"><a href="#3-动态规划" class="headerlink" title="3. 动态规划"></a>3. 动态规划</h2><h3 id="3-1-背包问题"><a href="#3-1-背包问题" class="headerlink" title="3.1. 背包问题"></a>3.1. 背包问题</h3><pre class=" language-c++"><code class="language-c++">/*
     |01背包|
     |完全背包|
     |多重背包|
@@ -984,7 +984,7 @@ void multiply(int cost, int weight, int amount) {
         bag01(cost * amount, weight * amount);  
     }  
 }  </code></pre>
-<h2 id="3-2-最长上升子序列（LIS）"><a href="#3-2-最长上升子序列（LIS）" class="headerlink" title="3.2. 最长上升子序列（LIS）"></a>3.2. 最长上升子序列（LIS）</h2><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="3-2-最长上升子序列（LIS）"><a href="#3-2-最长上升子序列（LIS）" class="headerlink" title="3.2. 最长上升子序列（LIS）"></a>3.2. 最长上升子序列（LIS）</h3><pre class=" language-c++"><code class="language-c++">/*
     |最长上升子序列|
     |状态转移|
 */
@@ -1021,7 +1021,7 @@ void solve() {
 /*  
     函数lower_bound()返回一个 iterator 它指向在[first,last)标记的有序序列中可以插入value，而不会破坏容器顺序的第一个位置，而这个位置标记了一个不小于value的值。
 */</code></pre>
-<h2 id="3-3-最长公共子序列（LCS）"><a href="#3-3-最长公共子序列（LCS）" class="headerlink" title="3.3. 最长公共子序列（LCS）"></a>3.3. 最长公共子序列（LCS）</h2><pre class=" language-c++"><code class="language-c++">/*
+<h3 id="3-3-最长公共子序列（LCS）"><a href="#3-3-最长公共子序列（LCS）" class="headerlink" title="3.3. 最长公共子序列（LCS）"></a>3.3. 最长公共子序列（LCS）</h3><pre class=" language-c++"><code class="language-c++">/*
     |求最长公共子序列|
     |递推形式|
 */
@@ -1037,7 +1037,7 @@ void solve() {
         } 
     }
 }  </code></pre>
-<h1 id="4-字符串"><a href="#4-字符串" class="headerlink" title="4. 字符串"></a>4. 字符串</h1><h2 id="4-1-kmp算法"><a href="#4-1-kmp算法" class="headerlink" title="4.1. kmp算法"></a>4.1. kmp算法</h2><pre class=" language-c++"><code class="language-c++">/*
+<h2 id="4-字符串"><a href="#4-字符串" class="headerlink" title="4. 字符串"></a>4. 字符串</h2><h3 id="4-1-kmp算法"><a href="#4-1-kmp算法" class="headerlink" title="4.1. kmp算法"></a>4.1. kmp算法</h3><pre class=" language-c++"><code class="language-c++">/*
     |kmp算法|
     |字符串匹配|
 */
@@ -1076,7 +1076,7 @@ void kmp(int a[maxn], int b[maxn]) {
     }    
     printf("-1\n");
 }</code></pre>
-<h2 id="4-2-kmp扩展算法"><a href="#4-2-kmp扩展算法" class="headerlink" title="4.2. kmp扩展算法"></a>4.2. kmp扩展算法</h2><pre class=" language-c++"><code class="language-c++">const int MM=100005;    
+<h3 id="4-2-kmp扩展算法"><a href="#4-2-kmp扩展算法" class="headerlink" title="4.2. kmp扩展算法"></a>4.2. kmp扩展算法</h3><pre class=" language-c++"><code class="language-c++">const int MM=100005;    
 
 int next[MM],extend[MM];    
 char S[MM],T[MM];    
@@ -1084,14 +1084,14 @@ char S[MM],T[MM];
 void GetNext(const char *T) {    
     int len = strlen(T), a = 0;    
     next[0] = len;    
-    while(a &lt; len - 1 && T[a] == T[a + 1]) a++;    
+    while(a &lt; len - 1 &amp;&amp; T[a] == T[a + 1]) a++;    
     next[1] = a;    
     a = 1;    
     for(int k = 2; k &lt; len; k++) {    
         int p = a + next[a] - 1, L = next[k - a];    
         if((k - 1) + L &gt;= p) {    
             int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
-            while(k + j &lt; len && T[k + j] == T[j]) j++;    
+            while(k + j &lt; len &amp;&amp; T[k + j] == T[j]) j++;    
             next[k] = j;    
             a = k;    
         }
@@ -1104,14 +1104,14 @@ void GetExtend(const char *S, const char *T) {
     GetNext(T);    
     int slen = strlen(S), tlen = strlen(T), a = 0;    
     int MinLen = slen &lt; tlen ? slen : tlen;    
-    while(a &lt; MinLen && S[a] == T[a]) a++;    
+    while(a &lt; MinLen &amp;&amp; S[a] == T[a]) a++;    
     extend[0] = a;     
     a = 0;    
     for(int k = 1; k &lt; slen; k++) {    
         int p = a + extend[a] - 1, L = next[k - a];    
         if((k - 1) + L &gt;= p) {    
             int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
-            while(k + j &lt; slen && j &lt; tlen && S[k + j] == T[j]) j++;    
+            while(k + j &lt; slen &amp;&amp; j &lt; tlen &amp;&amp; S[k + j] == T[j]) j++;    
             extend[k] = j;    
             a = k;    
         } 
@@ -1134,7 +1134,7 @@ int main() {
     }    
     return 0;    
 }</code></pre>
-<h1 id="5-字典树"><a href="#5-字典树" class="headerlink" title="5. 字典树"></a>5. 字典树</h1><pre class=" language-c++"><code class="language-c++">struct Trie {  
+<h2 id="5-字典树"><a href="#5-字典树" class="headerlink" title="5. 字典树"></a>5. 字典树</h2><pre class=" language-c++"><code class="language-c++">struct Trie {  
     int cnt;  
     Trie *next[maxn];  
     Trie(){  
@@ -1183,7 +1183,7 @@ int main() {
     int n;  
     char str1[50];  
     char str2[50];  
-    while(scanf("%d", &n)!=EOF) {  
+    while(scanf("%d", &amp;n)!=EOF) {  
         root = new Trie;  
         while(n--) {  
             scanf("%s %s",str1,str2);  
@@ -1205,7 +1205,7 @@ int main() {
     }  
     return 0;  
 }  </code></pre>
-<h1 id="6-线段树"><a href="#6-线段树" class="headerlink" title="6. 线段树"></a>6. 线段树</h1><h2 id="6-1-点更新"><a href="#6-1-点更新" class="headerlink" title="6.1. 点更新"></a>6.1. 点更新</h2><pre class=" language-c++"><code class="language-c++">struct node
+<h2 id="6-线段树"><a href="#6-线段树" class="headerlink" title="6. 线段树"></a>6. 线段树</h2><h3 id="6-1-点更新"><a href="#6-1-点更新" class="headerlink" title="6.1. 点更新"></a>6.1. 点更新</h3><pre class=" language-c++"><code class="language-c++">struct node
 {
     int left, right;
     int max, sum;
@@ -1236,7 +1236,7 @@ void build(int m, int l, int r)//m 是 树的标号
 
 void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值（加减的值）
 {
-    if (tree[m].left == a && tree[m].right == a) {
+    if (tree[m].left == a &amp;&amp; tree[m].right == a) {
         tree[m].max += val;
         tree[m].sum += val;
         return;
@@ -1254,7 +1254,7 @@ void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值�
 
 int querySum(int m, int l, int r)
 {
-    if (l == tree[m].left && r == tree[m].right) {
+    if (l == tree[m].left &amp;&amp; r == tree[m].right) {
         return tree[m].sum;
     }
     int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
@@ -1269,7 +1269,7 @@ int querySum(int m, int l, int r)
 
 int queryMax(int m, int l, int r)
 {
-    if (l == tree[m].left && r == tree[m].right) {
+    if (l == tree[m].left &amp;&amp; r == tree[m].right) {
         return tree[m].max;
     }
     int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
@@ -1285,7 +1285,7 @@ int queryMax(int m, int l, int r)
 build(1,1,n);  
 update(1,a,b);  
 query(1,a,b); </code></pre>
-<h2 id="6-2-区间更新"><a href="#6-2-区间更新" class="headerlink" title="6.2. 区间更新"></a>6.2. 区间更新</h2><pre class=" language-c++"><code class="language-c++">typedef long long ll;  
+<h3 id="6-2-区间更新"><a href="#6-2-区间更新" class="headerlink" title="6.2. 区间更新"></a>6.2. 区间更新</h3><pre class=" language-c++"><code class="language-c++">typedef long long ll;  
 const int maxn = 100010;  
 
 int t,n,q;  
@@ -1331,7 +1331,7 @@ void build(int id,ll l, ll r) {
 }  
 
 void updateAdd(int id,ll l,ll r,ll val) {  
-    if(tree[id].l &gt;= l && tree[id].r &lt;= r)  
+    if(tree[id].l &gt;= l &amp;&amp; tree[id].r &lt;= r)  
     {  
         tree[id].addv += val;  
         tree[id].sum += (tree[id].r - tree[id].l + 1) * val;  
@@ -1347,7 +1347,7 @@ void updateAdd(int id,ll l,ll r,ll val) {
 }  
 
 void query(int id, ll l, ll r) {  
-    if(tree[id].l &gt;= l && tree[id].r &lt;= r){  
+    if(tree[id].l &gt;= l &amp;&amp; tree[id].r &lt;= r){  
         anssum += tree[id].sum;  
         return;  
     }  
@@ -1361,23 +1361,23 @@ void query(int id, ll l, ll r) {
 }  
 
 int main() {  
-    scanf("%d", &t);  
+    scanf("%d", &amp;t);  
     int kase = 0;  
     while(t--) {  
-        scanf("%d %d", &n, &q);  
+        scanf("%d %d", &amp;n, &amp;q);  
         build(1, 1, n);  
         int id;  
         ll x, y;  
         ll val;  
         printf("Case %d:\n", ++kase);  
         while(q--) {  
-            scanf("%d", &id);  
+            scanf("%d", &amp;id);  
             if(id==0) {  
-                scanf("%lld %lld %lld", &x, &y, &val);  
+                scanf("%lld %lld %lld", &amp;x, &amp;y, &amp;val);  
                 updateAdd(1, x+1, y+1, val);  
             }  
             else {  
-                scanf("%lld %lld", &x, &y);  
+                scanf("%lld %lld", &amp;x, &amp;y);  
                 anssum = 0;  
                 query(1, x+1, y+1);  
                 printf("%lld\n", anssum);  
@@ -1386,7 +1386,7 @@ int main() {
     }  
     return 0;  
 }  </code></pre>
-<h1 id="7-树状数组"><a href="#7-树状数组" class="headerlink" title="7. 树状数组"></a>7. 树状数组</h1><pre class=" language-c++"><code class="language-c++">typedef long long ll;
+<h2 id="7-树状数组"><a href="#7-树状数组" class="headerlink" title="7. 树状数组"></a>7. 树状数组</h2><pre class=" language-c++"><code class="language-c++">typedef long long ll;
 
 const int maxn = 50005;
 
@@ -1394,7 +1394,7 @@ int a[maxn];
 int n;
 
 int lowbit(const int t) {
-    return t & (-t);
+    return t &amp; (-t);
 }
 
 void insert(int t, int d) {
@@ -1415,13 +1415,13 @@ ll getSum(int t) {
 
 int main() {
     int t, k, d;
-    scanf("%d", &t);
+    scanf("%d", &amp;t);
     k= 1;
     while (t--){
         memset(a, 0, sizeof(a));
-        scanf("%d", &n);
+        scanf("%d", &amp;n);
         for (int i = 1; i &lt;= n; ++i) {
-            scanf("%d", &d);
+            scanf("%d", &amp;d);
             insert(i, d);
         }
         string str;
@@ -1429,7 +1429,7 @@ int main() {
         while (cin &gt;&gt; str) {
             if (str == "End")   break;
             int x, y;
-            scanf("%d %d", &x, &y);
+            scanf("%d %d", &amp;x, &amp;y);
             if (str == "Query")
                 printf("%lld\n", getSum(y) - getSum(x - 1));
             else if (str == "Add")
@@ -1443,7 +1443,7 @@ int main() {
 <pre class=" language-c++"><code class="language-c++">// 求逆序对
 for(int i = 1; i &lt;= n; i++)
     {
-        scanf("%d", &a);
+        scanf("%d", &amp;a);
         node[i].index = i;
         node[i].v = a;
     }
@@ -1455,7 +1455,7 @@ for(int i = 1; i &lt;= n; i++)
         ans += i - sum(node[i].index); //得到之前有多少个比你大的数（逆序对）
     }
     cout&lt;&lt;ans;</code></pre>
-<h1 id="8-中国剩余定理（孙子定理）"><a href="#8-中国剩余定理（孙子定理）" class="headerlink" title="8. 中国剩余定理（孙子定理）"></a>8. 中国剩余定理（孙子定理）</h1><pre class=" language-c++"><code class="language-c++">int CRT(int a[],int m[],int n)  {    
+<h2 id="8-中国剩余定理（孙子定理）"><a href="#8-中国剩余定理（孙子定理）" class="headerlink" title="8. 中国剩余定理（孙子定理）"></a>8. 中国剩余定理（孙子定理）</h2><pre class=" language-c++"><code class="language-c++">int CRT(int a[],int m[],int n)  {    
     int M = 1;    
     int ans = 0;    
     for(int i=1; i&lt;=n; i++)    
@@ -1470,7 +1470,7 @@ for(int i = 1; i &lt;= n; i++)
     return ans;    
 }  
 
-void extend_Euclid(int a, int b, int &x, int &y)  {  
+void extend_Euclid(int a, int b, int &amp;x, int &amp;y)  {  
     if(b == 0) {  
         x = 1;  
         y = 0;  
@@ -1481,7 +1481,7 @@ void extend_Euclid(int a, int b, int &x, int &y)  {
     x = y;  
     y = tmp - (a / b) * y;  
 }  </code></pre>
-<h1 id="9-最大流-最大权闭合子图"><a href="#9-最大流-最大权闭合子图" class="headerlink" title="9. 最大流/最大权闭合子图"></a>9. 最大流/最大权闭合子图</h1><pre class=" language-c++"><code class="language-c++">//从源点s向每个正权点连一条容量为权值的边，每个负权点向汇点t连一条容量为权值的绝对值的边，有向图原来的边容量全部为无限大。
+<h2 id="9-最大流-最大权闭合子图"><a href="#9-最大流-最大权闭合子图" class="headerlink" title="9. 最大流/最大权闭合子图"></a>9. 最大流/最大权闭合子图</h2><pre class=" language-c++"><code class="language-c++">//从源点s向每个正权点连一条容量为权值的边，每个负权点向汇点t连一条容量为权值的绝对值的边，有向图原来的边容量全部为无限大。
 //最大权闭合子图=（正权之和-不选的正权之和-要选的负权绝对值之和）=正权值和-最小割/最大流
 #define maxn 5010     //课程
 #define maxm 50100    //用户
@@ -1517,7 +1517,7 @@ bool bfs() {
         q.pop();  
         for(int i = p[u]; i != -1; i = e[i].next) {  
             int v = e[i].v;  
-            if(e[i].c &gt; 0 && d[v] == -1){  
+            if(e[i].c &gt; 0 &amp;&amp; d[v] == -1){  
                 //printf("%d-&gt;%d(%d)\n", u, v, d[u] + 1);  
                 d[v] = d[u] + 1;  
                 q.push(v);  
@@ -1533,7 +1533,7 @@ int dfs(int u, int flow){
     int res = 0;  
     for(int i = p[u]; i != -1; i = e[i].next){  
         int v = e[i].v;  
-        if(e[i].c &gt; 0 && d[v] == d[u] + 1){  
+        if(e[i].c &gt; 0 &amp;&amp; d[v] == d[u] + 1){  
             int tmp = dfs(v, min(flow, e[i].c));  
             e[i].c -= tmp;  
             flow -= tmp;  
@@ -1560,15 +1560,15 @@ int dinic() {
 int main() {  
     init();  
     int p, a, b, c, sum=0;  
-    scanf("%d%d", &n, &m);  
+    scanf("%d%d", &amp;n, &amp;m);  
     T = n + m + 1;//汇点  
     for(int i = 1; i &lt;= n; i++){  
-        scanf("%d", &p);  
+        scanf("%d", &amp;p);  
         insert(i + m, T, p);  //课程放右边
         insert(T, i + m, 0);  
     }  
     for(int i = 1; i &lt;= m; i++){  
-        scanf("%d%d%d", &a, &b, &c);  
+        scanf("%d%d%d", &amp;a, &amp;b, &amp;c);  
         sum += c;  
         insert(i, a + m, inf);   
         insert(a + m, i, 0);  
@@ -1579,7 +1579,7 @@ int main() {
     }  
     printf("%d\n", sum - dinic());  
     return 0;  </code></pre>
-<h1 id="10-拓扑排序-AOE网络-关键路径"><a href="#10-拓扑排序-AOE网络-关键路径" class="headerlink" title="10. 拓扑排序/AOE网络/关键路径"></a>10. 拓扑排序/AOE网络/关键路径</h1><pre class=" language-c++"><code class="language-c++">const int maxn=110;
+<h2 id="10-拓扑排序-AOE网络-关键路径"><a href="#10-拓扑排序-AOE网络-关键路径" class="headerlink" title="10. 拓扑排序/AOE网络/关键路径"></a>10. 拓扑排序/AOE网络/关键路径</h2><pre class=" language-c++"><code class="language-c++">const int maxn=110;
 const int INF=1e4;
 int N,M;
 struct Node{
@@ -1690,7 +1690,7 @@ void calc_path(int N)
 
 int main()
 {
-    while(scanf("%d%d", &N, &M) != EOF)
+    while(scanf("%d%d", &amp;N, &amp;M) != EOF)
     {
         int v, w, len;
         for(int i = 1; i &lt;= N; i++)
@@ -1698,7 +1698,7 @@ int main()
         memset(in, 0, sizeof(in));
         for(int i = 0; i &lt; M; i++)
         {
-            scanf("%d%d%d", &v, &w, &len);
+            scanf("%d%d%d", &amp;v, &amp;w, &amp;len);
             Node tmp;
             tmp.id = w;
             tmp.length = len;
@@ -1712,7 +1712,7 @@ int main()
     }
     return 0;
 }</code></pre>
-<h1 id="11-强连通分量"><a href="#11-强连通分量" class="headerlink" title="11. 强连通分量"></a>11. 强连通分量</h1><pre class=" language-c++"><code class="language-c++">const int N=100010;
+<h2 id="11-强连通分量"><a href="#11-强连通分量" class="headerlink" title="11. 强连通分量"></a>11. 强连通分量</h2><pre class=" language-c++"><code class="language-c++">const int N=100010;
 struct data
 {
     int to, next;
@@ -1777,14 +1777,14 @@ void tarjan(int n)
     for (int i = 1; i &lt;= n; i++)
         if (!dfn[i]) dfs(i);
 }</code></pre>
-<h1 id="12-日期星期"><a href="#12-日期星期" class="headerlink" title="12. 日期星期"></a>12. 日期星期</h1><pre class=" language-c++"><code class="language-c++">int getDayofWeek(int y, int m, int d){
+<h2 id="12-日期星期"><a href="#12-日期星期" class="headerlink" title="12. 日期星期"></a>12. 日期星期</h2><pre class=" language-c++"><code class="language-c++">int getDayofWeek(int y, int m, int d){
     if(m == 1 || m == 2) {
         m += 12;
         y--;
     }
     return (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400+1)%7;
 } </code></pre>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><p><a href="https://blog.csdn.net/qq_32265245/article/details/53046750" target="_blank" rel="noopener">ACM算法模板</a></p>
 </li>
 <li><p><a href="https://blog.csdn.net/m0_38033475/article/details/80173037" target="_blank" rel="noopener">dinic求最大权闭合子图</a></p>
