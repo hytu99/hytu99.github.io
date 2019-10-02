@@ -453,24 +453,24 @@
 <p>今年清华机试一反常态难度大大降低，满分的似乎都有25%，我当时在测试数据上也是取得了满分（之后有空把原题也整理一下放上来）。不过最后因为其他一些原因，也没有去报名清华九月的推免，也就没能去成清华。不过这些算法模板作为学习材料还是很不错的（说不定以后什么时候又用上了）。</p>
 </blockquote>
 <h1 id="0-头文件"><a href="#0-头文件" class="headerlink" title="0. 头文件"></a>0. 头文件</h1><pre class=" language-c++"><code class="language-c++">#define _CRT_SBCURE_NO_DEPRECATE
-#include <set>
-#include <cmath>
-#include <queue>
-#include <stack>
-#include <vector>
-#include <string>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
-#include <algorithm>
-#include <functional>
+#include < set>
+#include < cmath>
+#include < queue>
+#include < stack>
+#include < vector>
+#include < string>
+#include < cstdio>
+#include < cstdlib>
+#include < cstring>
+#include < iostream>
+#include < algorithm>
+#include < functional>
 
 using namespace std;
 
 const int maxn = 110;
 const int INF = 0x3f3f3f3f;</code></pre>
-<h1 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h1><h2 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1. 1. 埃拉托斯特尼筛法"></a>1. 1. 埃拉托斯特尼筛法</h2><pre class=" language-c++"><code class="language-c++">/*
+<h1 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h1><h2 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1.1. 埃拉托斯特尼筛法"></a>1.1. 埃拉托斯特尼筛法</h2><pre class=" language-c++"><code class="language-c++">/*
     |埃式筛法|
     |快速筛选素数|
 */
@@ -1206,7 +1206,7 @@ int main() {
     }  
     return 0;  
 }  </code></pre>
-<h1 id="6-线段树"><a href="#6-线段树" class="headerlink" title="6.  线段树"></a>6.  线段树</h1><h2 id="6-1-点更新"><a href="#6-1-点更新" class="headerlink" title="6.1. 点更新"></a>6.1. 点更新</h2><pre class=" language-c++"><code class="language-c++">struct node
+<h1 id="6-线段树"><a href="#6-线段树" class="headerlink" title="6. 线段树"></a>6. 线段树</h1><h2 id="6-1-点更新"><a href="#6-1-点更新" class="headerlink" title="6.1. 点更新"></a>6.1. 点更新</h2><pre class=" language-c++"><code class="language-c++">struct node
 {
     int left, right;
     int max, sum;
