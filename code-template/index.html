@@ -5,9 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="机试模板整理, THY&#39;s Blog">
-    <meta name="description" content="
-这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。
-今年清华机试一">
+    <meta name="description" content="&amp;gt; 这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。&amp;gt;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -425,14 +423,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        6.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        7 分
+                        33 分
                     </div>
                     
                 
@@ -448,27 +446,23 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分<a href="#参考">参考链接</a>在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。</p>
-<p>今年清华机试一反常态难度大大降低，满分的似乎都有25%，我当时在测试数据上也是取得了满分（之后有空把原题也整理一下放上来）。不过最后因为其他一些原因，也没有去报名清华九月的推免，也就没能去成清华。不过这些算法模板作为学习材料还是很不错的（说不定以后什么时候又用上了）。</p>
-</blockquote>
+                <p>&gt; 这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分<a href="#参考">参考链接</a>在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。<br>&gt;<br>&gt; 今年清华机试一反常态难度大大降低，满分的似乎都有25%，我当时在测试数据上也是取得了满分（之后有空把原题也整理一下放上来）。不过最后因为其他一些原因，也没有去报名清华九月的推免，也就没能去成清华。不过这些算法模板作为学习材料还是很不错的（说不定以后什么时候又用上了）。</p>
 <h1 id="0-头文件"><a href="#0-头文件" class="headerlink" title="0. 头文件"></a>0. 头文件</h1><pre class=" language-c++"><code class="language-c++">#define _CRT_SBCURE_NO_DEPRECATE
-#include < set>
-#include < cmath>
-#include < queue>
-#include < stack>
-#include < vector>
-#include < string>
-#include < cstdio>
-#include < cstdlib>
-#include < cstring>
-#include < iostream>
-#include < algorithm>
-#include < functional>
+#include &lt;set&gt;
+#include &lt;cmath&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;functional&gt;
 
 using namespace std;
 
-const int maxn = 110;
 const int INF = 0x3f3f3f3f;</code></pre>
 <h1 id="1-经典算法"><a href="#1-经典算法" class="headerlink" title="1. 经典算法"></a>1. 经典算法</h1><h2 id="1-1-埃拉托斯特尼筛法"><a href="#1-1-埃拉托斯特尼筛法" class="headerlink" title="1.1. 埃拉托斯特尼筛法"></a>1.1. 埃拉托斯特尼筛法</h2><pre class=" language-c++"><code class="language-c++">/*
     |埃式筛法|
@@ -479,13 +473,13 @@ bool is_prime[maxn];
 
 int sieve(int n){
     int p = 0;
-    for(int i = 0; i <= n; ++i)
+    for(int i = 0; i &lt;= n; ++i)
         is_prime[i] = true;
     is_prime[0] = is_prime[1] = false;
-    for (int i = 2; i <= n; ++i){   //  注意数组大小是n
+    for (int i = 2; i &lt;= n; ++i){   //  注意数组大小是n
         if(is_prime[i]){
             prime[p++] = i;
-            for(int j = i + i; j <= n; j += i)  //  轻剪枝，j必定是i的倍数
+            for(int j = i + i; j &lt;= n; j += i)  //  轻剪枝，j必定是i的倍数
                 is_prime[j] = false;
         }
     }
@@ -496,11 +490,11 @@ int sieve(int n){
 LL powerMod(LL x, LL n, LL m)
 {
     LL res = 1;
-    while (n > 0){
+    while (n &gt; 0){
         if  (n & 1) //  判断是否为奇数，若是则true
             res = (res * x) % m;
         x = (x * x) % m;
-        n >>= 1;    //  相当于n /= 2;
+        n &gt;&gt;= 1;    //  相当于n /= 2;
     }
     return res;
 }</code></pre>
@@ -514,21 +508,21 @@ string add1(string s1, string s2)
     if (s1 == "")   return s2;
     if (s2 == "")   return s1;
     string maxx = s1, minn = s2;
-    if (s1.length() < s2.length()){
+    if (s1.length() &lt; s2.length()){
         maxx = s2;
         minn = s1;
     }
     int a = maxx.length() - 1, b = minn.length() - 1;
-    for (int i = b; i >= 0; --i){
+    for (int i = b; i &gt;= 0; --i){
         maxx[a--] += minn[i] - '0'; //  a一直在减 ， 额外还要减个'0'
     }
-    for (int i = maxx.length()-1; i > 0;--i){
-        if (maxx[i] > '9'){
+    for (int i = maxx.length()-1; i &gt; 0;--i){
+        if (maxx[i] &gt; '9'){
             maxx[i] -= 10;//注意这个是减10
             maxx[i - 1]++;
         }
     }
-    if (maxx[0] > '9'){
+    if (maxx[0] &gt; '9'){
         maxx[0] -= 10;
         maxx = '1' + maxx;
     }
@@ -538,8 +532,8 @@ string add1(string s1, string s2)
     |大数模拟阶乘|
 |用数组模拟|
 */
-#include <iostream>
-#include <cstdio>
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
 
 using namespace std;
 
@@ -560,7 +554,7 @@ void Init() {
 
 int mult(int num[], int len, int n) {
     LL tmp = 0;
-    for(LL i = 0; i < len; ++i) {
+    for(LL i = 0; i &lt; len; ++i) {
          tmp = tmp + num[i] * n;    //从最低位开始，等号左边的tmp表示当前位，右边的tmp表示进位（之前进的位）
          num[i] = tmp % 10; //  保存在对应的数组位置，即去掉进位后的一位数
          tmp = tmp / 10;    //  取整用于再次循环,与n和下一个位置的乘积相加
@@ -576,10 +570,10 @@ int main() {
     Init();
     int n;
     n = 1977; // 求的阶乘数
-    for(int i = 2; i <= n; ++i) {
+    for(int i = 2; i &lt;= n; ++i) {
         len = mult(num, len, i);
     }
-    for(int i = len - 1; i >= 0; --i)
+    for(int i = len - 1; i &gt;= 0; --i)
         printf("%d",num[i]);    //  从最高位依次输出,数据比较多采用printf输出
     printf("\n");
     return 0;
@@ -591,11 +585,11 @@ int main() {
 */
 int gcd(int big, int small)
 {
-    if (small > big) 
+    if (small &gt; big) 
         swap(big, small);
     int temp;
     while (small != 0){ //  辗转相除法
-        if (small > big) 
+        if (small &gt; big) 
             swap(big, small);
         temp = big % small;
         big = small;
@@ -612,13 +606,13 @@ int gcd(int big, int small)
 */
 void Pern(int list[], int k, int n) {   //  k表示前k个数不动仅移动后面n-k位数
     if (k == n - 1) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i &lt; n; i++) {
             printf("%d", list[i]);
         }
         printf("\n");
     }
     else {
-        for (int i = k; i < n; i++) {   //  输出的是满足移动条件所有全排列
+        for (int i = k; i &lt; n; i++) {   //  输出的是满足移动条件所有全排列
             swap(list[k], list[i]);
             Pern(list, k + 1, n);
             swap(list[k], list[i]);
@@ -632,13 +626,13 @@ void Pern(int list[], int k, int n) {   //  k表示前k个数不动仅移动后�
 //  left为最开始元素, right是末尾元素的下一个数，x是要找的数
 int bsearch(int *A, int left, int right, int x){
     int m;
-    while (left < right){
+    while (left &lt; right){
         m = left + (right - left) / 2;
-        if (A[m] >= x)  
+        if (A[m] &gt;= x)  
             right = m;   
         else 
             left = m + 1;    
-        // 如果要替换为 upper_bound, 改为:if (A[m] <= v) x = m+1; else y = m;     
+        // 如果要替换为 upper_bound, 改为:if (A[m] &lt;= v) x = m+1; else y = m;     
     }
     return left;
 }
@@ -654,7 +648,7 @@ int bsearch(int *A, int left, int right, int x){
 int father[maxn];   //  储存i的father父节点  
 
 void makeSet() {  
-    for (int i = 0; i < maxn; i++)   
+    for (int i = 0; i &lt; maxn; i++)   
         father[i] = i;  
 }  
 
@@ -694,7 +688,7 @@ void Union(int x, int y) {  //  将x所在的集合和y所在的集合整合起�
 */
 void Kruskal() {    
     ans = 0;    
-    for (int i = 0; i<len; i++) {    
+    for (int i = 0; i &lt; len; i++) {    
         if (Find(edge[i].a) != Find(edge[i].b)) {    
             Union(edge[i].a, edge[i].b);    
             ans += edge[i].len;    
@@ -709,24 +703,24 @@ void Kruskal() {
 //优先队列自定义比较函数
 struct cmp {
     bool operator()(int &a, int &b) const {
-        return a < b;
+        return a &lt; b;
     }
 };
 
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator < (const node &a)const {  // 加入队列的元素自动按距离从小到大排序  
-        return len> a.len;  
+    bool operator &lt; (const node &a) const {  // 加入队列的元素自动按距离从小到大排序  
+        return len &gt; a.len;  
     }  
 };
 
-vector<node> G[maxn];
+vector&lt;node&gt; G[maxn];
 int vis[maxn];
 int dis[maxn];
 
 void init() {  
-    for (int i = 0; i<maxn; i++) {  
+    for (int i = 0; i &lt; maxn; i++) {  
         G[i].clear();  
         dis[i] = INF;  
         vis[i] = false;  
@@ -734,7 +728,7 @@ void init() {
 } 
 
 int Prim(int s) {  
-    priority_queue<node>Q; // 定义优先队列  
+    priority_queue&lt;node&gt; Q; // 定义优先队列  
     int ans = 0;  
     Q.push(node(s,0));  // 起点加入队列  
     while (!Q.empty()) {   
@@ -743,10 +737,10 @@ int Prim(int s) {
         if (vis[v]) continue;  // 同一个节点，可能会推入2次或2次以上队列，这样第一个被标记后，剩下的需要直接跳过。  
         vis[v] = true;  // 标记一下  
         ans += now.len;  
-        for (int i = 0; i<G[v].size(); i++) {  // 开始更新  
+        for (int i = 0; i &lt; G[v].size(); i++) {  // 开始更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] && dis[v2] > len) {   
+            if (!vis[v2] && dis[v2] &gt; len) {   
                 dis[v2] = len;  
                 Q.push(node(v2, dis[v2]));  // 更新的点加入队列并排序  
             }  
@@ -763,17 +757,17 @@ int Prim(int s) {
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator < (const node &a)const {  //  距离从小到大排序  
-        return len > a.len;  
+    bool operator &lt; (const node &a)const {  //  距离从小到大排序  
+        return len &gt; a.len;  
     }  
 };  
 
-vector<node>G[maxn];  
+vector&lt;node&gt;G[maxn];  
 bool vis[maxn];  
 int dis[maxn];
 
 void init() {  
-    for (int i = 0; i<maxn; i++) {  
+    for (int i = 0; i&lt;maxn; i++) {  
         G[i].clear();  
         vis[i] = false;  
         dis[i] = INF;  
@@ -781,7 +775,7 @@ void init() {
 } 
 
 int dijkstra(int s, int e) {  
-    priority_queue<node>Q;  
+    priority_queue&lt;node&gt;Q;  
     Q.push(node(s, 0)); //  加入队列并排序  
     dis[s] = 0;  
     while (!Q.empty()) {  
@@ -790,10 +784,10 @@ int dijkstra(int s, int e) {
         int v = now.v;  
         if (vis[v]) continue;   //  如果标记过了, 直接continue  
         vis[v] = true;  
-        for (int i = 0; i<G[v].size(); i++) {   //  更新  
+        for (int i = 0; i&lt;G[v].size(); i++) {   //  更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] && dis[v2] > dis[v] + len) {  
+            if (!vis[v2] && dis[v2] &gt; dis[v] + len) {  
                 dis[v2] = dis[v] + len;  
                 Q.push(node(v2, dis[v2]));  
             }  
@@ -801,19 +795,19 @@ int dijkstra(int s, int e) {
     }  
     return dis[e];  
 } </code></pre>
-<h2 id="2-3-2-SPFA算法"><a href="#2-3-2-SPFA算法" class="headerlink" title="2.3.2. SPFA算法"></a>2.3.2. SPFA算法</h2><pre class=" language-c++"><code class="language-c++">// 最短路径快速算法（Shortest Path Faster Algorithm）
+<h3 id="2-3-2-SPFA算法"><a href="#2-3-2-SPFA算法" class="headerlink" title="2.3.2. SPFA算法"></a>2.3.2. SPFA算法</h3><pre class=" language-c++"><code class="language-c++">// 最短路径快速算法（Shortest Path Faster Algorithm）
 /*
     |SPFA算法|
     |队列优化|
     |可处理负环|
 */
-vector<node> G[maxn];
+vector&lt;node&gt; G[maxn];
 bool inqueue[maxn];
 int dist[maxn];
 
 void Init()  
 {  
-    for(int i = 0 ; i < maxn ; ++i){  
+    for(int i = 0 ; i &lt; maxn ; ++i){  
         G[i].clear();  
         dist[i] = INF;  
     }  
@@ -821,7 +815,7 @@ void Init()
 int SPFA(int s,int e)  
 {  
     int v1,v2,weight;  
-    queue<int> Q;  
+    queue&lt;int&gt; Q;  
     memset(inqueue,false,sizeof(inqueue)); // 标记是否在队列中  
     memset(cnt,0,sizeof(cnt)); // 加入队列的次数  
     dist[s] = 0;  
@@ -831,15 +825,15 @@ int SPFA(int s,int e)
         v1 = Q.front();  
         Q.pop();  
         inqueue[v1] = false; // 取消标记  
-        for(int i = 0 ; i < G[v1].size() ; ++i){ // 搜索v1的链表  
+        for(int i = 0 ; i &lt; G[v1].size() ; ++i){ // 搜索v1的链表  
             v2 = G[v1][i].vex;  
             weight = G[v1][i].weight;  
-            if(dist[v2] > dist[v1] + weight){ // 松弛操作  
+            if(dist[v2] &gt; dist[v1] + weight){ // 松弛操作  
                 dist[v2] = dist[v1] + weight;  
                 if(inqueue[v2] == false){  // 再次加入队列  
                     inqueue[v2] = true;  
                     //cnt[v2]++;  // 判负环  
-                    //if(cnt[v2] > n) return -1;  
+                    //if(cnt[v2] &gt; n) return -1;  
                     Q.push(v2);  
                 } } }  
     }  
@@ -854,14 +848,14 @@ int SPFA(int s,int e)
     |任意点对最短路算法|
     |求图中任意两点的最短距离的算法|
 */
-for (int i = 0; i < n; i++) {   //  初始化为0  
-    for (int j = 0; j < n; j++)  
+for (int i = 0; i &lt; n; i++) {   //  初始化为0  
+    for (int j = 0; j &lt; n; j++)  
         scanf("%lf", &dis[i][j]);  
 }
 
-for (int k = 0; k < n; k++) {  
-    for (int i = 0; i < n; i++) {  
-        for (int j = 0; j < n; j++) {  
+for (int k = 0; k &lt; n; k++) {  
+    for (int i = 0; i &lt; n; i++) {  
+        for (int j = 0; j &lt; n; j++) {  
             dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);  
         }  
     }
@@ -871,13 +865,13 @@ for (int k = 0; k < n; k++) {
 */
 int bipartite(int s) {  
     int u, v;  
-    queue<int>Q;  
+    queue&lt;int&gt;Q;  
     color[s] = 1;  
     Q.push(s);  
     while (!Q.empty()) {  
         u = Q.front();  
         Q.pop();  
-        for (int i = 0; i < G[u].size(); i++) {  
+        for (int i = 0; i &lt; G[u].size(); i++) {  
             v = G[u][i];  
             if (color[v] == 0) {  
                 color[v] = -color[u];  
@@ -893,19 +887,19 @@ int bipartite(int s) {
     |求解最大匹配问题|
     |递归实现|
 */
-vector<int>G[maxn];  
+vector&lt;int&gt;G[maxn];  
 bool inpath[maxn];  //  标记  
 int match[maxn];    //  记录匹配对象 
 
 void init() {  
     memset(match, -1, sizeof(match));  
-    for (int i = 0; i < maxn; ++i) {  
+    for (int i = 0; i &lt; maxn; ++i) {  
         G[i].clear();  
     }  
 }
 
 bool findpath(int k) {  
-    for (int i = 0; i < G[k].size(); ++i) {  
+    for (int i = 0; i &lt; G[k].size(); ++i) {  
         int v = G[k][i];  
         if (!inpath[v]) {  
             inpath[v] = true;  
@@ -920,11 +914,11 @@ bool findpath(int k) {
 
 void hungary() {  
     int cnt = 0;  
-    for (int i = 1; i <= m; i++) {  // m为需要匹配的“妹子”数  
+    for (int i = 1; i &lt;= m; i++) {  // m为需要匹配的“妹子”数  
         memset(inpath, false, sizeof(inpath)); // 每次都要初始化  
         if (findpath(i)) cnt++;  
     }  
-    cout << cnt << endl;  
+    cout &lt;&lt; cnt &lt;&lt; endl;  
 }</code></pre>
 <pre class=" language-c++"><code class="language-c++">/*
     |求解最大匹配问题|
@@ -937,7 +931,7 @@ int link[501];
 int result;  
 
 bool dfs(int x) {  
-    for (int y = 1; y <= v2; ++y) {  
+    for (int y = 1; y &lt;= v2; ++y) {  
         if (Map[x][y] && !visit[y]) {  
             visit[y] = true;  
             if (link[y] == 0 || dfs(link[y])) {  
@@ -948,7 +942,7 @@ bool dfs(int x) {
 }  
 
 void Search()  {  
-    for (int x = 1; x <= v1; x++) {  
+    for (int x = 1; x &lt;= v1; x++) {  
         memset(visit,false,sizeof(visit));  
         if (dfs(x))  
             result++;  
@@ -961,23 +955,23 @@ void Search()  {
 */
 //  01背包：  
 void bag01(int cost,int weight) {  
-    for(i = v; i >= cost; --i)  
+    for(i = v; i &gt;= cost; --i)  
     dp[i] = max(dp[i], dp[i-cost]+weight);  
 }  
 
 //  完全背包：  
 void complete(int cost, int weight) {  
-    for(i = cost ; i <= v; ++i)  
+    for(i = cost ; i &lt;= v; ++i)  
     dp[i] = max(dp[i], dp[i - cost] + weight);  
 }  
 
 //  多重背包：  
 void multiply(int cost, int weight, int amount) {  
-    if(cost * amount >= v)  
+    if(cost * amount &gt;= v)  
         complete(cost, weight);  
     else{  
         k = 1;  
-        while (k < amount){  
+        while (k &lt; amount){  
             bag01(k * cost, k * weight);  
             amount -= k;  
             k += k;  
@@ -990,15 +984,15 @@ void multiply(int cost, int weight, int amount) {
     |状态转移|
 */
 /*
-    状态转移dp[i] = max{1, dp[j] + 1 };  j<i; a[j]<a[i];
+    状态转移dp[i] = max{1, dp[j] + 1 };  j&lt;i; a[j]&lt;a[i];
     d[i]是以i结尾的最长上升子序列
-    与i之前的 每个a[j]<a[i]的 j的位置的最长上升子序列+1后的值比较
+    与i之前的 每个a[j]&lt;a[i]的 j的位置的最长上升子序列+1后的值比较
 */
 void solve() {   // 参考挑战程序设计入门经典;
-    for(int i = 0; i < n; ++i){  
+    for(int i = 0; i &lt; n; ++i){  
         dp[i] = 1;  
-        for(int j = 0; j < i; ++j){  
-            if(a[j] < a[i]){  
+        for(int j = 0; j &lt; i; ++j){  
+            if(a[j] &lt; a[i]){  
                 dp[i] = max(dp[i], dp[j] + 1);  
             }
         } 
@@ -1011,10 +1005,10 @@ void solve() {   // 参考挑战程序设计入门经典;
     找到第一个比dp末尾大的来代替 
 */
 void solve() {  
-    for (int i = 0; i < n; ++i){
+    for (int i = 0; i &lt; n; ++i){
         dp[i] = INF;
     }
-    for (int i = 0; i < n; ++i) {  
+    for (int i = 0; i &lt; n; ++i) {  
         *lower_bound(dp, dp + n, a[i]) = a[i];  //  返回一个指针  
     }  
     printf("%d\n", *lower_bound(dp, dp + n, INF) - dp;  
@@ -1027,8 +1021,8 @@ void solve() {
     |递推形式|
 */
 void solve() {  
-    for (int i = 0; i < n; ++i) {  
-        for (int j = 0; j < m; ++j) {  
+    for (int i = 0; i &lt; n; ++i) {  
+        for (int j = 0; j &lt; m; ++j) {  
             if (s1[i] == s2[j]) {  
                 dp[i + 1][j + 1] = dp[i][j] + 1;  
             }
@@ -1045,7 +1039,7 @@ void solve() {
 void getnext(char str[maxn], int nextt[maxn]) {
     int j = 0, k = -1;
     nextt[0] = -1;
-    while (j < m) {
+    while (j &lt; m) {
         if (k == -1 || str[j] == str[k]) {
             j++;
             k++;
@@ -1060,7 +1054,7 @@ void kmp(int a[maxn], int b[maxn]) {
     int nextt[maxm];    
     int i = 0, j = 0;    
     getnext(b, nextt);    
-    while (i < n) {    
+    while (i &lt; n) {    
         if (j == -1 || a[i] == b[j]) { // 母串不动，子串移动    
             j++;    
             i++;    
@@ -1085,14 +1079,14 @@ char S[MM],T[MM];
 void GetNext(const char *T) {    
     int len = strlen(T), a = 0;    
     next[0] = len;    
-    while(a < len - 1 && T[a] == T[a + 1]) a++;    
+    while(a &lt; len - 1 && T[a] == T[a + 1]) a++;    
     next[1] = a;    
     a = 1;    
-    for(int k = 2; k < len; k++) {    
+    for(int k = 2; k &lt; len; k++) {    
         int p = a + next[a] - 1, L = next[k - a];    
-        if((k - 1) + L >= p) {    
-            int j = (p - k + 1) > 0 ? (p - k + 1) : 0;    
-            while(k + j < len && T[k + j] == T[j]) j++;    
+        if((k - 1) + L &gt;= p) {    
+            int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
+            while(k + j &lt; len && T[k + j] == T[j]) j++;    
             next[k] = j;    
             a = k;    
         }
@@ -1104,15 +1098,15 @@ void GetNext(const char *T) {
 void GetExtend(const char *S, const char *T) {    
     GetNext(T);    
     int slen = strlen(S), tlen = strlen(T), a = 0;    
-    int MinLen = slen < tlen ? slen : tlen;    
-    while(a < MinLen && S[a] == T[a]) a++;    
+    int MinLen = slen &lt; tlen ? slen : tlen;    
+    while(a &lt; MinLen && S[a] == T[a]) a++;    
     extend[0] = a;     
     a = 0;    
-    for(int k = 1; k < slen; k++) {    
+    for(int k = 1; k &lt; slen; k++) {    
         int p = a + extend[a] - 1, L = next[k - a];    
-        if((k - 1) + L >= p) {    
-            int j = (p - k + 1) > 0 ? (p - k + 1) : 0;    
-            while(k + j < slen && j < tlen && S[k + j] == T[j]) j++;    
+        if((k - 1) + L &gt;= p) {    
+            int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
+            while(k + j &lt; slen && j &lt; tlen && S[k + j] == T[j]) j++;    
             extend[k] = j;    
             a = k;    
         } 
@@ -1122,13 +1116,13 @@ void GetExtend(const char *S, const char *T) {
 }    
 
 void show(const int *s,int len){    
-    for(int i = 0; i < len; i++)    
-        cout << s[i] << ' ';    
-    cout << endl;    
+    for(int i = 0; i &lt; len; i++)    
+        cout &lt;&lt; s[i] &lt;&lt; ' ';    
+    cout &lt;&lt; endl;    
 }    
 
 int main() {    
-    while(cin >> S >> T) {    
+    while(cin &gt;&gt; S &gt;&gt; T) {    
         GetExtend(S,T);    
         show(next,strlen(T));    
         show(extend,strlen(S));    
@@ -1150,10 +1144,10 @@ void Insert(char *word) {
     Trie *tem = root;  
     while(*word != '\0') {  
         int x = *word - 'a';  
-        if(tem->next[x] == NULL)  
-            tem->next[x] = new Trie;  
-        tem = tem->next[x];  
-        tem->cnt++;  
+        if(tem-&gt;next[x] == NULL)  
+            tem-&gt;next[x] = new Trie;  
+        tem = tem-&gt;next[x];  
+        tem-&gt;cnt++;  
         word++;  
     }  
 }  
@@ -1162,22 +1156,22 @@ int Search(char *word) {
     Trie *tem = root;  
     for(int i = 0; word[i] != '\0'; i++) {  
         int x = word[i]-'a';  
-        if(tem->next[x] == NULL)  
+        if(tem-&gt;next[x] == NULL)  
             return 0;  
-        tem = tem->next[x];  
+        tem = tem-&gt;next[x];  
     }  
-    return tem->cnt;  
+    return tem-&gt;cnt;  
 }  
 
 void Delete(char *word,int t) {  
     Trie *tem = root;  
     for(int i = 0; word[i] != '\0'; i++) {  
         int x = word[i]-'a';  
-        tem = tem->next[x];  
-        (tem->cnt) -= t;  
+        tem = tem-&gt;next[x];  
+        (tem-&gt;cnt) -= t;  
     }  
-    for(int i = 0; i < maxn; i++)  
-        tem->next[i] = NULL;  
+    for(int i = 0; i &lt; maxn; i++)  
+        tem-&gt;next[i] = NULL;  
 }  
 
 int main() {  
@@ -1212,7 +1206,7 @@ int main() {
     int max, sum;
 };
 
-node tree[maxn << 2];
+node tree[maxn &lt;&lt; 2];
 int a[maxn];
 int n;
 int k = 1;
@@ -1228,11 +1222,11 @@ void build(int m, int l, int r)//m 是 树的标号
         tree[m].sum = a[l];
         return;
     }
-    int mid = (l + r) >> 1;
-    build(m << 1, l, mid);
-    build(m << 1 | 1, mid + 1, r);
-    tree[m].max = max(tree[m << 1].max, tree[m << 1 | 1].max);
-    tree[m].sum = tree[m << 1].sum + tree[m << 1 | 1].sum;
+    int mid = (l + r) &gt;&gt; 1;
+    build(m &lt;&lt; 1, l, mid);
+    build(m &lt;&lt; 1 | 1, mid + 1, r);
+    tree[m].max = max(tree[m &lt;&lt; 1].max, tree[m &lt;&lt; 1 | 1].max);
+    tree[m].sum = tree[m &lt;&lt; 1].sum + tree[m &lt;&lt; 1 | 1].sum;
 }
 
 void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值（加减的值）
@@ -1242,15 +1236,15 @@ void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值�
         tree[m].sum += val;
         return;
     }
-    int mid = (tree[m].left + tree[m].right) >> 1;
-    if (a <= mid) {
-        update(m << 1, a, val);
+    int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
+    if (a &lt;= mid) {
+        update(m &lt;&lt; 1, a, val);
     }
     else {
-        update(m << 1 | 1, a, val);
+        update(m &lt;&lt; 1 | 1, a, val);
     }
-    tree[m].max = max(tree[m << 1].max, tree[m << 1 | 1].max);
-    tree[m].sum = tree[m << 1].sum + tree[m << 1 | 1].sum;
+    tree[m].max = max(tree[m &lt;&lt; 1].max, tree[m &lt;&lt; 1 | 1].max);
+    tree[m].sum = tree[m &lt;&lt; 1].sum + tree[m &lt;&lt; 1 | 1].sum;
 }
 
 int querySum(int m, int l, int r)
@@ -1258,14 +1252,14 @@ int querySum(int m, int l, int r)
     if (l == tree[m].left && r == tree[m].right) {
         return tree[m].sum;
     }
-    int mid = (tree[m].left + tree[m].right) >> 1;
-    if (r <= mid) {
-        return querySum(m << 1, l, r);
+    int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
+    if (r &lt;= mid) {
+        return querySum(m &lt;&lt; 1, l, r);
     }
-    else if (l > mid) {
-        return querySum(m << 1 | 1, l, r);
+    else if (l &gt; mid) {
+        return querySum(m &lt;&lt; 1 | 1, l, r);
     }
-    return querySum(m << 1, l, mid) + querySum(m << 1 | 1, mid + 1, r);
+    return querySum(m &lt;&lt; 1, l, mid) + querySum(m &lt;&lt; 1 | 1, mid + 1, r);
 }
 
 int queryMax(int m, int l, int r)
@@ -1273,14 +1267,14 @@ int queryMax(int m, int l, int r)
     if (l == tree[m].left && r == tree[m].right) {
         return tree[m].max;
     }
-    int mid = (tree[m].left + tree[m].right) >> 1;
-    if (r <= mid) {
-        return queryMax(m << 1, l, r);
+    int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
+    if (r &lt;= mid) {
+        return queryMax(m &lt;&lt; 1, l, r);
     }
-    else if (l > mid) {
-        return queryMax(m << 1 | 1, l, r);
+    else if (l &gt; mid) {
+        return queryMax(m &lt;&lt; 1 | 1, l, r);
     }
-    return max(queryMax(m << 1, l, mid), queryMax(m << 1 | 1, mid + 1, r));
+    return max(queryMax(m &lt;&lt; 1, l, mid), queryMax(m &lt;&lt; 1 | 1, mid + 1, r));
 } 
 
 build(1,1,n);  
@@ -1295,23 +1289,23 @@ ll anssum;
 struct node{  
     ll l, r;  
     ll addv, sum;  
-}tree[maxn<<2];  
+}tree[maxn&lt;&lt;2];  
 
 void maintain(int id) {  
-    if(tree[id].l >= tree[id].r)  
+    if(tree[id].l &gt;= tree[id].r)  
         return ;  
-    tree[id].sum = tree[id<<1].sum + tree[id<<1 | 1].sum;  
+    tree[id].sum = tree[id&lt;&lt;1].sum + tree[id&lt;&lt;1 | 1].sum;  
 }  
 
 void pushdown(int id) {  
-    if(tree[id].l >= tree[id].r)  
+    if(tree[id].l &gt;= tree[id].r)  
         return ;  
     if(tree[id].addv){  
         int tmp = tree[id].addv;  
-        tree[id<<1].addv += tmp;  
-        tree[id<<1|1].addv += tmp;  
-        tree[id<<1].sum += (tree[id<<1].r - tree[id<<1].l + 1) * tmp;  
-        tree[id<<1|1].sum += (tree[id<<1|1].r - tree[id<<1|1].l + 1) * tmp;  
+        tree[id&lt;&lt;1].addv += tmp;  
+        tree[id&lt;&lt;1|1].addv += tmp;  
+        tree[id&lt;&lt;1].sum += (tree[id&lt;&lt;1].r - tree[id&lt;&lt;1].l + 1) * tmp;  
+        tree[id&lt;&lt;1|1].sum += (tree[id&lt;&lt;1|1].r - tree[id&lt;&lt;1|1].l + 1) * tmp;  
         tree[id].addv = 0;  
     }  
 }  
@@ -1325,39 +1319,39 @@ void build(int id,ll l, ll r) {
         tree[id].sum = 0;  
         return;  
     }  
-    ll mid = (l+r)>>1;  
-    build(id<<1, l, mid);  
-    build(id<<1 | 1, mid + 1, r);  
+    ll mid = (l+r)&gt;&gt;1;  
+    build(id&lt;&lt;1, l, mid);  
+    build(id&lt;&lt;1 | 1, mid + 1, r);  
     maintain(id);  
 }  
 
 void updateAdd(int id,ll l,ll r,ll val) {  
-    if(tree[id].l >= l && tree[id].r <= r)  
+    if(tree[id].l &gt;= l && tree[id].r &lt;= r)  
     {  
         tree[id].addv += val;  
         tree[id].sum += (tree[id].r - tree[id].l + 1) * val;  
         return;  
     }  
     pushdown(id);  
-    ll mid = (tree[id].l + tree[id].r)>>1;  
-    if(l <= mid)  
-        updateAdd(id<<1, l, r, val);  
-    if(mid < r)  
-        updateAdd(id<<1 | 1, l, r, val);  
+    ll mid = (tree[id].l + tree[id].r)&gt;&gt;1;  
+    if(l &lt;= mid)  
+        updateAdd(id&lt;&lt;1, l, r, val);  
+    if(mid &lt; r)  
+        updateAdd(id&lt;&lt;1 | 1, l, r, val);  
     maintain(id);  
 }  
 
 void query(int id, ll l, ll r) {  
-    if(tree[id].l >= l && tree[id].r <= r){  
+    if(tree[id].l &gt;= l && tree[id].r &lt;= r){  
         anssum += tree[id].sum;  
         return;  
     }  
     pushdown(id);  
-    ll mid = (tree[id].l + tree[id].r)>>1;  
-    if(l <= mid)  
-        query(id<<1, l, r);  
-    if(mid < r)  
-        query(id<<1 | 1, l, r);  
+    ll mid = (tree[id].l + tree[id].r)&gt;&gt;1;  
+    if(l &lt;= mid)  
+        query(id&lt;&lt;1, l, r);  
+    if(mid &lt; r)  
+        query(id&lt;&lt;1 | 1, l, r);  
     maintain(id);  
 }  
 
@@ -1399,7 +1393,7 @@ int lowbit(const int t) {
 }
 
 void insert(int t, int d) {
-    while (t <= n){
+    while (t &lt;= n){
         a[t] += d;
         t = t + lowbit(t);
     }
@@ -1407,7 +1401,7 @@ void insert(int t, int d) {
 
 ll getSum(int t) {
     ll sum = 0;
-    while (t > 0){
+    while (t &gt; 0){
         sum += a[t];
         t = t - lowbit(t);
     }
@@ -1421,13 +1415,13 @@ int main() {
     while (t--){
         memset(a, 0, sizeof(a));
         scanf("%d", &n);
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1; i &lt;= n; ++i) {
             scanf("%d", &d);
             insert(i, d);
         }
         string str;
         printf("Case %d:\n", k++);
-        while (cin >> str) {
+        while (cin &gt;&gt; str) {
             if (str == "End")   break;
             int x, y;
             scanf("%d %d", &x, &y);
@@ -1442,7 +1436,7 @@ int main() {
     return 0;
 }</code></pre>
 <pre class=" language-c++"><code class="language-c++">// 求逆序对
-for(int i = 1; i <= n; i++)
+for(int i = 1; i &lt;= n; i++)
     {
         scanf("%d", &a);
         node[i].index = i;
@@ -1450,24 +1444,24 @@ for(int i = 1; i <= n; i++)
     }
     sort(node + 1, node + 1 + n);
     long long ans=0;
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i &lt;= n; i++)
     { 
         add(node[i].index);  //离散化结果—— 下标等效于数值
         ans += i - sum(node[i].index); //得到之前有多少个比你大的数（逆序对）
     }
-    cout<<ans;</code></pre>
+    cout&lt;&lt;ans;</code></pre>
 <h1 id="8-中国剩余定理（孙子定理）"><a href="#8-中国剩余定理（孙子定理）" class="headerlink" title="8. 中国剩余定理（孙子定理）"></a>8. 中国剩余定理（孙子定理）</h1><pre class=" language-c++"><code class="language-c++">int CRT(int a[],int m[],int n)  {    
     int M = 1;    
     int ans = 0;    
-    for(int i=1; i<=n; i++)    
+    for(int i=1; i&lt;=n; i++)    
         M *= m[i];    
-    for(int i=1; i<=n; i++)  {    
+    for(int i=1; i&lt;=n; i++)  {    
         int x, y;    
         int Mi = M / m[i];    
         extend_Euclid(Mi, m[i], x, y);    
         ans = (ans + Mi * x * a[i]) % M;    
     }    
-    if(ans < 0) ans += M;    
+    if(ans &lt; 0) ans += M;    
     return ans;    
 }  
 
@@ -1510,7 +1504,7 @@ void insert(int u, int v, int c) {
 int d[maxn + maxm];  
 bool bfs() {  
     memset(d, -1, sizeof(d));  
-    queue<int> q;  
+    queue&lt;int&gt; q;  
     d[0] = 0;  
     q.push(0);  
     while(!q.empty()) {  
@@ -1518,8 +1512,8 @@ bool bfs() {
         q.pop();  
         for(int i = p[u]; i != -1; i = e[i].next) {  
             int v = e[i].v;  
-            if(e[i].c > 0 && d[v] == -1){  
-                //printf("%d->%d(%d)\n", u, v, d[u] + 1);  
+            if(e[i].c &gt; 0 && d[v] == -1){  
+                //printf("%d-&gt;%d(%d)\n", u, v, d[u] + 1);  
                 d[v] = d[u] + 1;  
                 q.push(v);  
             }  
@@ -1534,7 +1528,7 @@ int dfs(int u, int flow){
     int res = 0;  
     for(int i = p[u]; i != -1; i = e[i].next){  
         int v = e[i].v;  
-        if(e[i].c > 0 && d[v] == d[u] + 1){  
+        if(e[i].c &gt; 0 && d[v] == d[u] + 1){  
             int tmp = dfs(v, min(flow, e[i].c));  
             e[i].c -= tmp;  
             flow -= tmp;  
@@ -1563,12 +1557,12 @@ int main() {
     int p, a, b, c, sum=0;  
     scanf("%d%d", &n, &m);  
     T = n + m + 1;//汇点  
-    for(int i = 1; i <= n; i++){  
+    for(int i = 1; i &lt;= n; i++){  
         scanf("%d", &p);  
         insert(i + m, T, p);  //课程放右边
         insert(T, i + m, 0);  
     }  
-    for(int i = 1; i <= m; i++){  
+    for(int i = 1; i &lt;= m; i++){  
         scanf("%d%d%d", &a, &b, &c);  
         sum += c;  
         insert(i, a + m, inf);   
@@ -1584,26 +1578,26 @@ int main() {
 const int INF=1e4;
 int N,M;
 struct Node{
-    //vector<int> child;
+    //vector&lt;int&gt; child;
     int id; 
     int length;
 };
 //Node graph[maxn]; 
-vector<Node> Adj[maxn];
+vector&lt;Node&gt; Adj[maxn];
 //int e[maxn]; //边上活动最早开始时间 
 //int l[maxn]; //边上活动最晚开始时间
 int ve[maxn];   //顶点上活动最早开始时间 
 int vl[maxn];  //顶点上活动最晚开始时间
 int in[maxn];  // 每个结点的入度，为0时入队
-stack<int> s;
+stack&lt;int&gt; s;
 
 bool TopologicalSort(int N)
 {
-    queue<int> q;
+    queue&lt;int&gt; q;
     memset(ve, 0, sizeof(ve));
     //memset(inq,0,sizeof(inq));
     /*先找出所有初始时入度为0的结点*/
-    for(int i = 1; i <= N; i++)  
+    for(int i = 1; i &lt;= N; i++)  
     {
         if(in[i] == 0)
         {
@@ -1619,8 +1613,8 @@ bool TopologicalSort(int N)
         int tmp = q.front();
         q.pop();    
         s.push(tmp); // num++；
-        //cout << "tmp:" << tmp << endl;
-        for(int i = 0; i < Adj[tmp].size(); i++)
+        //cout &lt;&lt; "tmp:" &lt;&lt; tmp &lt;&lt; endl;
+        for(int i = 0; i &lt; Adj[tmp].size(); i++)
         {
             int id = Adj[tmp][i].id;
             if(--in[id] == 0) //入度减为0 加入拓扑排序 
@@ -1629,12 +1623,12 @@ bool TopologicalSort(int N)
                 //s.push(i);
                 //inq[i]=true;
             }
-            if(ve[tmp] + Adj[tmp][i].length > ve[id]) //更新ve值 >
+            if(ve[tmp] + Adj[tmp][i].length &gt; ve[id]) //更新ve值 &gt;
             ve[id] = ve[tmp] + Adj[tmp][i].length;
 
         }
      } 
-     //cout<<"size: "<<s.size()<<endl;
+     //cout&lt;&lt;"size: "&lt;&lt;s.size()&lt;&lt;endl;
      if(s.size() == N) return true;
      else return false;
 } 
@@ -1648,9 +1642,9 @@ void calc_path(int N)
     }
      /*寻找拓扑序列最后一个结点，即开始时间最晚的一个结点*/
      int max = -1, u = -1;
-     for(int i = 1; i <= N; i++)
+     for(int i = 1; i &lt;= N; i++)
      {
-         if(ve[i] > max)
+         if(ve[i] &gt; max)
        {
             max = ve[i];
             u = i;
@@ -1667,24 +1661,24 @@ void calc_path(int N)
          int tmp = s.top();
          s.pop();
          //int min = INF, u;
-         for(int i = 0; i < Adj[tmp].size(); i++)
+         for(int i = 0; i &lt; Adj[tmp].size(); i++)
          {
              int id = Adj[tmp][i].id;
-             if(vl[id] - Adj[tmp][i].length < vl[tmp])
+             if(vl[id] - Adj[tmp][i].length &lt; vl[tmp])
              {
                  vl[tmp] = vl[id] - Adj[tmp][i].length;
              }
          }
      }
      /*遍历邻接点每条边，计算每项活动的最早和最晚开始时间*/
-     for(int i = 1; i <= N; i++)
+     for(int i = 1; i &lt;= N; i++)
      {
-         for(int j = Adj[i].size() - 1; j >= 0; j--)
+         for(int j = Adj[i].size() - 1; j &gt;= 0; j--)
          {
              int id = Adj[i][j].id;
              int e = ve[i];
              int l = vl[id]-Adj[i][j].length;
-             if(e == l) printf("%d->%d\n", i, id); 
+             if(e == l) printf("%d-&gt;%d\n", i, id); 
          }
      }
  } 
@@ -1694,10 +1688,10 @@ int main()
     while(scanf("%d%d", &N, &M) != EOF)
     {
         int v, w, len;
-        for(int i = 1; i <= N; i++)
+        for(int i = 1; i &lt;= N; i++)
         Adj[i].clear();
         memset(in, 0, sizeof(in));
-        for(int i = 0; i < M; i++)
+        for(int i = 0; i &lt; M; i++)
         {
             scanf("%d%d%d", &v, &w, &len);
             Node tmp;
@@ -1709,7 +1703,7 @@ int main()
         while(!s.empty())
         s.pop();
         calc_path(N);
-        //cout<<"end!!"<<endl;
+        //cout&lt;&lt;"end!!"&lt;&lt;endl;
     }
     return 0;
 }</code></pre>
@@ -1738,8 +1732,8 @@ void add(int u, int v)
     head[u] = ip++;
 }
 
-vector<int> scc[N];///得出来的缩点，scc[i]里面存i这个缩点具体缩了哪些点
-stack<int> S;
+vector&lt;int&gt; scc[N];///得出来的缩点，scc[i]里面存i这个缩点具体缩了哪些点
+stack&lt;int&gt; S;
 void dfs(int u)
 {
     dfn[u] = low[u] = ++step;
@@ -1775,7 +1769,7 @@ void tarjan(int n)
     memset(sccno, 0, sizeof(sccno));
     memset(dfn, 0, sizeof(dfn));
     step = scc_cnt = 0;
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i &lt;= n; i++)
         if (!dfn[i]) dfs(i);
 }</code></pre>
 <h1 id="12-日期星期"><a href="#12-日期星期" class="headerlink" title="12. 日期星期"></a>12. 日期星期</h1><pre class=" language-c++"><code class="language-c++">int getDayofWeek(int y, int m, int d){
@@ -2032,9 +2026,7 @@ void tarjan(int n)
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。
-今年清华机试一
+                            &gt; 这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是机试前一天晚上在宾馆手抄的（果然我总能考前精准押题233333）。&gt;
                         
                     </div>
                     <div class="publish-info">
@@ -2282,7 +2274,7 @@ void tarjan(int n)
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">6.8k</span>&nbsp;字
             
             
             
