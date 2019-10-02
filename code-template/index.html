@@ -432,7 +432,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        34 分
+                        33 分
                     </div>
                     
                 
@@ -496,7 +496,7 @@ LL powerMod(LL x, LL n, LL m)
 {
     LL res = 1;
     while (n &gt; 0){
-        if  (n &amp; 1) //  判断是否为奇数，若是则true
+        if  (n & 1) //  判断是否为奇数，若是则true
             res = (res * x) % m;
         x = (x * x) % m;
         n &gt;&gt;= 1;    //  相当于n /= 2;
@@ -509,7 +509,7 @@ LL powerMod(LL x, LL n, LL m)
 */
 string add1(string s1, string s2)
 {
-    if (s1 == "" &amp;&amp; s2 == "")   return "0";
+    if (s1 == "" && s2 == "")   return "0";
     if (s1 == "")   return s2;
     if (s2 == "")   return s1;
     string maxx = s1, minn = s2;
@@ -707,7 +707,7 @@ void Kruskal() {
 */
 //优先队列自定义比较函数
 struct cmp {
-    bool operator()(int &amp;a, int &amp;b) const {
+    bool operator()(int &a, int &b) const {
         return a &lt; b;
     }
 };
@@ -715,7 +715,7 @@ struct cmp {
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator &lt; (const node &amp;a) const {  // 加入队列的元素自动按距离从小到大排序  
+    bool operator &lt; (const node &a) const {  // 加入队列的元素自动按距离从小到大排序  
         return len &gt; a.len;  
     }  
 };
@@ -745,7 +745,7 @@ int Prim(int s) {
         for (int i = 0; i &lt; G[v].size(); i++) {  // 开始更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] &amp;&amp; dis[v2] &gt; len) {   
+            if (!vis[v2] && dis[v2] &gt; len) {   
                 dis[v2] = len;  
                 Q.push(node(v2, dis[v2]));  // 更新的点加入队列并排序  
             }  
@@ -762,7 +762,7 @@ int Prim(int s) {
 struct node {  
     int v, len;  
     node(int v = 0, int len = 0) :v(v), len(len) {}  
-    bool operator &lt; (const node &amp;a)const {  //  距离从小到大排序  
+    bool operator &lt; (const node &a)const {  //  距离从小到大排序  
         return len &gt; a.len;  
     }  
 };  
@@ -792,7 +792,7 @@ int dijkstra(int s, int e) {
         for (int i = 0; i&lt;G[v].size(); i++) {   //  更新  
             int v2 = G[v][i].v;  
             int len = G[v][i].len;  
-            if (!vis[v2] &amp;&amp; dis[v2] &gt; dis[v] + len) {  
+            if (!vis[v2] && dis[v2] &gt; dis[v] + len) {  
                 dis[v2] = dis[v] + len;  
                 Q.push(node(v2, dis[v2]));  
             }  
@@ -855,7 +855,7 @@ int SPFA(int s,int e)
 */
 for (int i = 0; i &lt; n; i++) {   //  初始化为0  
     for (int j = 0; j &lt; n; j++)  
-        scanf("%lf", &amp;dis[i][j]);  
+        scanf("%lf", &dis[i][j]);  
 }
 
 for (int k = 0; k &lt; n; k++) {  
@@ -937,7 +937,7 @@ int result;
 
 bool dfs(int x) {  
     for (int y = 1; y &lt;= v2; ++y) {  
-        if (Map[x][y] &amp;&amp; !visit[y]) {  
+        if (Map[x][y] && !visit[y]) {  
             visit[y] = true;  
             if (link[y] == 0 || dfs(link[y])) {  
                 link[y] = x;  
@@ -1084,14 +1084,14 @@ char S[MM],T[MM];
 void GetNext(const char *T) {    
     int len = strlen(T), a = 0;    
     next[0] = len;    
-    while(a &lt; len - 1 &amp;&amp; T[a] == T[a + 1]) a++;    
+    while(a &lt; len - 1 && T[a] == T[a + 1]) a++;    
     next[1] = a;    
     a = 1;    
     for(int k = 2; k &lt; len; k++) {    
         int p = a + next[a] - 1, L = next[k - a];    
         if((k - 1) + L &gt;= p) {    
             int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
-            while(k + j &lt; len &amp;&amp; T[k + j] == T[j]) j++;    
+            while(k + j &lt; len && T[k + j] == T[j]) j++;    
             next[k] = j;    
             a = k;    
         }
@@ -1104,14 +1104,14 @@ void GetExtend(const char *S, const char *T) {
     GetNext(T);    
     int slen = strlen(S), tlen = strlen(T), a = 0;    
     int MinLen = slen &lt; tlen ? slen : tlen;    
-    while(a &lt; MinLen &amp;&amp; S[a] == T[a]) a++;    
+    while(a &lt; MinLen && S[a] == T[a]) a++;    
     extend[0] = a;     
     a = 0;    
     for(int k = 1; k &lt; slen; k++) {    
         int p = a + extend[a] - 1, L = next[k - a];    
         if((k - 1) + L &gt;= p) {    
             int j = (p - k + 1) &gt; 0 ? (p - k + 1) : 0;    
-            while(k + j &lt; slen &amp;&amp; j &lt; tlen &amp;&amp; S[k + j] == T[j]) j++;    
+            while(k + j &lt; slen && j &lt; tlen && S[k + j] == T[j]) j++;    
             extend[k] = j;    
             a = k;    
         } 
@@ -1183,7 +1183,7 @@ int main() {
     int n;  
     char str1[50];  
     char str2[50];  
-    while(scanf("%d", &amp;n)!=EOF) {  
+    while(scanf("%d", &n)!=EOF) {  
         root = new Trie;  
         while(n--) {  
             scanf("%s %s",str1,str2);  
@@ -1236,7 +1236,7 @@ void build(int m, int l, int r)//m 是 树的标号
 
 void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值（加减的值）
 {
-    if (tree[m].left == a &amp;&amp; tree[m].right == a) {
+    if (tree[m].left == a && tree[m].right == a) {
         tree[m].max += val;
         tree[m].sum += val;
         return;
@@ -1254,7 +1254,7 @@ void update(int m, int a, int val)//a 是 节点位置， val 是 更新的值�
 
 int querySum(int m, int l, int r)
 {
-    if (l == tree[m].left &amp;&amp; r == tree[m].right) {
+    if (l == tree[m].left && r == tree[m].right) {
         return tree[m].sum;
     }
     int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
@@ -1269,7 +1269,7 @@ int querySum(int m, int l, int r)
 
 int queryMax(int m, int l, int r)
 {
-    if (l == tree[m].left &amp;&amp; r == tree[m].right) {
+    if (l == tree[m].left && r == tree[m].right) {
         return tree[m].max;
     }
     int mid = (tree[m].left + tree[m].right) &gt;&gt; 1;
@@ -1331,7 +1331,7 @@ void build(int id,ll l, ll r) {
 }  
 
 void updateAdd(int id,ll l,ll r,ll val) {  
-    if(tree[id].l &gt;= l &amp;&amp; tree[id].r &lt;= r)  
+    if(tree[id].l &gt;= l && tree[id].r &lt;= r)  
     {  
         tree[id].addv += val;  
         tree[id].sum += (tree[id].r - tree[id].l + 1) * val;  
@@ -1347,7 +1347,7 @@ void updateAdd(int id,ll l,ll r,ll val) {
 }  
 
 void query(int id, ll l, ll r) {  
-    if(tree[id].l &gt;= l &amp;&amp; tree[id].r &lt;= r){  
+    if(tree[id].l &gt;= l && tree[id].r &lt;= r){  
         anssum += tree[id].sum;  
         return;  
     }  
@@ -1361,23 +1361,23 @@ void query(int id, ll l, ll r) {
 }  
 
 int main() {  
-    scanf("%d", &amp;t);  
+    scanf("%d", &t);  
     int kase = 0;  
     while(t--) {  
-        scanf("%d %d", &amp;n, &amp;q);  
+        scanf("%d %d", &n, &q);  
         build(1, 1, n);  
         int id;  
         ll x, y;  
         ll val;  
         printf("Case %d:\n", ++kase);  
         while(q--) {  
-            scanf("%d", &amp;id);  
+            scanf("%d", &id);  
             if(id==0) {  
-                scanf("%lld %lld %lld", &amp;x, &amp;y, &amp;val);  
+                scanf("%lld %lld %lld", &x, &y, &val);  
                 updateAdd(1, x+1, y+1, val);  
             }  
             else {  
-                scanf("%lld %lld", &amp;x, &amp;y);  
+                scanf("%lld %lld", &x, &y);  
                 anssum = 0;  
                 query(1, x+1, y+1);  
                 printf("%lld\n", anssum);  
@@ -1394,7 +1394,7 @@ int a[maxn];
 int n;
 
 int lowbit(const int t) {
-    return t &amp; (-t);
+    return t & (-t);
 }
 
 void insert(int t, int d) {
@@ -1415,13 +1415,13 @@ ll getSum(int t) {
 
 int main() {
     int t, k, d;
-    scanf("%d", &amp;t);
+    scanf("%d", &t);
     k= 1;
     while (t--){
         memset(a, 0, sizeof(a));
-        scanf("%d", &amp;n);
+        scanf("%d", &n);
         for (int i = 1; i &lt;= n; ++i) {
-            scanf("%d", &amp;d);
+            scanf("%d", &d);
             insert(i, d);
         }
         string str;
@@ -1429,7 +1429,7 @@ int main() {
         while (cin &gt;&gt; str) {
             if (str == "End")   break;
             int x, y;
-            scanf("%d %d", &amp;x, &amp;y);
+            scanf("%d %d", &x, &y);
             if (str == "Query")
                 printf("%lld\n", getSum(y) - getSum(x - 1));
             else if (str == "Add")
@@ -1443,7 +1443,7 @@ int main() {
 <pre class=" language-c++"><code class="language-c++">// 求逆序对
 for(int i = 1; i &lt;= n; i++)
     {
-        scanf("%d", &amp;a);
+        scanf("%d", &a);
         node[i].index = i;
         node[i].v = a;
     }
@@ -1470,7 +1470,7 @@ for(int i = 1; i &lt;= n; i++)
     return ans;    
 }  
 
-void extend_Euclid(int a, int b, int &amp;x, int &amp;y)  {  
+void extend_Euclid(int a, int b, int &x, int &y)  {  
     if(b == 0) {  
         x = 1;  
         y = 0;  
@@ -1517,7 +1517,7 @@ bool bfs() {
         q.pop();  
         for(int i = p[u]; i != -1; i = e[i].next) {  
             int v = e[i].v;  
-            if(e[i].c &gt; 0 &amp;&amp; d[v] == -1){  
+            if(e[i].c &gt; 0 && d[v] == -1){  
                 //printf("%d-&gt;%d(%d)\n", u, v, d[u] + 1);  
                 d[v] = d[u] + 1;  
                 q.push(v);  
@@ -1533,7 +1533,7 @@ int dfs(int u, int flow){
     int res = 0;  
     for(int i = p[u]; i != -1; i = e[i].next){  
         int v = e[i].v;  
-        if(e[i].c &gt; 0 &amp;&amp; d[v] == d[u] + 1){  
+        if(e[i].c &gt; 0 && d[v] == d[u] + 1){  
             int tmp = dfs(v, min(flow, e[i].c));  
             e[i].c -= tmp;  
             flow -= tmp;  
@@ -1560,15 +1560,15 @@ int dinic() {
 int main() {  
     init();  
     int p, a, b, c, sum=0;  
-    scanf("%d%d", &amp;n, &amp;m);  
+    scanf("%d%d", &n, &m);  
     T = n + m + 1;//汇点  
     for(int i = 1; i &lt;= n; i++){  
-        scanf("%d", &amp;p);  
+        scanf("%d", &p);  
         insert(i + m, T, p);  //课程放右边
         insert(T, i + m, 0);  
     }  
     for(int i = 1; i &lt;= m; i++){  
-        scanf("%d%d%d", &amp;a, &amp;b, &amp;c);  
+        scanf("%d%d%d", &a, &b, &c);  
         sum += c;  
         insert(i, a + m, inf);   
         insert(a + m, i, 0);  
@@ -1690,7 +1690,7 @@ void calc_path(int N)
 
 int main()
 {
-    while(scanf("%d%d", &amp;N, &amp;M) != EOF)
+    while(scanf("%d%d", &N, &M) != EOF)
     {
         int v, w, len;
         for(int i = 1; i &lt;= N; i++)
@@ -1698,7 +1698,7 @@ int main()
         memset(in, 0, sizeof(in));
         for(int i = 0; i &lt; M; i++)
         {
-            scanf("%d%d%d", &amp;v, &amp;w, &amp;len);
+            scanf("%d%d%d", &v, &w, &len);
             Node tmp;
             tmp.id = w;
             tmp.length = len;
