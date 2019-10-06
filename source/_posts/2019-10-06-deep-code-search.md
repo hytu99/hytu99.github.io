@@ -49,7 +49,7 @@ categories: Paper Reading
 
 **Embedding:** a technique for learning vector representations of entities.
 
-**Word Embedding:** It represents words as fxed-length vectors so that similar words are close
+**Word Embedding:** It represents words as fixed-length vectors so that similar words are close
 to each other in the vector space.
 
 **Sequence Embedding:** Use RNN. The embedding vector of the sentence is summarized from the hidden states $h_1, ..., h_T$（select the last state or use maxpooling）. 
