@@ -118,7 +118,7 @@ The symbol '+' indicates the average value.
 
 - It has the ability to recognize query semantics (e.g., *queue an event to be run on the thread*​ and *run an event on a thread queue*)
 - Its search results are less affected by irrevant or noisy keyword (e.g., *get the content
-  of an input stream as a string using a specifed character encoding*).
+  of an input stream as a string using a specified character encoding*).
 - it not only seeks snippets with matched keywords but also recommends those without matched keywords but are semantically related.
 
 **Why does DeepCS Work?**
