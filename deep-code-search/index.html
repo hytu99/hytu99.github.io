@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="终于弄好博客啦, THY&#39;s Blog">
+    <meta name="keywords" content="【论文阅读】Deep Code Search, THY&#39;s Blog">
     <meta name="description" content="
-在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程超详细Hexo+Github博客搭建小白教程!
+【ASE高级软件工程】第二次结对作业Code Search论文阅读笔记
 
-其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。不过目前水平有限，">
+Deep Code SearchABSTRACT
+we propose a novel deep neural network named CODEnn（Code-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>终于弄好博客啦 | THY&#39;s Blog</title>
+    <title>【论文阅读】Deep Code Search | THY&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +268,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        终于弄好博客啦
+                        【论文阅读】Deep Code Search
                     </div>
                 </div>
             </div>
@@ -384,8 +385,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/" target="_blank">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/code-search/" target="_blank">
+                                <span class="chip bg-color">code search</span>
+                            </a>
+                        
+                            <a href="/tags/deep-learning/" target="_blank">
+                                <span class="chip bg-color">deep learning</span>
+                            </a>
+                        
+                            <a href="/tags/nlp/" target="_blank">
+                                <span class="chip bg-color">nlp</span>
                             </a>
                         
                     </div>
@@ -396,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                随笔
+                            <a href="/categories/Paper-Reading/" class="post-category" target="_blank">
+                                Paper Reading
                             </a>
                         
                     </div>
@@ -408,21 +417,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-01
+                    2019-10-06
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        270
+                        726
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -439,11 +448,93 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a>!</p>
+<p>【ASE高级软件工程】第二次结对作业Code Search论文阅读笔记</p>
 </blockquote>
-<p>其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。<br>不过目前水平有限，可能技术上的东西比重还是会偏少一些。但不管写些什么，重要的还是自己要开始坚持写点东西。</p>
-<p>接下来首先想写的，一个是保研方面的一些经历感悟，再一个可能就是平时看论文写代码时做的一些笔记，也不立什么flag了，就希望这个博客能一直更新下去吧。</p>
-<p>最后还是祝祖国母亲70岁生日快乐呀！😀</p>
+<h2 id="Deep-Code-Search"><a href="#Deep-Code-Search" class="headerlink" title="Deep Code Search"></a>Deep Code Search</h2><h3 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h3><ul>
+<li><p>we propose a novel deep neural network named <strong>CODEnn</strong>（Code-Description Embedding Neural Network）.</p>
+</li>
+<li><p>CODEnn jointly embeds code snippets and natural language descriptions into a high-dimensional vector space.</p>
+</li>
+<li><p>we implement a code search tool named <strong>DeepCS</strong>. </p>
+</li>
+</ul>
+<h3 id="1-INTRODUCTION"><a href="#1-INTRODUCTION" class="headerlink" title="1.  INTRODUCTION"></a>1.  INTRODUCTION</h3><p><strong>Other Approaches:</strong>  </p>
+<ul>
+<li><p>information retrieval（IR）techniques.</p>
+</li>
+<li><p>problem: mismatch between the high-level intent reﬂected in the natural language queries and low-level implementation details in the source code.</p>
+</li>
+</ul>
+<p><strong>Our Method:</strong></p>
+<ul>
+<li><p>CODEnn jointly embeds code snippets and natural language descriptions into a high-dimensional vector space</p>
+</li>
+<li><p>DeepCS trains the CODEnn model on a corpus of 18.2 million Java code snippets（in the form of commented methods）from GitHub.   </p>
+</li>
+<li><p>DeepCS reads code snippets from a codebase and embeds them into vectors using the trained CODEnn.</p>
+</li>
+<li><p>when a user query arrives, DeepCS fnds code snippets that have the nearest vectors to the query vector and return them. </p>
+</li>
+</ul>
+<p><strong>Evalutate:</strong></p>
+<ul>
+<li>we perform code search on a search codebase using 50 real-world queries obtained from Stack Overﬂow.  </li>
+</ul>
+<h3 id="2-BACKGROUND"><a href="#2-BACKGROUND" class="headerlink" title="2.  BACKGROUND"></a>2.  BACKGROUND</h3><p><strong>Embedding:</strong> a technique for learning vector representations of entities.</p>
+<p><strong>Word Embedding:</strong> It represents words as fxed-length vectors so that similar words are close<br>to each other in the vector space.</p>
+<p><strong>Sequence Embedding:</strong> Use RNN. The embedding vector of the sentence is summarized from the hidden states $h_1, …, h_T$（select the last state or use maxpooling）. </p>
+<p><strong>Joint Embedding:</strong> a technique to jointly embed/correlate heterogeneous data into a unifed vector space so that semantically similar concepts across the two modalities occupy nearby regions of the space.<br>$$<br>\cal{X}\xrightarrow{\phi}\it{V}_\cal{X}\rightarrow \it{J}(\it{V}_\cal{X},\it{V}_\cal{Y})\leftarrow \it{V}_\cal{Y} \xleftarrow{\psi}\cal{Y}<br>$$<br><img src="joint-embeding.png" alt="An example of joint embedding"></p>
+<h3 id="3-A-DEEP-NEURAL-NETWORK-FOR-CODE-SEARCH"><a href="#3-A-DEEP-NEURAL-NETWORK-FOR-CODE-SEARCH" class="headerlink" title="3.  A DEEP NEURAL NETWORK FOR CODE SEARCH"></a>3.  A DEEP NEURAL NETWORK FOR CODE SEARCH</h3><p><img src="CODEnn.png" alt="The structrue of CODEnn"></p>
+<p><strong>Architecture:</strong></p>
+<ul>
+<li><p>Code Embedding Network: It embeds source code into vectors.（Three parts: the method name, the API invocation sequence, and the tokens contained in the source code）</p>
+</li>
+<li><p>Description Embedding Network: It embeds natural language descriptions into<br>vectors. </p>
+</li>
+<li><p>Similarity Module: cosine similarity.</p>
+</li>
+</ul>
+<p><strong>Training:</strong></p>
+<ul>
+<li><p>Training Instance: $\langle C, D+, D-\rangle$. D+ is a postitive description of code snippet C. D- is a negtive description of C(chosen randomly). </p>
+</li>
+<li><p>Loss: $\cal{L}(\theta) = \sum\limits_{\langle C, D+, D-\rangle \in P} max(0, \epsilon - cos(\mathbf{c}, \mathbf{d+})+cos(\mathbf{c}, \mathbf{d-})) $</p>
+</li>
+</ul>
+<h3 id="4-DEEPCS-DEEP-LEARNING-BASED-CODE-SEARCH"><a href="#4-DEEPCS-DEEP-LEARNING-BASED-CODE-SEARCH" class="headerlink" title="4.  DEEPCS: DEEP LEARNING BASED CODE SEARCH"></a>4.  DEEPCS: DEEP LEARNING BASED CODE SEARCH</h3><p><strong>Extracion:</strong> </p>
+<p><img src="extraction.png" alt="An example of extracting code elements"></p>
+<p>We build the training tuples using Java methods that have documentation comments from open-source projects on GitHub.</p>
+<p><strong>Training and Searching:</strong></p>
+<p><img src="workflow.png" alt="The overall workflow of DeepCS"></p>
+<h3 id="5-EVALUATION"><a href="#5-EVALUATION" class="headerlink" title="5.  EVALUATION"></a>5.  EVALUATION</h3><p><strong>Search Codebase:</strong> </p>
+<p>Search codebase is different from the training corpus. They are considered in isolation and contain all code（including those do not have Javadoc comments）.</p>
+<p><strong>Performance Measure:</strong></p>
+<ul>
+<li>FRank: the rank of the first hit result in the result list.</li>
+<li>SuccessRate@k: percentage of queries for which more than one correct<br>result could exist in the top k ranked results（$\frac{1}{|Q|}\sum\limits_{q=1}^{|Q|} \delta(FRank_q \leq k)$）.</li>
+<li>Precision@k: percentage of relevant results in the top k returned results for each query.</li>
+<li>MRR：the average of the reciprocal ranks of results of a set of queries（$\frac{1}{|Q|}\sum\limits_{q=1}^{|Q|} \frac{1}{FRank_q}$）.</li>
+</ul>
+<p><strong>Results:</strong></p>
+<img src="The statistical comparison.png" alt="The statistical comparison" style="zoom:67%;">
+
+<p>The symbol ‘+’ indicates the average value.</p>
+<img src="accuracy.png" alt="Overall Accuracy" style="zoom:67%;">
+
+<h3 id="6-DISCUSSION"><a href="#6-DISCUSSION" class="headerlink" title="6.  DISCUSSION"></a>6.  DISCUSSION</h3><p><strong>Strengths:</strong></p>
+<ul>
+<li>It has the ability to recognize query semantics (e.g., <em>queue an event to be run on the thread*​ and *run an event on a thread queue</em>)</li>
+<li>Its search results are less affected by irrevant or noisy keyword (e.g., <em>get the content<br>of an input stream as a string using a specifed character encoding</em>).</li>
+<li>it not only seeks snippets with matched keywords but also recommends those without matched keywords but are semantically related.</li>
+</ul>
+<p><strong>Why does DeepCS Work?</strong></p>
+<ul>
+<li>A unifed representation of heterogeneous data.</li>
+<li>Better query understanding through deep learning.</li>
+<li>Clustering snippets by natural language semantics.</li>
+</ul>
+<p><strong>Limitation:</strong></p>
+<p>It sometimes ranks partially relevant results higher than the exact matching ones. This<br>is because DeepCS ranks results by just considering their semantic vectors.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -620,9 +711,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《终于弄好博客啦》
+                    《【论文阅读】Deep Code Search》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/first-article/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/deep-code-search/" property="cc:attributionName"
                rel="cc:attributionURL">
                 ustcthy
             </a> 采用
@@ -662,9 +753,72 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/deep-code-search/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="【论文阅读】Deep Code Search">
+                        
+                        <span class="card-title">【论文阅读】Deep Code Search</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+【ASE高级软件工程】第二次结对作业Code Search论文阅读笔记
+
+Deep Code SearchABSTRACT
+we propose a novel deep neural network named CODEnn（Code-
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Paper-Reading/" class="post-category" target="_blank">
+                                    Paper Reading
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/code-search/" target="_blank">
+                        <span class="chip bg-color">code search</span>
+                    </a>
+                    
+                    <a href="/tags/deep-learning/" target="_blank">
+                        <span class="chip bg-color">deep learning</span>
+                    </a>
+                    
+                    <a href="/tags/nlp/" target="_blank">
+                        <span class="chip bg-color">nlp</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/code-template/">
                     <div class="card-image">
@@ -683,9 +837,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -717,43 +871,6 @@
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-01
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            ustcthy
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
