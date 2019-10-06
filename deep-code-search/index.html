@@ -481,7 +481,7 @@ we propose a novel deep neural network named CODEnn（Code-">
 <li>we perform code search on a search codebase using 50 real-world queries obtained from Stack Overﬂow.  </li>
 </ul>
 <h3 id="2-BACKGROUND"><a href="#2-BACKGROUND" class="headerlink" title="2.  BACKGROUND"></a>2.  BACKGROUND</h3><p><strong>Embedding:</strong> a technique for learning vector representations of entities.</p>
-<p><strong>Word Embedding:</strong> It represents words as fxed-length vectors so that similar words are close<br>to each other in the vector space.</p>
+<p><strong>Word Embedding:</strong> It represents words as fixed-length vectors so that similar words are close<br>to each other in the vector space.</p>
 <p><strong>Sequence Embedding:</strong> Use RNN. The embedding vector of the sentence is summarized from the hidden states $h_1, …, h_T$（select the last state or use maxpooling）. </p>
 <p><strong>Joint Embedding:</strong> a technique to jointly embed/correlate heterogeneous data into a unifed vector space so that semantically similar concepts across the two modalities occupy nearby regions of the space.<br>$$<br>\cal{X}\xrightarrow{\phi}\it{V}_\cal{X}\rightarrow \it{J}(\it{V}_\cal{X},\it{V}_\cal{Y})\leftarrow \it{V}_\cal{Y} \xleftarrow{\psi}\cal{Y}<br>$$<br><img src="joint-embeding.png" alt="An example of joint embedding"></p>
 <h3 id="3-A-DEEP-NEURAL-NETWORK-FOR-CODE-SEARCH"><a href="#3-A-DEEP-NEURAL-NETWORK-FOR-CODE-SEARCH" class="headerlink" title="3.  A DEEP NEURAL NETWORK FOR CODE SEARCH"></a>3.  A DEEP NEURAL NETWORK FOR CODE SEARCH</h3><p><img src="CODEnn.png" alt="The structrue of CODEnn"></p>
