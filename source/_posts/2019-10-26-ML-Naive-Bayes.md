@@ -65,10 +65,10 @@ $$
 
 其中的$P(c)$为先验概率，从采样数据中估计。使先验概率更接近真实分布这一点对采样的多样性提出了一定的要求。
 
-最后的$P(w _ k|c)$可以用表示$P(w_k|c) = \dfrac{n_{ck}}{n_c}$,其中$n_c=\sum_{i : y=c} | x _ i| $表示c类出现的次数，$n_{ck}$表示c类中词$w_k$出现的次数。但是注意到如果在采样中只要有$n_{c, k}=0$,那在估计中就一定会有$P(w_k|c)=0$,这在实际中并不是合理的。为了解决这种问题，有一种方案是Laplace Smoothing:
+最后的$P(w _ k|c)$可以用表示$P(w_k|c) = \dfrac{n_{ck}}{n_c}$,其中$n_c=\sum_{i : y=c} | x _ i| $表示c类出现的次数，$n_{ck}$表示c类中词$w_k$出现的次数。但是注意到如果在采样中只要有$n_{c k}=0$,那在估计中就一定会有$P(w_k|c)=0$,这在实际中并不是合理的。为了解决这种问题，有一种方案是Laplace Smoothing:
 
 $$
-P(w_k|c) = \frac{n_{c,k} + 1} {n _ c + | \mathcal{V} | }
+P(w_k|c) = \frac{n_{c k} + 1} {n _ c + | \mathcal{V} | }
 $$
 
 #### 朴素贝叶斯分类器训练（Training Naive Bayes Classifier）
@@ -96,7 +96,7 @@ $$
 
 $$
 \begin{align}
-& \text{Input: A new sample } {\bf x}, \text{ 设} x_i \text{是} {\bf x}  \text{的第 i 个属性}, I = \empty \\\\
+& \text{Input: A new sample } {\bf x}, \text{ 设} x_i \text{是} {\bf x}  \text{的第 i 个属性}, I = \emptyset \\\\
 & \text{for } x_1, \cdots, x_i \text{ do} \\\\
 & ~ ~ ~ ~ ~ ~ ~ ~ \text{if } \exists w_k \in \mathcal{V} \text{ such that } w_k = x_i, \text{ then} \\\\
 & ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ I \leftarrow I \cup k \\\\
