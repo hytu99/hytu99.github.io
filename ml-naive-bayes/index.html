@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="终于弄好博客啦, THY&#39;s Blog">
+    <meta name="keywords" content="【机器学习】3. Naive Bayes, THY&#39;s Blog">
     <meta name="description" content="
-在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程超详细Hexo+Github博客搭建小白教程!
+整理自同学的笔记。监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。
 
-其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。不过目前水平有限，">
+分类中的朴素贝叶斯方法（Naive Bayes Classifier)垃圾邮件的分类（Span Detecor）目标对于训练过的模型，给定${\bf x">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>终于弄好博客啦 | THY&#39;s Blog</title>
+    <title>【机器学习】3. Naive Bayes | THY&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +267,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        终于弄好博客啦
+                        【机器学习】3. Naive Bayes
                     </div>
                 </div>
             </div>
@@ -384,8 +384,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/" target="_blank">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/机器学习/" target="_blank">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                            <a href="/tags/学习笔记/" target="_blank">
+                                <span class="chip bg-color">学习笔记</span>
                             </a>
                         
                     </div>
@@ -396,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                随笔
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                机器学习
                             </a>
                         
                     </div>
@@ -408,14 +412,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-01
+                    2019-10-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        270
+                        182
                     </div>
                     
 
@@ -439,11 +443,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a>!</p>
+<p>整理自同学的笔记。<br>监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。</p>
 </blockquote>
-<p>其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。<br>不过目前水平有限，可能技术上的东西比重还是会偏少一些。但不管写些什么，重要的还是自己要开始坚持写点东西。</p>
-<p>接下来首先想写的，一个是保研方面的一些经历感悟，再一个可能就是平时看论文写代码时做的一些笔记，也不立什么flag了，就希望这个博客能一直更新下去吧。</p>
-<p>最后还是祝祖国母亲70岁生日快乐呀！😀</p>
+<h3 id="分类中的朴素贝叶斯方法（Naive-Bayes-Classifier"><a href="#分类中的朴素贝叶斯方法（Naive-Bayes-Classifier" class="headerlink" title="分类中的朴素贝叶斯方法（Naive Bayes Classifier)"></a>分类中的朴素贝叶斯方法（Naive Bayes Classifier)</h3><h4 id="垃圾邮件的分类（Span-Detecor）"><a href="#垃圾邮件的分类（Span-Detecor）" class="headerlink" title="垃圾邮件的分类（Span Detecor）"></a>垃圾邮件的分类（Span Detecor）</h4><h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h5><p>对于训练过的模型，给定${\bf x}$，给出$P(spam|{\bf x})$。</p>
+<p>训练数据记作$ \{ \mathbf{x} _ i,   y _ i \} $， $y_i \in {\mathcal C} = \{spam, not \ _ spam \} $。</p>
+<h5 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h5><ol>
+<li>属性值$x_i$条件独立于标签值，即<br>$$<br>P(x_1, x_2,…,x_{|x|}|{\mathcal C}) = \prod_iP(x_i|{\mathcal C})<br>$$</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -620,9 +626,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《终于弄好博客啦》
+                    《【机器学习】3. Naive Bayes》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/first-article/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/ml-naive-bayes/" property="cc:attributionName"
                rel="cc:attributionURL">
                 ustcthy
             </a> 采用
@@ -662,59 +668,55 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/code-template/">
+                <a href="/ml-naive-bayes/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机试模板整理">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="【机器学习】3. Naive Bayes">
                         
-                        <span class="card-title">机试模板整理</span>
+                        <span class="card-title">【机器学习】3. Naive Bayes</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出, 我整理了我认为常见的一些算法，顺便改了改部分代码风格（其实主要是加空格hhh）。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是
+整理自同学的笔记。监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。
+
+分类中的朴素贝叶斯方法（Naive Bayes Classifier)垃圾邮件的分类（Span Detecor）目标对于训练过的模型，给定${\bf x
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/程序设计/" class="post-category" target="_blank">
-                                    程序设计
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/保研/" target="_blank">
-                        <span class="chip bg-color">保研</span>
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
-                    <a href="/tags/机试/" target="_blank">
-                        <span class="chip bg-color">机试</span>
-                    </a>
-                    
-                    <a href="/tags/编程/" target="_blank">
-                        <span class="chip bg-color">编程</span>
-                    </a>
-                    
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
                 </div>
@@ -728,32 +730,49 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Docker入门总结">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Docker入门总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+之前一直不知道docker究竟是个什么，也一直没有用过，在服务器上跑代码也只是先装环境，然后再在IDE远程连接服务器运行。最近想用GCR上的卡来跑实验，推荐使用docker（不知道是否必须使用），想想也可以趁着这个机会稍微入个门，也就学了
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-25
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            ustcthy
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/技术总结/" class="post-category" target="_blank">
+                                    技术总结
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
                 </div>
                 
             </div>

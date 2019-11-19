@@ -4,11 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="终于弄好博客啦, THY&#39;s Blog">
+    <meta name="keywords" content="【机器学习笔记】2. Gradient Descent, THY&#39;s Blog">
     <meta name="description" content="
-在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程超详细Hexo+Github博客搭建小白教程!
+整理自同学的笔记
 
-其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。不过目前水平有限，">
+Gradient DescentPart 1$$\min f(\mathbf{x})$$
+
+$f(\mathbf{x})$ is continuously differentiable.
+
+$f(\mathbf{x})">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>终于弄好博客啦 | THY&#39;s Blog</title>
+    <title>【机器学习笔记】2. Gradient Descent | THY&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +271,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        终于弄好博客啦
+                        【机器学习笔记】2. Gradient Descent
                     </div>
                 </div>
             </div>
@@ -384,8 +388,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/" target="_blank">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/机器学习/" target="_blank">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                            <a href="/tags/学习笔记/" target="_blank">
+                                <span class="chip bg-color">学习笔记</span>
                             </a>
                         
                     </div>
@@ -396,8 +404,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                随笔
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                机器学习
                             </a>
                         
                     </div>
@@ -408,21 +416,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-01
+                    2019-10-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        270
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        11 分
                     </div>
                     
                 
@@ -439,11 +447,82 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a>!</p>
+<p>整理自同学的笔记</p>
 </blockquote>
-<p>其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。<br>不过目前水平有限，可能技术上的东西比重还是会偏少一些。但不管写些什么，重要的还是自己要开始坚持写点东西。</p>
-<p>接下来首先想写的，一个是保研方面的一些经历感悟，再一个可能就是平时看论文写代码时做的一些笔记，也不立什么flag了，就希望这个博客能一直更新下去吧。</p>
-<p>最后还是祝祖国母亲70岁生日快乐呀！😀</p>
+<h3 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><h4 id="Part-1"><a href="#Part-1" class="headerlink" title="Part 1"></a>Part 1</h4><p>$$<br>\min f(\mathbf{x})<br>$$</p>
+<ul>
+<li><p>$f(\mathbf{x})$ is continuously differentiable.</p>
+</li>
+<li><p>$f(\mathbf{x})$ is convex.</p>
+</li>
+</ul>
+<hr>
+<p><strong>Definition:</strong> A set $C$ is convex if the line segment between any two points in $C$ lies in $C$. that is $\forall x_1,x_2 \in C$, and $\forall \theta \in [0, 1]$, we have $\theta x_1 + (1-\theta)x_2 \in C$.</p>
+<p><strong>Definition:</strong> A function $f: \mathbb{R}^n\rightarrow\mathbb{R}$ is convex if $\rm{dom}$ $f$ is convex and if $\mathbf{x},\mathbf{y} \in$ ${\rm dom}f$ and $\theta \in [0, 1]$, we have $f(\theta \mathbf{x} + (1-\theta)\mathbf{y}) \le \theta f(\mathbf{x}) + (1-\theta)f(\mathbf{y})  $.</p>
+<p><strong>Definition:</strong> A function is strict convex if strict inequality holds where $\mathbf{x} \ne \mathbf{y}$ and  $\theta \in [0, 1]$.</p>
+<p><strong>Definition:</strong> A function is strongly convex with parameter $u$ if  $f - \dfrac{u}{2} \Vert \mathbf{x} \Vert ^2$ is convex.</p>
+<hr>
+<p><strong>Theorem 1:</strong> Suppose that $f$ is continuously differentiable. Then $f$ is convex if and only if $\rm{dom}$ $f$ is convex and $f(\mathbf{y}) \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{y}-\mathbf{x} \rangle, \forall \mathbf{x}, \mathbf{y} \in $ ${\rm dom}f$.</p>
+<p><strong>Proof:</strong> </p>
+<p>$( \Rightarrow )$ </p>
+<p>$$<br>\begin{align}<br>f(\mathbf{x} + \theta(\mathbf{y}-\mathbf{x})) &amp;\le f(\mathbf{x}) + \theta [f(\mathbf{y}) - f(\mathbf{x})]\\<br>f(\mathbf{y}) - f(\mathbf{x}) &amp;\ge \lim_{\theta \to 0} \frac{f(\mathbf{x} + \theta(\mathbf{y}-\mathbf{x}))}{\theta}\text{（方向导数）}\\<br>&amp;= \langle \nabla f(\mathbf{x}), \mathbf{y}-\mathbf{x} \rangle<br>\end{align}<br>$$</p>
+<p>$ ( \Leftarrow ) $</p>
+<p>$$<br>\mathbf{z} = \theta \mathbf{x} + (1 - \theta) \mathbf{y}<br>$$</p>
+<p>$$<br> f(\mathbf{x}) \ge f(\mathbf{z}) + \langle \nabla f(\mathbf{z}), \mathbf{x} - \mathbf{z} \rangle \tag{1}<br>$$</p>
+<p>$$<br> f(\mathbf{y}) \ge f(\mathbf{z}) + \langle \nabla f(\mathbf{z}), \mathbf{y} - \mathbf{z} \rangle \tag{2}<br>$$</p>
+<p>$ \theta (1) + (1 - \theta) (2)  $可得。</p>
+<p><strong>Corollary:</strong> Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x}), \nabla f(\mathbf{y}) \rangle \ge 0$.</p>
+<p><strong>Theorem 2:</strong> Suppose that $ f $ is continuously differentiable. Then $ f $ is convex iff ${\rm dom}f$  is convex and $ \nabla ^2 f (\mathbf{x}) \ge 0 $.</p>
+<p><strong>Proof:</strong> </p>
+<p>$ ( \Rightarrow ) $</p>
+<p>Let $ \mathbf{x} _ t = \mathbf{x} + t \mathbf{s} $, $t &gt; 0$. Then</p>
+<p>$$<br>\begin{align}<br>0 \le \frac{1}{t^2} &amp; \langle \nabla f(\mathbf{x} _ t) - \nabla f(\mathbf{x}) , \mathbf{x} _ t - \mathbf{x} \rangle \\<br>&amp; = \frac {1}{t} \langle \nabla f(\mathbf{x} _ t) - \nabla f(\mathbf{x}), \mathbf{s} \rangle \\<br>&amp; = \frac {1}{t} \int _ 0 ^ t \langle \nabla ^2 f(\mathbf{x} + \tau \mathbf{s})\mathbf{s}, \mathbf{s} \rangle d\tau \text{（微积分基本定理）}\\<br>&amp; \xrightarrow{t \to 0} \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\<br>&amp; = \mathbf{s}^T \nabla ^2 f(\mathbf{x}) \mathbf{s}<br>\end{align}<br>$$</p>
+<p>$ ( \Leftarrow ) $</p>
+<p>$$<br>\begin{align}<br>g(t) &amp; = f(\mathbf{x} + t \mathbf{s}) \\<br>g’(0) &amp;= \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle \\<br>g’’(0) &amp;= \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\<br>g(1) &amp; = g(0) + \int _ 0 ^ 1 g’(t) dt \\<br>&amp;  = g(0) + \int _ 0 ^ 1 [g’(0) + \int _ 0 ^ 1 g’’(\tau) d\tau ] dt \\<br>&amp; \ge g(0) + g’(0) \\<br>f(\mathbf{x} +  \mathbf{s}) &amp; \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle<br>\end{align}<br>$$</p>
+<p><strong>Theorem 3:</strong> Suppose $f$ is  continuously differentiable. Then $ \mathbf{x}^  * \in \arg \min \limits _ \mathbf{x}  f ( \mathbf{x})  $  iff $ \nabla f(\mathbf{x}^ *) = 0$, $  f(\mathbf{y}) \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{y} - \mathbf{x} \rangle = f(\mathbf{x})$.</p>
+<h4 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h4><p>$$<br>\min f(\mathbf{x})<br>$$</p>
+<ul>
+<li>The objective function $f(\mathbf{x})$ is continuously differentiable.</li>
+<li>$f(\mathbf{x})$ is convex.</li>
+<li>$\exists {\bf x^ *} \in {\rm dom}f$, s.t. $ f({\bf x^ *})= f^ * = \min f({\bf x}) $.</li>
+<li>The gradient of $f$ is Lipschitz continuous, that is, $ \Vert \nabla f({\bf x}) - \nabla f({\bf y}) \Vert \le L \Vert {\bf x}-{\bf y} \Vert$, $L&gt;0$.</li>
+</ul>
+<h5 id="Algorithm-Gradient-Descent"><a href="#Algorithm-Gradient-Descent" class="headerlink" title="Algorithm:  Gradient Descent"></a>Algorithm:  Gradient Descent</h5><p>Input: An initial point ${\bf x_0}$, a constant $\alpha \in (0, \dfrac{2}{L})$, $k = 0$.</p>
+<p>while the <em>termination condition</em> does not hold,  do</p>
+<p>$$<br>\begin{align}<br>&amp;k=k+1<br>\\&amp; {\bf x_{k+1}}={\bf x_k}-\alpha\nabla f({\bf x_k})<br>\end{align}<br>$$</p>
+<p>end while</p>
+<h5 id="Convergence-Rate"><a href="#Convergence-Rate" class="headerlink" title="Convergence Rate"></a>Convergence Rate</h5><p><strong>Definition:</strong> Suppose that the sequence { $a_k$} converges to a number $L$. Then, the sequence is said to converge linearly to $L$ if there exists a number $\mu \in (0, 1)$, s.t. $\lim \limits _ {k \to \infty } \dfrac{\vert a_{k + 1} - L\vert}{\vert a_k - L \vert} = \mu$.</p>
+<p><strong>Lemma 1:</strong> Suppose that a function $f \in  C^1$. If $\nabla f$ is Lipschitz continuous with Lipschitz constant $L$, then<br>$$<br>f({\bf y}) \le f({\bf x}) + \langle \nabla f({\bf x}),{\bf y} - {\bf x} \rangle+\dfrac{L}{2} \Vert {\bf y}-{\bf x}\Vert^2.<br>$$</p>
+<p><strong>Proof:</strong><br>$$<br>\begin{align}<br>f({\bf y})-f({\bf x}) &amp;= \int^{\bf y}_{\bf x}\nabla f({\bf z}){\bf dz}<br>\&amp;= \int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x})),{\bf y}-{\bf x}\rangle dt<br>\\&amp;= \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x}),{\bf y}-{\bf x}\rangle dt<br>\\&amp;\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \Vert\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x})\Vert\Vert{\bf y}-{\bf x}\Vert dt<br>\\&amp;\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+L\Vert{\bf y}-{\bf x}\Vert^2\int^1_0 t dt<br>\\&amp;=\langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\frac{L}{2}\Vert {\bf y}-{\bf x}\Vert^2<br>\end{align}<br>$$</p>
+<p>（与凹凸性无关）</p>
+<p><strong>Lemma 2 （Descent Lemma） :</strong> Suppose that a function $f \in  C^1$. If $\nabla f$ is Lipschitz continuous with Lipschitz constant $L&gt;0$, then $\forall \{ {\bf x_k} \}$ generated by the Gradient Descent Algorithm satisfies<br>$$<br>f({\bf x_{k+1}})\le f({\bf x_k})-{\alpha}(1-\frac{L\alpha}{2})\Vert\nabla f({\bf x_k})\Vert^2.<br>$$</p>
+<p>（这也是为什么算法约定$\alpha \in (0, \dfrac{2}{L})$）</p>
+<p>下面证明算法可以收敛到最小值，在前提条件下，可以考虑证明：<br>$$<br>\lim_{k \to \infty}\nabla f({\bf x_k}) = \nabla f(\lim_{ k\to \infty}{\bf x_k})=0.<br>$$<br><strong>Proof:</strong></p>
+<p>由Lemma 2，<br>$$<br>\begin{align}<br>\Vert \nabla f({\bf x_k})\Vert^2 &amp; \le \frac{f({\bf x_{k}})-f({\bf x_{k+1}})}{\alpha(1-\frac{L\alpha}{2})} \\<br>\sum_k\Vert \nabla  f({\bf x_k})\Vert^2 &amp;\le \frac{f({\bf x_0})-f({\bf x_{k+1}})}{\alpha(1-\frac{L\alpha}{2})}\\<br>&amp;\le\frac{f({\bf x_0})-f^ *}{\alpha(1-\frac{L\alpha}{2})}<br>\end{align}<br>$$<br>这个求和存在固有上界，故<br>$$<br>\lim_{k\to \infty} \nabla f({\bf x_k}) =0<br>$$</p>
+<h5 id="Efficiency-and-limitations"><a href="#Efficiency-and-limitations" class="headerlink" title="Efficiency and limitations"></a>Efficiency and limitations</h5><p><strong>Theorem:</strong>  Consider the Problem（$\min f(x)$）and the sequence generated by the Gradient Descent Algorithm. Then the sequence value $f({\bf x_k})$ tends to the optimum function value in a rate of $O(\frac{1}{k})$.</p>
+<ol>
+<li><p>If $\alpha \in (0, \dfrac{1}{L})$<br>$$<br>f({\bf x_k})-f^ * \le \frac{1}{k}(\frac{1}{2\alpha}\Vert {\bf x_0-x^ *}\Vert^2)<br>$$</p>
+</li>
+<li><p>If $ \alpha \in (\dfrac{1}{L}, \dfrac{2}{L}) $<br>$$<br>f({\bf x_k})-f^ * \le \frac{1}{k}(\frac{1}{2\alpha}\Vert {\bf x_0-x^ *}\Vert^2+\frac{L\alpha -1}{2-L\alpha}(f({\bf x_0})-f({\bf x ^  * })) )<br>$$</p>
+</li>
+</ol>
+<p><strong>Proof:</strong></p>
+<p>As $ {\bf x_{k+1}}={\bf x_k}-\alpha\nabla f({\bf x_k})$ and $ f({\bf y}) \le f({\bf x}) + \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\dfrac{L}{2}\Vert {\bf y}-{\bf x}\Vert^2 $, </p>
+<p>$$<br>f({\bf x_{k+1}})\le f({\bf x_{k}})-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2<br>$$</p>
+<p>$$<br>f({\bf x_{k+1}})-f^ *\le f({\bf x_{k}})-f^ *-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2<br>$$</p>
+<p>Consider the convexity of $f$,</p>
+<p>$$<br>\begin{align}<br>f({\bf x_{k} })-f({\bf x^ *}) &amp; \le \langle \nabla f({\bf x_k}), { \bf x_k}-{\bf x^ *}\rangle-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2<br>\\ &amp; = -\frac{1}{\alpha} \langle{\bf x_{k+1}}-{\bf x_k},{\bf x_k}-{\bf x^ *}\rangle-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2<br>\\ &amp; = -\frac{1}{2\alpha}(\Vert{\bf x_{k+1}}-{\bf x^ *}\Vert^2-\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2-\Vert{\bf x_{k}}-{\bf x^ *}\Vert^2)-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2<br>\\ &amp; = \frac{1}{2\alpha}(\Vert{\bf x_{k}}-{\bf x^ *}\Vert^2-\Vert{\bf x_{k+1}}-{\bf x^ *}\Vert^2)-(\frac{1}{2\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2<br>\end{align}<br>$$</p>
+<p>Summing up the inequalities,</p>
+<p>$$<br>\begin{align}<br>k(f({\bf x_{k} })-f({\bf x ^ *})) &amp;\le \sum ^ { k-1 } _ { i=0 } ( f({\bf x _ i})- f({\bf x^ * }) ) \\<br>&amp; \le \frac{1}{2 \alpha }(\Vert {\bf x_{0} }-{\bf x^ *}\Vert^2-\Vert{\bf x_{k}} - {\bf x ^ *} \Vert^2 ) - (\frac{1}{2\alpha} - \frac{L}{2} ) \sum^{k-1}_{i=0} \Vert{\bf x _ {i+1} }- {\bf x_i} \Vert^2<br>\end{align}<br>$$</p>
+<ol>
+<li>If $\alpha \in (0, \dfrac{1}{L})$, $\dfrac{1}{2\alpha}-\dfrac{L}{2}&gt;0$, then</li>
+</ol>
+<p>$$<br>k(f({\bf x_{k}})-f({\bf x^ *})) \le\frac{1}{2\alpha}\Vert{\bf x_{0}}-{\bf x^ *}\Vert^2.<br>$$</p>
+<ol start="2">
+<li>If $\alpha \in (\dfrac{1}{L}, \dfrac{2}{L})$, $\dfrac{1}{2\alpha}-\dfrac{L}{2}&gt;0$, then</li>
+</ol>
+<p>$$<br>\begin{align}<br>k (f({\bf x_k })-f({\bf x^ *})) &amp; \le \frac{1}{2 \alpha} (\Vert { \bf x_0} - {\bf x^ *} \Vert ^2 - \Vert{\bf x_k}- {\bf x^ *} \Vert^2) + \frac {L \alpha-1}{2\alpha}\sum^{k-1} _ { i = 0 } \Vert {\bf x _ {i+1} } - {\bf x_i} \Vert^2<br>\\ &amp; \le \frac{1}{2 \alpha} \Vert { \bf x_0} - { \bf x^ * } \Vert^2 + \frac{L \alpha-1}{2 \alpha} \sum^{ \infty} _ {i=0} \Vert {\bf x _ {i+1} } - {\bf x_i} \Vert^2<br>\\ &amp; \le  \frac{1}{2 \alpha} \Vert {\bf x_0} - {\bf x^ *} \Vert^2 + \frac{L \alpha-1}{2 \alpha}\ \frac{2\alpha}{2-L\alpha} (f({\bf x_0})-f({\bf x^ *})) (Lemma \ 2)<br>\end{align}<br>$$</p>
+<p>Remark: $\Vert {\bf x_k} - {\bf x^ *} \Vert$ doesn’t always converge to 0.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -620,9 +699,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《终于弄好博客啦》
+                    《【机器学习笔记】2. Gradient Descent》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/first-article/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/ml-gradient-descent/" property="cc:attributionName"
                rel="cc:attributionURL">
                 ustcthy
             </a> 采用
@@ -666,32 +745,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/code-template/">
+                <a href="/docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机试模板整理">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Docker入门总结">
                         
-                        <span class="card-title">机试模板整理</span>
+                        <span class="card-title">Docker入门总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出, 我整理了我认为常见的一些算法，顺便改了改部分代码风格（其实主要是加空格hhh）。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是
+之前一直不知道docker究竟是个什么，也一直没有用过，在服务器上跑代码也只是先装环境，然后再在IDE远程连接服务器运行。最近想用GCR上的卡来跑实验，推荐使用docker（不知道是否必须使用），想想也可以趁着这个机会稍微入个门，也就学了
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-25
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/程序设计/" class="post-category" target="_blank">
-                                    程序设计
+                            <a href="/categories/技术总结/" class="post-category" target="_blank">
+                                    技术总结
                                 </a>
                             
                             
@@ -701,20 +780,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/保研/" target="_blank">
-                        <span class="chip bg-color">保研</span>
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
-                    <a href="/tags/机试/" target="_blank">
-                        <span class="chip bg-color">机试</span>
-                    </a>
-                    
-                    <a href="/tags/编程/" target="_blank">
-                        <span class="chip bg-color">编程</span>
-                    </a>
-                    
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/docker/" target="_blank">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -728,32 +799,51 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/ml-linear-regression/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【机器学习笔记】1. Linear Regression">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">【机器学习笔记】1. Linear Regression</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+整理自同学的笔记
+
+Linear RegressionGiven a data set $ \{ ( \mathbf{x}_i, y_i ) \} _ { i = 1 } ^ n $, where  $\mathbf{x}_i \in \
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-23
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            ustcthy
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
                 </div>
                 
             </div>

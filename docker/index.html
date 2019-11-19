@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="终于弄好博客啦, THY&#39;s Blog">
+    <meta name="keywords" content="Docker入门总结, THY&#39;s Blog">
     <meta name="description" content="
-在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程超详细Hexo+Github博客搭建小白教程!
-
-其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。不过目前水平有限，">
+之前一直不知道docker究竟是个什么，也一直没有用过，在服务器上跑代码也只是先装环境，然后再在IDE远程连接服务器运行。最近想用GCR上的卡来跑实验，推荐使用docker（不知道是否必须使用），想想也可以趁着这个机会稍微入个门，也就学了">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>终于弄好博客啦 | THY&#39;s Blog</title>
+    <title>Docker入门总结 | THY&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -267,13 +265,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        终于弄好博客啦
+                        Docker入门总结
                     </div>
                 </div>
             </div>
@@ -384,8 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/" target="_blank">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/学习笔记/" target="_blank">
+                                <span class="chip bg-color">学习笔记</span>
+                            </a>
+                        
+                            <a href="/tags/docker/" target="_blank">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
                     </div>
@@ -396,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/随笔/" class="post-category" target="_blank">
-                                随笔
+                            <a href="/categories/技术总结/" class="post-category" target="_blank">
+                                技术总结
                             </a>
                         
                     </div>
@@ -408,21 +410,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-01
+                    2019-10-25
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        270
+                        1.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        6 分
                     </div>
                     
                 
@@ -439,11 +441,99 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程<a href="https://zhuanlan.zhihu.com/p/35668237" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a>!</p>
+<p>之前一直不知道docker究竟是个什么，也一直没有用过，在服务器上跑代码也只是先装环境，然后再在IDE远程连接服务器运行。最近想用<a href="http://gcr/" target="_blank" rel="noopener">GCR</a>上的卡来跑实验，推荐使用docker（不知道是否必须使用），想想也可以趁着这个机会稍微入个门，也就学了学，过程也似乎不是那么顺利（花了好几天），不过现在似乎已经可以在docker里跑代码了，也算是初步成功了吧，于是来总结一下。</p>
 </blockquote>
-<p>其实弄个博客的初衷还是自己想平时写点东西，或者是记录一些经历或者感悟，又或是平时工作学习时记录一些东西。<br>不过目前水平有限，可能技术上的东西比重还是会偏少一些。但不管写些什么，重要的还是自己要开始坚持写点东西。</p>
-<p>接下来首先想写的，一个是保研方面的一些经历感悟，再一个可能就是平时看论文写代码时做的一些笔记，也不立什么flag了，就希望这个博客能一直更新下去吧。</p>
-<p>最后还是祝祖国母亲70岁生日快乐呀！😀</p>
+<p>我的参考资料主要是我的mentor提供给我一份ppt以及一份更简易的<a href="https://github.com/CHUNYUWANG/GCR-Notebook/blob/master/Process.md" target="_blank" rel="noopener">说明指南</a>，也因为很多不理解的地方查了不少资料，我综合了一下，主要还是以ppt上的步骤为主（它不仅仅适用于GCR）。</p>
+<h3 id="测试Docker是否工作"><a href="#测试Docker是否工作" class="headerlink" title="测试Docker是否工作"></a>测试Docker是否工作</h3><p>默认docker/nvidia-docker都已经安装了</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker        <span class="token punctuation">[</span>The standard docker.<span class="token punctuation">]</span>
+nvidia-docker    <span class="token punctuation">[</span>The docker equipped with GPU.<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>docker run hello-world
+nvidia-docker run --rm nvidiaidia-smi</code></pre><h3 id="在Docker-Hub上创建账号"><a href="#在Docker-Hub上创建账号" class="headerlink" title="在Docker Hub上创建账号"></a>在Docker Hub上创建账号</h3><p>这个主要是可以把自己本地的docker image给push到docker hub上，这样之后自己或者他人也可以在别的地方pull这个镜像到本地来使用。</p>
+<p>注册时的用户名也就是你之后push时镜像名字的前缀。</p>
+<h3 id="创建自己的镜像"><a href="#创建自己的镜像" class="headerlink" title="创建自己的镜像"></a>创建自己的镜像</h3><p>先在Docker Hub上找一个镜像，比如$\tt{nvidia/cuda:9.1-devel-ubuntu16.04}$，镜像的的命名格式为$\tt{repository:tag}$，一个repository可以有多个tag，我的理解是多个不同版本。</p>
+<p><img src="nvidia_cuda.PNG" alt=""></p>
+<p><img src="cuda16.PNG" alt=""></p>
+<p>先介绍通过命令行输入和commit指令创建镜像的方法。命令行输入下面的指令可以进入我们选择的docker，如果本地没有，它也会先自动pull下来。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">nvidia-docker run -it nvidia/cuda:9.0-devel-ubuntu16.04
+
+root@fbcc4a9105ac:/#<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>执行命令后就会看到$\tt{root@}$后面跟着一串字符，我觉得可以看成是这次操作的一个ID，在commit之前，我们在docker里执行的操作并不会保存下来。</p>
+<p>接下来就是按照自己的想法去安装东西了，因为我需要使用python3和pytorch，以及需要其他的一些包，所以下面的示例也会和这个相关。</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 安装 cudann 7.0, python3, pip3.
+apt-get install -y --no-install-recommends \
+            libcudnn7=7.0.5.15-1+cuda9.0 \
+            libcudnn7-dev=7.0.5.15-1+cuda9.0 \
+            sudo python3-dev python3-pip libgtk2.0-dev 
+
+# 创建软连接
+cd /usr/bin 
+rm python 
+ln -s python3 python 
+ln -s pip3 pip 
+
+# 安装需要的包，如pytorch
+pip --no-cache-dir install torch
+pip --no-cache-dir install torchvision
+
+apt-get clean
+rm -rf /var/lib/apt/lists/* # 具体用处我也不太清楚，可能是删除一些缓存？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输入$\tt{Ctrl + D}$ 可以退出docker。</p>
+<p>然后我们需要提交我们刚才对容器进行的修改，指令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">docker commit fbcc4a9105ac hytu99/pytorch:py35<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>前面的字符串就是我们刚才进入容器后生成的那个字符串，表示我们要commit的docker，后面则是我们提交后镜像的名字，一般格式是$\tt{username/repository:tag}$。如果不需要push到docker hub，应该也可以不需要前面的$\tt{username}$前缀。</p>
+<p>之后执行$\tt{docker\ images}$或者$\tt{docker\ image \ ls}$命令就可以看到本地的docker了，其中$\tt{IMAGE \ ID}$也唯一指定了一个docker。</p>
+<p>我们可以将本地的docker给push到docker hub上。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">sudo docker login
+# 输入你的用户名和密码
+
+sudo docker push hytu99/pytorch:py35 # 也可以是docker push IMAGE ID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>push完后我们就能在docker hub上Repositories里看到这个docker了。</p>
+<p><img src="repo.png" alt=""></p>
+<p>上面的方法比较直观一些，但也有更简便的方法，用$\tt{docker \ build}$命令，可以将上面安装东西的语句写进一个文件（Dockerfile）里，不过得确保文件里没有拼写等错误，否则可能失败。</p>
+<p>在“/home/hanyue/code/myproject/test/”路径下有一个“test_docker.py”, 想用本地这个docker来运行这个代码的话，可以执行如下命令：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">docker run --rm --ipc=host --volume-driver=nfs -v /home:/home hytu99/pytorch:py35 sh -c "cd /home/hanyue/code/myproject/test/ && python -u test_docker.py"  # 具体一些参数的意义我也不是完全了解，重点应该是-v <src>:<dst>指定路径，以及后面指定docker和shell命令<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="在GCR上使用Docker"><a href="#在GCR上使用Docker" class="headerlink" title="在GCR上使用Docker*"></a>在GCR上使用Docker*</h3><pre class="line-numbers language-shell"><code class="language-shell"># 设置环境变量
+uid=$(id -u)
+did=$(id -g)
+alias=$(whoami|awk -F. '{ print $2 }' )
+domain=$(whoami|awk -F. '{print $1}’)
+
+# 创建一个文件“myconfig”
+vim myconfig<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以下为“myconfig”文件的一个示例内容，之前创建docker部分的安装命令也可以放到这个文件中，也即前面提到的直接使用build命令来创建docker。</p>
+<pre class="line-numbers language-dockerfile"><code class="language-dockerfile">#--------------------------------------------------------------------------
+FROM hytu99/pytorch:py35
+#
+ARG uid
+ARG did
+ARG domain
+ARG alias
+
+# The below will create your user in your container which you can use to run jobs
+RUN apt-get update
+RUN apt-get -y install sudo \
+&& > /etc/sudoers.d/${alias} \
+&& echo "${domain}.domain users:x:${did}:${domain}.${alias}" >> /etc/group \
+&& echo "${domain}.${alias}:x:${uid}:${did}:${alias},,,:/home/${alias}:/bin/bash" >> /etc/passwd \
+&& echo "${domain}.${alias}:*:17575:0:99999:7:::" >> /etc/shadow \
+&& echo "${domain}.${alias} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${alias} \
+&& echo "  " >> /etc/sudoers.d/${alias} \
+# Copy "myconfig" file into my container on build
+COPY myconfig /root/myconfig
+#--------------------------------------------------------------------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell"># 在“gcr-repos”服务器上创建我们自己的docker镜像，这里的REPOSITORY和TAG应该也是可以自己指定的。
+sudo docker build -t gcr-repos.redmond.corp.microsoft.com:5000/${alias}/REPOSITORY:TAG  \
+             --build-arg uid=$uid \
+             --build-arg did=$did \
+             --build-arg alias=$alias \
+             --build-arg domain=$domain \
+             -f myconfig .
+
+
+# 把镜像推送到服务器上
+docker push gcr-repos.redmond.corp.microsoft.com:5000/${alias}/REPOSITORY:TAG <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果要使用“gcr-repos”服务器上的docker，我们可以执行如下命令：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">docker run --rm --ipc=host --volume-driver=nfs -v gcrnfsw2-msraim.redmond.corp.microsoft.com/msraimscratch:/msraimscratch --user FAREAST.v-hatu gcr-repos.redmond.corp.microsoft.com:5000/v-hatu/pytorch:py35 sh -c "cd /msraimscratch/v-hatu/myproject && python -u test/test_docker.py -1> out.txt 2>err.txt"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -620,9 +710,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《终于弄好博客啦》
+                    《Docker入门总结》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/first-article/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/docker/" property="cc:attributionName"
                rel="cc:attributionURL">
                 ustcthy
             </a> 采用
@@ -666,32 +756,34 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/code-template/">
+                <a href="/ml-naive-bayes/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="机试模板整理">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="【机器学习】3. Naive Bayes">
                         
-                        <span class="card-title">机试模板整理</span>
+                        <span class="card-title">【机器学习】3. Naive Bayes</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-这是当时我去参加清华计算机系夏令营时为机考准备的模板，部分参考链接在最后列出, 我整理了我认为常见的一些算法，顺便改了改部分代码风格（其实主要是加空格hhh）。最后机试的时候实际只用到了关于强连通分量缩点的那部分代码，说起来那部分代码还是
+整理自同学的笔记。监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。
+
+分类中的朴素贝叶斯方法（Naive Bayes Classifier)垃圾邮件的分类（Span Detecor）目标对于训练过的模型，给定${\bf x
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-02
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/程序设计/" class="post-category" target="_blank">
-                                    程序设计
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
                                 </a>
                             
                             
@@ -701,20 +793,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/保研/" target="_blank">
-                        <span class="chip bg-color">保研</span>
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
-                    <a href="/tags/机试/" target="_blank">
-                        <span class="chip bg-color">机试</span>
-                    </a>
-                    
-                    <a href="/tags/编程/" target="_blank">
-                        <span class="chip bg-color">编程</span>
-                    </a>
-                    
-                    <a href="/tags/算法/" target="_blank">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
                 </div>
@@ -728,32 +812,55 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/ml-gradient-descent/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="【机器学习笔记】2. Gradient Descent">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">【机器学习笔记】2. Gradient Descent</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+整理自同学的笔记
+
+Gradient DescentPart 1$$\min f(\mathbf{x})$$
+
+$f(\mathbf{x})$ is continuously differentiable.
+
+$f(\mathbf{x})
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-24
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            ustcthy
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/机器学习/" class="post-category" target="_blank">
+                                    机器学习
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/机器学习/" target="_blank">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
                 </div>
                 
             </div>
