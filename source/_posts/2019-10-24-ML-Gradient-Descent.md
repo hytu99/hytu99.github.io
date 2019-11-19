@@ -65,7 +65,7 @@ $$
  f(\mathbf{y}) \ge f(\mathbf{z}) + \langle \nabla f(\mathbf{z}), \mathbf{y} - \mathbf{z} \rangle \tag{2}
 $$
 
-$ \theta (1) + (1 - \theta (2))  $可得。
+$ \theta (1) + (1 - \theta) (2)  $可得。
 
 **Corollary:** Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x}), \nabla f(\mathbf{y}) \rangle \ge 0$.
 
