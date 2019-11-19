@@ -23,7 +23,7 @@ $$
 y_i = \mathbf{w}^T \mathbf{x}_i,
 $$
 
-where $ \mathbf{x} _ i = (1, x_{ i1}, x_{i2}, ..., x_{id})^T $ and $ \mathbf{w} = (w_0, w_1, ..., w_d)^T $.
+where $ \mathbf{x} _ i = (1, x_{ i1}, x_{i2}, \cdots , x_{id})^T $ and $ \mathbf{w} = (w_0, w_1, \cdots , w_d)^T $.
 
 Average Fitting error is
 
@@ -34,7 +34,7 @@ L &= \frac{1}{n} \sum_i^n(y_i - \mathbf{w}^T\mathbf{x}_i)^2 \\\\
 \end{align}
 $$
 
-where $\mathbf{y}=(y_i, ..., y_n) $ and $\mathbf{\bar{X}} \in \mathbb{R}^{n \times (d+1)}$.
+where $\mathbf{y}=(y_i, \cdots , y_n) $ and $\mathbf{\bar{X}} \in \mathbb{R}^{n \times (d+1)}$.
 
 $$
 0 = \left. \frac{\partial L}{\partial \mathbf{w}}\right|_\mathbf{w=\hat{w}}=-\frac{2}{n}\mathbf{\bar{X}}^T(\mathbf{y}-\mathbf{\bar{X}\hat{w}}) \Rightarrow \mathbf{\hat{w}}= (\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{-1}\mathbf{\bar{X}}^T\mathbf{y}
@@ -55,12 +55,12 @@ $$
 
 **Assumption 1**:  $\epsilon_i \sim \cal{N}(0, \sigma^2)$,  $y_i |\mathbf{x}_i, \mathbf{w}, \sigma \sim \cal{N}(\mathbf{w}^T\mathbf{x}_i, \sigma^2)$.
 
-**Assumption 2**: IID. $P((\mathbf{x}_1, y_2),...,(\mathbf{x}_n, y_n)) = \prod_iP((\mathbf{x}_i, y_i))$.
+**Assumption 2**: IID. $P((\mathbf{x}_1, y_2),\cdots ,(\mathbf{x}_n, y_n)) = \prod_iP((\mathbf{x}_i, y_i))$.
 
 $$
 \begin{align}
-L &= P(y_1, ..., y_n | \mathbf{x}_1, ..., \mathbf{x}_n, \mathbf{w}, \sigma) \\\\
- &= \frac{P((\mathbf{x}_1, y_2), ...,(\mathbf{x}_n, y_n)|\mathbf{w}, \sigma)}{P(\mathbf{x} _ 1, ...,\mathbf{x}_n|\mathbf{w}, \sigma)}\\\\
+L &= P(y_1, \cdots , y_n | \mathbf{x}_1, \cdots, \mathbf{x}_n, \mathbf{w}, \sigma) \\\\
+ &= \frac{P((\mathbf{x}_1, y_2), \cdots ,(\mathbf{x}_n, y_n)|\mathbf{w}, \sigma)}{P(\mathbf{x} _ 1, \cdots ,\mathbf{x}_n|\mathbf{w}, \sigma)}\\\\
 &=\frac{\prod _ {i=1} ^n P(\mathbf{x}_i, y_i|{\bf w}, \sigma)}{\prod _ {i=1}^n P(\mathbf{x}_i|{\bf w}, \sigma)} \\\\
  &= \prod _ {i=1}^n(y_i|{\bf x},{\bf w}, \sigma)
 \end{align} 

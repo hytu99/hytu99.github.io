@@ -117,19 +117,15 @@ $$
 - The gradient of $f$ is Lipschitz continuous, that is, $ \Vert \nabla f({\bf x}) - \nabla f({\bf y}) \Vert \le L \Vert {\bf x}-{\bf y} \Vert$, $L>0$.
 
 ##### Algorithm:  Gradient Descent
-
-Input: An initial point ${\bf x_0}$, a constant $\alpha \in (0, \dfrac{2}{L})$, $k = 0$.
-
-while the *termination condition* does not hold,  do
-
 $$
 \begin{align}
-&k=k+1
-\\\\& {\bf x_{k+1}}={\bf x_k}-\alpha\nabla f({\bf x_k})
+& \text{Input: An initial point } {\bf x_0} \text{, a constant } \alpha \in (0, \dfrac{2}{L}), \ k = 0 \\\\
+& \text{while the termination condition does not hold,  do} \\\\
+& ~ ~ ~ ~ ~ ~ ~ ~ k = k + 1 \\\\
+& ~ ~ ~ ~ ~ ~ ~ ~ {\bf x_{k+1}}={\bf x_k}-\alpha\nabla f({\bf x_k}) \\\\
+& \text{end while}
 \end{align}
 $$
-
-end while
 
 ##### Convergence Rate
 
@@ -144,7 +140,7 @@ $$
 $$
 \begin{align}
 f({\bf y})-f({\bf x}) &= \int^{\bf y}_{\bf x}\nabla f({\bf z}){\bf dz}
-\\&= \int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x})),{\bf y}-{\bf x}\rangle dt
+\\\\ &= \int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x})),{\bf y}-{\bf x}\rangle dt
 \\\\&= \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x}),{\bf y}-{\bf x}\rangle dt
 \\\\&\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \Vert\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x})\Vert\Vert{\bf y}-{\bf x}\Vert dt
 \\\\&\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+L\Vert{\bf y}-{\bf x}\Vert^2\int^1_0 t dt
@@ -210,7 +206,7 @@ Consider the convexity of $f$,
 
 $$
 \begin{align}
-f({\bf x_{k} })-f({\bf x^ *}) & \le \langle \nabla f({\bf x_k}), { \bf x_k}-{\bf x^ *}\rangle-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2
+f({\bf x _ {k + 1} })-f({\bf x^ *}) & \le \langle \nabla f({\bf x_k}), { \bf x_k}-{\bf x^ *}\rangle-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2
 \\\\ & = -\frac{1}{\alpha} \langle{\bf x_{k+1}}-{\bf x_k},{\bf x_k}-{\bf x^ *}\rangle-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}-x_k}\Vert^2
 \\\\ & = -\frac{1}{2\alpha}(\Vert{\bf x_{k+1}}-{\bf x^ *}\Vert^2-\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2-\Vert{\bf x_{k}}-{\bf x^ *}\Vert^2)-(\frac{1}{\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2
 \\\\ & = \frac{1}{2\alpha}(\Vert{\bf x_{k}}-{\bf x^ *}\Vert^2-\Vert{\bf x_{k+1}}-{\bf x^ *}\Vert^2)-(\frac{1}{2\alpha}-\frac{L}{2})\Vert{\bf x_{k+1}}-{\bf x_k}\Vert^2
@@ -221,7 +217,7 @@ Summing up the inequalities,
 
 $$
 \begin{align}
-k(f({\bf x_{k} })-f({\bf x ^ *})) &\le \sum ^ { k-1 } _ { i=0 } ( f({\bf x _ i})- f({\bf x^ * }) ) \\\\
+k(f({\bf x_{k} })-f({\bf x ^ *})) &\le \sum ^ { k-1 } _ { i=0 } ( f({\bf x _ {i + 1}})- f({\bf x^ * }) ) \\\\
 & \le \frac{1}{2 \alpha }(\Vert {\bf x_{0} }-{\bf x^ *}\Vert^2-\Vert{\bf x_{k}} - {\bf x ^ *} \Vert^2 ) - (\frac{1}{2\alpha} - \frac{L}{2} ) \sum^{k-1}_{i=0} \Vert{\bf x _ {i+1} }- {\bf x_i} \Vert^2
 \end{align}
 $$
