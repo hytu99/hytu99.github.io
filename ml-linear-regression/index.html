@@ -419,7 +419,7 @@ Linear RegressionGiven a data set $ \{ ( \mathbf{x}_i, y_i ) \} _ { i = 1 } ^ n 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        551
+                        559
                     </div>
                     
 
@@ -447,18 +447,18 @@ Linear RegressionGiven a data set $ \{ ( \mathbf{x}_i, y_i ) \} _ { i = 1 } ^ n 
 </blockquote>
 <h3 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h3><p>Given a data set $ \{ ( \mathbf{x}_i, y_i ) \} _ { i = 1 } ^ n $, where  $\mathbf{x}_i \in \mathbb{R}^{d+1}$ and $y_i \in \mathbb{R}$.</p>
 <h4 id="Linear-Regression-by-Least-Squares"><a href="#Linear-Regression-by-Least-Squares" class="headerlink" title="Linear Regression by Least Squares"></a>Linear Regression by Least Squares</h4><p>$$<br>y_i = \mathbf{w}^T \mathbf{x}_i,<br>$$</p>
-<p>where $ \mathbf{x} _ i = (1, x_{ i1}, x_{i2}, …, x_{id})^T $ and $ \mathbf{w} = (w_0, w_1, …, w_d)^T $.</p>
+<p>where $ \mathbf{x} _ i = (1, x_{ i1}, x_{i2}, \cdots , x_{id})^T $ and $ \mathbf{w} = (w_0, w_1, \cdots , w_d)^T $.</p>
 <p>Average Fitting error is</p>
 <p>$$<br>\begin{align}<br>L &amp;= \frac{1}{n} \sum_i^n(y_i - \mathbf{w}^T\mathbf{x}_i)^2 \\<br>&amp;= \frac{1}{n} \| \mathbf{y-\bar{X}w} \| ^2<br>\end{align}<br>$$</p>
-<p>where $\mathbf{y}=(y_i, …, y_n) $ and $\mathbf{\bar{X}} \in \mathbb{R}^{n \times (d+1)}$.</p>
+<p>where $\mathbf{y}=(y_i, \cdots , y_n) $ and $\mathbf{\bar{X}} \in \mathbb{R}^{n \times (d+1)}$.</p>
 <p>$$<br>0 = \left. \frac{\partial L}{\partial \mathbf{w}}\right|_\mathbf{w=\hat{w}}=-\frac{2}{n}\mathbf{\bar{X}}^T(\mathbf{y}-\mathbf{\bar{X}\hat{w}}) \Rightarrow \mathbf{\hat{w}}= (\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{-1}\mathbf{\bar{X}}^T\mathbf{y}<br>$$</p>
 <p>$$<br>\mathbf{\hat{y}} =\mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{-1}\mathbf{\bar{X}}^T\mathbf{y}<br>$$</p>
 <p>Projection matrix $ P = \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{-1}\mathbf{\bar{X}}^T$ projects an arbitrary vector to the column space of $\mathbf{\bar{X}}$.</p>
 <h4 id="Linear-Regression-by-Maximum-Likelihood"><a href="#Linear-Regression-by-Maximum-Likelihood" class="headerlink" title="Linear Regression by Maximum Likelihood"></a>Linear Regression by Maximum Likelihood</h4><p>$$<br>y_i = \mathbf{w}^T\mathbf{x}_i + \epsilon_i ,<br>$$</p>
 <p>假设$ \mathbf{w} $与$ \mathbf{x}_i$给定。</p>
 <p><strong>Assumption 1</strong>:  $\epsilon_i \sim \cal{N}(0, \sigma^2)$,  $y_i |\mathbf{x}_i, \mathbf{w}, \sigma \sim \cal{N}(\mathbf{w}^T\mathbf{x}_i, \sigma^2)$.</p>
-<p><strong>Assumption 2</strong>: IID. $P((\mathbf{x}_1, y_2),…,(\mathbf{x}_n, y_n)) = \prod_iP((\mathbf{x}_i, y_i))$.</p>
-<p>$$<br>\begin{align}<br>L &amp;= P(y_1, …, y_n | \mathbf{x}_1, …, \mathbf{x}_n, \mathbf{w}, \sigma) \\<br> &amp;= \frac{P((\mathbf{x}_1, y_2), …,(\mathbf{x}_n, y_n)|\mathbf{w}, \sigma)}{P(\mathbf{x} _ 1, …,\mathbf{x}_n|\mathbf{w}, \sigma)}\\<br>&amp;=\frac{\prod _ {i=1} ^n P(\mathbf{x}_i, y_i|{\bf w}, \sigma)}{\prod _ {i=1}^n P(\mathbf{x}_i|{\bf w}, \sigma)} \\<br> &amp;= \prod _ {i=1}^n(y_i|{\bf x},{\bf w}, \sigma)<br>\end{align}<br>$$</p>
+<p><strong>Assumption 2</strong>: IID. $P((\mathbf{x}_1, y_2),\cdots ,(\mathbf{x}_n, y_n)) = \prod_iP((\mathbf{x}_i, y_i))$.</p>
+<p>$$<br>\begin{align}<br>L &amp;= P(y_1, \cdots , y_n | \mathbf{x}_1, \cdots, \mathbf{x}_n, \mathbf{w}, \sigma) \\<br> &amp;= \frac{P((\mathbf{x}_1, y_2), \cdots ,(\mathbf{x}_n, y_n)|\mathbf{w}, \sigma)}{P(\mathbf{x} _ 1, \cdots ,\mathbf{x}_n|\mathbf{w}, \sigma)}\\<br>&amp;=\frac{\prod _ {i=1} ^n P(\mathbf{x}_i, y_i|{\bf w}, \sigma)}{\prod _ {i=1}^n P(\mathbf{x}_i|{\bf w}, \sigma)} \\<br> &amp;= \prod _ {i=1}^n(y_i|{\bf x},{\bf w}, \sigma)<br>\end{align}<br>$$</p>
 <p>$$<br>\begin{align}<br>\log L &amp;= \sum_i^n \log (\frac{1}{\sqrt{2 \pi \sigma^2}}\exp{\frac{1}{2\sigma^2}(y_i-{\bf w}^T{\bf x}_i)^2})\\<br>&amp;=-\frac{n}{2}\log 2\pi - n \log \sigma - \frac{1}{2\sigma^2}\sum_i^n(y_i-{\bf w}^T{\bf x}_i)^2<br>\end{align}<br>$$</p>
 <p>$$<br>\begin{align}<br>0 &amp;=\left. \frac{\partial \log L}{\partial {\bf w} } \right|_ \mathbf{w=\hat{w}} \\<br>&amp;=\frac{1}{\sigma^2}\sum_{i=1}^n{\bf x}_i y_i - {\bf x}_i{\bf x}_i^T{\bf \hat{w} } \\<br>&amp;=\frac{1}{\sigma^2}(\mathbf{\bar{X}}^T\mathbf{y}-{\bf \bar{X} }^T\mathbf{\bar{X}\hat{w} })) \\<br>&amp; \Rightarrow \mathbf{\hat{w} }= (\mathbf{\bar{X} }^T\mathbf{\bar{X} })^{-1}\mathbf{\bar{X} }^T\mathbf{y}<br>\end{align}<br>$$</p>
 <script>
@@ -957,7 +957,7 @@ we propose a novel deep neural network named CODEnn（Code-
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.6k</span>&nbsp;字
+                class="white-color">13.2k</span>&nbsp;字
             
             
             
