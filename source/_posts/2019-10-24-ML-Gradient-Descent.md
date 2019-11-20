@@ -140,7 +140,7 @@ $$
 $$
 \begin{align}
 f({\bf y})-f({\bf x}) &= \int^{\bf y}_{\bf x}\nabla f({\bf z}){\bf dz}
-\\\\ &= \int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x})),{\bf y}-{\bf x}\rangle dt
+\\\\&= \int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x})),{\bf y}-{\bf x}\rangle dt
 \\\\&= \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \langle\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x}),{\bf y}-{\bf x}\rangle dt
 \\\\&\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+\int^1_0 \Vert\nabla f({\bf x}+t({\bf y}-{\bf x}))-\nabla f({\bf x})\Vert\Vert{\bf y}-{\bf x}\Vert dt
 \\\\&\le \langle\nabla f({\bf x}),{\bf y}-{\bf x}\rangle+L\Vert{\bf y}-{\bf x}\Vert^2\int^1_0 t dt
