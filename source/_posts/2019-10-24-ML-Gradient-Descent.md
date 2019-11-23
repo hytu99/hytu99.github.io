@@ -67,7 +67,7 @@ $$
 
 $ \theta (1) + (1 - \theta) (2)  $可得。
 
-**Corollary:** Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x}), \nabla f(\mathbf{y}) \rangle \ge 0$.
+**Corollary:** Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x})- \nabla f(\mathbf{y}), \mathbf{x}  - \mathbf{y} \rangle \ge 0$.
 
 **Theorem 2:** Suppose that $ f $ is continuously differentiable. Then $ f $ is convex iff ${\rm dom}f$  is convex and $ \nabla ^2 f (\mathbf{x}) \ge 0 $.
 
@@ -95,7 +95,7 @@ g(t) & = f(\mathbf{x} + t \mathbf{s}) \\\\
 g'(0) &= \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle \\\\
 g''(0) &= \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\\\
 g(1) & = g(0) + \int _ 0 ^ 1 g'(t) dt \\\\
-&  = g(0) + \int _ 0 ^ 1 [g'(0) + \int _ 0 ^ 1 g''(\tau) d\tau ] dt \\\\
+&  = g(0) + \int _ 0 ^ 1 [g'(0) + \int _ 0 ^ t g''(\tau) d\tau ] dt \\\\
 & \ge g(0) + g'(0) \\\\
 f(\mathbf{x} +  \mathbf{s}) & \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle
 \end{align}
