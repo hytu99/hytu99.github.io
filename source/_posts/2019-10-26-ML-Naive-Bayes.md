@@ -1,5 +1,5 @@
 ---
-title: 【机器学习】3. Naive Bayes
+title: 【机器学习】3. Naive Bayes & Logistic Regression
 top: false
 cover: false
 toc: true
@@ -24,7 +24,9 @@ categories: 机器学习
 
 对于训练过的模型，给定${\bf x}$，给出$P(spam|{\bf x})$。
 
-训练数据记作$ \\{ \mathbf{x} _ i,   y _ i \\} $， $y_i \in {\mathcal C} = \\{spam, not \\ _ spam \\} $。
+训练数据记作$ \\{ \mathbf{x} _ i,   y _ i \\} $， $y_i \in {\mathcal C} = \\{spam, not \\_ spam \\} $。
+
+eg: spam email: laptop with the lowest price.
 
 #### 基本假设
 
@@ -112,7 +114,7 @@ $$
 
 1. 准确率（Accuracy)
    $$
-   \text{Accuracy} = \frac{\text{correctly predicted samples} } {\text{total number of samples} }
+   \text{Accuracy} = \frac{\text{ # correctly predicted samples} } {\text{ # total samples} } 
    $$
    这个指标并不适用于一般情景，它忽略了两种分类错误的不同风险。
 
@@ -138,16 +140,16 @@ $$
 
 #### 目标：
 
-给定集合$ \\{ ({\bf x}_i, y_i \\} ^ n _ {i=1} $, 其中$y_i \in \{0,1\}$,寻找映射：
+给定集合$ \\{ ({\bf x}_i, y_i \\} ^ n _ {i=1} $, 其中$y_i \in \\{0,1\\}$,寻找映射：
 $$
-f:X\rightarrow Y, where\ X=(X_1,\cdots,X_d)\ and\ Y\in\{0,1\}
+f:X\rightarrow Y, where\ X=(X_1,\cdots,X_d)\ and\ Y\in\\{0,1\\}
 $$
 
 #### 基本假设：
 
 1. $Y \sim Bern(P)$, $Y$ 服从伯努利二项分布，$P(Y=1) = p$.
 2. $X = (X_1,\cdots,X_d)$中的$X_j$是连续随机变量。
-3. 高斯分布: $P(X_j|Y=0)\sim N(\mu _ {j0,\sigma _ j^2}),P(X_j|Y=1)\sim  N(\mu _ {j1,\sigma_j^2})$
+3. 高斯分布: $P(X_j|Y=0)\sim N(\mu _ {j0}, \sigma _ j^2),P(X_j|Y=1)\sim  N(\mu _ {j1},\sigma_j^2)$
 4. $X_i, X_j$条件独立于$Y$, $\forall i\not=j$.
 
 #### 理论依据：
@@ -209,8 +211,16 @@ $$
 
 $$
 \begin{align}
-P(Y\not=c_k|X) &= \frac{1}{1+ \exp(\sum_jw_{k.j}X_j+w_0)}
+P(Y\not=c_k|X) &= \frac{1}{1+ \exp(\sum_jw_{kj}X_j+w_{k0})}
 \end{align}
+$$
+
+$$
+P(Y=c_k|X) = 
+\begin{cases}
+&  \dfrac{\exp(\sum_j w_{kj}X_j + w_{k0})}{1 + \sum_{k=1}^{K-1}\exp(\sum_j w_{kj}X_j + w_{k0}) } & k = 1, \cdots,K-1 \\\\
+& \dfrac{1}{1 + \sum_{k=1}^{K-1}\exp(\sum_j w_{kj}X_j + w_{k0}) } & k = K-1 
+\end{cases}
 $$
 
 #### 实际问题：数据的不平衡性
