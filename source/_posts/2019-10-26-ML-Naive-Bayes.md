@@ -1,5 +1,5 @@
 ---
-title: 【机器学习】3. Naive Bayes & Logistic Regression
+title: 【机器学习笔记】3. Naive Bayes & Logistic Regression
 top: false
 cover: false
 toc: true

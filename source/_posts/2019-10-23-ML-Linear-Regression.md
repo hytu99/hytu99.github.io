@@ -30,7 +30,7 @@ Average Fitting error is
 $$
 \begin{align}
 L &= \frac{1}{n} \sum_i^n(y_i - \mathbf{w}^T\mathbf{x}_i)^2 \\\\
-&= \frac{1}{n} \\| \mathbf{y-\bar{X}w} \\| ^2
+&= \frac{1}{n} \Vert \mathbf{y-\bar{X}w} \Vert ^2
 \end{align}
 $$
 
@@ -62,8 +62,8 @@ $$
 L &= P(y_1, \cdots , y_n | \mathbf{x}_1, \cdots, \mathbf{x}_n, \mathbf{w}, \sigma) \\\\
  &= \frac{P((\mathbf{x}_1, y_2), \cdots ,(\mathbf{x}_n, y_n)|\mathbf{w}, \sigma)}{P(\mathbf{x} _ 1, \cdots ,\mathbf{x}_n|\mathbf{w}, \sigma)}\\\\
 &=\frac{\prod _ {i=1} ^n P(\mathbf{x}_i, y_i|{\bf w}, \sigma)}{\prod _ {i=1}^n P(\mathbf{x}_i|{\bf w}, \sigma)} \\\\
- &= \prod _ {i=1}^n(y_i|{\bf x},{\bf w}, \sigma)
-\end{align} 
+ &= \prod _ {i=1}^n P(y_i|{\bf x},{\bf w}, \sigma)
+\end{align}
 $$
 
 $$
