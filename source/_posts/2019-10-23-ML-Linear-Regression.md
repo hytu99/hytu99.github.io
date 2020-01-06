@@ -48,15 +48,14 @@ Projection matrix $ P = \mathbf{\bar{X}}(\mathbf{\bar{X}}^T\mathbf{\bar{X}})^{-1
 
 #### Linear Regression by Maximum Likelihood
 $$
-y_i = \mathbf{w}^T\mathbf{x}_i + \epsilon_i , 
+y_i = \mathbf{w}^T\mathbf{x}_i + \epsilon_i ,
 $$
 
 假设$ \mathbf{w} $与$ \mathbf{x}_i$给定。
 
-**Assumption 1**:  $\epsilon_i \sim \cal{N}(0, \sigma^2)$,  $y_i |\mathbf{x}_i, \mathbf{w}, \sigma \sim \cal{N}(\mathbf{w}^T\mathbf{x}_i, \sigma^2)$.
+**Assumption 1**:  $\epsilon_i \sim \cal{N}(0, \sigma^2)$,  $y_i |\mathbf{x}_i, \mathbf{w}, \sigma \sim \mathcal{N}(\mathbf{w}^T\mathbf{x}_i, \sigma^2)$.
 
 **Assumption 2**: IID. $P((\mathbf{x}_1, y_2),\cdots ,(\mathbf{x}_n, y_n)) = \prod_iP((\mathbf{x}_i, y_i))$.
-
 $$
 \begin{align}
 L &= P(y_1, \cdots , y_n | \mathbf{x}_1, \cdots, \mathbf{x}_n, \mathbf{w}, \sigma) \\\\
@@ -69,7 +68,7 @@ $$
 $$
 \begin{align}
 \log L &= \sum_i^n \log (\frac{1}{\sqrt{2 \pi \sigma^2}}\exp\{\frac{1}{2\sigma^2}(y_i-{\bf w}^T{\bf x}_i)^2\})\\\\
-&=-\frac{n}{2}\log 2\pi - n \log \sigma - \frac{1}{2\sigma^2}\sum_i^n(y_i-{\bf w}^T{\bf x}_i)^2
+&=-\frac{n}{2}\log 2\pi - n \log \sigma + \frac{1}{2\sigma^2}\sum_i^n(y_i-{\bf w}^T{\bf x}_i)^2
 \end{align}
 $$
 
