@@ -471,14 +471,14 @@ $f(\mathbf{x})">
 <p>$$<br> f(\mathbf{x}) \ge f(\mathbf{z}) + \langle \nabla f(\mathbf{z}), \mathbf{x} - \mathbf{z} \rangle \tag{1}<br>$$</p>
 <p>$$<br> f(\mathbf{y}) \ge f(\mathbf{z}) + \langle \nabla f(\mathbf{z}), \mathbf{y} - \mathbf{z} \rangle \tag{2}<br>$$</p>
 <p>$ \theta (1) + (1 - \theta) (2)  $可得。</p>
-<p><strong>Corollary:</strong> Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x}), \nabla f(\mathbf{y}) \rangle \ge 0$.</p>
+<p><strong>Corollary:</strong> Suppose $ f $ is continuously differentiable. Then $ f $ is convex iff  ${\rm dom}f$ is convex and $\langle \nabla f(\mathbf{x})- \nabla f(\mathbf{y}), \mathbf{x}  - \mathbf{y} \rangle \ge 0$.</p>
 <p><strong>Theorem 2:</strong> Suppose that $ f $ is continuously differentiable. Then $ f $ is convex iff ${\rm dom}f$  is convex and $ \nabla ^2 f (\mathbf{x}) \ge 0 $.</p>
 <p><strong>Proof:</strong> </p>
 <p>$ ( \Rightarrow ) $</p>
 <p>Let $ \mathbf{x} _ t = \mathbf{x} + t \mathbf{s} $, $t &gt; 0$. Then</p>
 <p>$$<br>\begin{align}<br>0 \le \frac{1}{t^2} &amp; \langle \nabla f(\mathbf{x} _ t) - \nabla f(\mathbf{x}) , \mathbf{x} _ t - \mathbf{x} \rangle \\<br>&amp; = \frac {1}{t} \langle \nabla f(\mathbf{x} _ t) - \nabla f(\mathbf{x}), \mathbf{s} \rangle \\<br>&amp; = \frac {1}{t} \int _ 0 ^ t \langle \nabla ^2 f(\mathbf{x} + \tau \mathbf{s})\mathbf{s}, \mathbf{s} \rangle d\tau \text{（微积分基本定理）}\\<br>&amp; \xrightarrow{t \to 0} \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\<br>&amp; = \mathbf{s}^T \nabla ^2 f(\mathbf{x}) \mathbf{s}<br>\end{align}<br>$$</p>
 <p>$ ( \Leftarrow ) $</p>
-<p>$$<br>\begin{align}<br>g(t) &amp; = f(\mathbf{x} + t \mathbf{s}) \\<br>g’(0) &amp;= \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle \\<br>g’’(0) &amp;= \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\<br>g(1) &amp; = g(0) + \int _ 0 ^ 1 g’(t) dt \\<br>&amp;  = g(0) + \int _ 0 ^ 1 [g’(0) + \int _ 0 ^ 1 g’’(\tau) d\tau ] dt \\<br>&amp; \ge g(0) + g’(0) \\<br>f(\mathbf{x} +  \mathbf{s}) &amp; \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{align}<br>g(t) &amp; = f(\mathbf{x} + t \mathbf{s}) \\<br>g’(0) &amp;= \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle \\<br>g’’(0) &amp;= \langle \nabla ^2 f(\mathbf{x})\mathbf{s}, \mathbf{s} \rangle \\<br>g(1) &amp; = g(0) + \int _ 0 ^ 1 g’(t) dt \\<br>&amp;  = g(0) + \int _ 0 ^ 1 [g’(0) + \int _ 0 ^ t g’’(\tau) d\tau ] dt \\<br>&amp; \ge g(0) + g’(0) \\<br>f(\mathbf{x} +  \mathbf{s}) &amp; \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{s} \rangle<br>\end{align}<br>$$</p>
 <p><strong>Theorem 3:</strong> Suppose $f$ is  continuously differentiable. Then $ \mathbf{x}^  * \in \arg \min \limits _ \mathbf{x}  f ( \mathbf{x})  $  iff $ \nabla f(\mathbf{x}^ *) = 0$, $  f(\mathbf{y}) \ge f(\mathbf{x}) + \langle \nabla f(\mathbf{x}), \mathbf{y} - \mathbf{x} \rangle = f(\mathbf{x})$.</p>
 <h4 id="Part-2"><a href="#Part-2" class="headerlink" title="Part 2"></a>Part 2</h4><p>$$<br>\min f(\mathbf{x})<br>$$</p>
 <ul>
@@ -1005,7 +1005,7 @@ Linear RegressionGiven a data set $ \{ ( \mathbf{x}_i, y_i ) \} _ { i = 1 } ^ n 
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.2k</span>&nbsp;字
+                class="white-color">15.6k</span>&nbsp;字
             
             
             

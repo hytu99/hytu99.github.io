@@ -4,7 +4,7 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="【机器学习】3. Naive Bayes, THY&#39;s Blog">
+    <meta name="keywords" content="【机器学习笔记】3. Naive Bayes &amp; Logistic Regression, THY&#39;s Blog">
     <meta name="description" content="
 整理自同学的笔记。监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。
 
@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>【机器学习】3. Naive Bayes | THY&#39;s Blog</title>
+    <title>【机器学习笔记】3. Naive Bayes &amp; Logistic Regression | THY&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -268,13 +268,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        【机器学习】3. Naive Bayes
+                        【机器学习笔记】3. Naive Bayes &amp; Logistic Regression
                     </div>
                 </div>
             </div>
@@ -420,14 +420,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.8k
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        9 分
                     </div>
                     
                 
@@ -448,7 +448,8 @@
 </blockquote>
 <h3 id="分类中的朴素贝叶斯方法（Naive-Bayes-Classifier"><a href="#分类中的朴素贝叶斯方法（Naive-Bayes-Classifier" class="headerlink" title="分类中的朴素贝叶斯方法（Naive Bayes Classifier)"></a>分类中的朴素贝叶斯方法（Naive Bayes Classifier)</h3><p>以垃圾邮件的分类（Span Detecor）为例。</p>
 <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>对于训练过的模型，给定${\bf x}$，给出$P(spam|{\bf x})$。</p>
-<p>训练数据记作$ \{ \mathbf{x} _ i,   y _ i \} $， $y_i \in {\mathcal C} = \{spam, not \ _ spam \} $。</p>
+<p>训练数据记作$ \{ \mathbf{x} _ i,   y _ i \} $， $y_i \in {\mathcal C} = \{spam, not \_ spam \} $。</p>
+<p>eg: spam email: laptop with the lowest price.</p>
 <h4 id="基本假设"><a href="#基本假设" class="headerlink" title="基本假设"></a>基本假设</h4><ol>
 <li><p>属性值$x_i$条件独立于标签值，即<br>$$<br>P(x_1, x_2, \cdots ,x_{| \cal{X} |}|{\mathcal C}) = \prod_i P(x_i | {\mathcal C })<br>$$</p>
 <p>以垃圾邮件分类为例，该问题中的样本${\bf x}_i$ 为表征邮件属性的矢量（比如词向量），表示邮件的整体特征。如果不考虑这一假设，在通常的采样中对$P({\bf x}|c)$的估计往往会导出很小的值（不容易找到两封一样的邮件）。</p>
@@ -470,7 +471,7 @@
 <h4 id="朴素贝叶斯分类器测试（Testing-Naive-Bayes-Classifier）"><a href="#朴素贝叶斯分类器测试（Testing-Naive-Bayes-Classifier）" class="headerlink" title="朴素贝叶斯分类器测试（Testing Naive Bayes Classifier）"></a>朴素贝叶斯分类器测试（Testing Naive Bayes Classifier）</h4><p>$$<br>\begin{align}<br>&amp; \text{Input: A new sample } {\bf x}, \text{ 设} x_i \text{是} {\bf x}  \text{的第 i 个属性}, I = \emptyset \\<br>&amp; \text{for } x_1, \cdots, x_i \text{ do} \\<br>&amp; ~ ~ ~ ~ ~ ~ ~ ~ \text{if } \exists w_k \in \mathcal{V} \text{ such that } w_k = x_i, \text{ then} \\<br>&amp; ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ I \leftarrow I \cup k \\<br>&amp; ~ ~ ~ ~ ~ ~ ~ ~ \text{end if} \\<br>&amp; \text{end for} \\<br>&amp; \text{predict the label of } \mathbf{x} \text{ by } \hat y= \arg \max_{c \in {\mathcal C}}P(c) \prod _ { i \in I} P(w_i|c)<br>\end{align}<br>$$</p>
 <p>这个算法虽然简单，但是好用。</p>
 <h4 id="算法性能的衡量指标"><a href="#算法性能的衡量指标" class="headerlink" title="算法性能的衡量指标"></a>算法性能的衡量指标</h4><ol>
-<li><p>准确率（Accuracy)<br>$$<br>\text{Accuracy} = \frac{\text{correctly predicted samples} } {\text{total number of samples} }<br>$$<br>这个指标并不适用于一般情景，它忽略了两种分类错误的不同风险。</p>
+<li><p>准确率（Accuracy)<br>$$<br>\text{Accuracy} = \frac{\text{ # correctly predicted samples} } {\text{ # total samples} }<br>$$<br>这个指标并不适用于一般情景，它忽略了两种分类错误的不同风险。</p>
 </li>
 <li><p>查准率（Precision)、召回率（Recall）、F-score：</p>
 <table>
@@ -504,11 +505,11 @@
 <p>则<br>$$<br>\begin{align}<br>&amp; \text{Precision} = \frac{TP}{TP+FP} \\<br>&amp; \text{Recall} = \frac{TP}{TP+FN}  \\<br>&amp; F_1 = \dfrac{2}{\dfrac{1}{\text{Precision} } + \dfrac{1}{\text{Recall} } }<br>\end{align}<br>$$</p>
 </li>
 </ol>
-<h3 id="逻辑斯谛回归（Logistic-Regression"><a href="#逻辑斯谛回归（Logistic-Regression" class="headerlink" title="逻辑斯谛回归（Logistic Regression)"></a>逻辑斯谛回归（Logistic Regression)</h3><h4 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h4><p>给定集合$ \{ ({\bf x}_i, y_i \} ^ n _ {i=1} $, 其中$y_i \in {0,1}$,寻找映射：<br>$$<br>f:X\rightarrow Y, where\ X=(X_1,\cdots,X_d)\ and\ Y\in{0,1}<br>$$</p>
+<h3 id="逻辑斯谛回归（Logistic-Regression"><a href="#逻辑斯谛回归（Logistic-Regression" class="headerlink" title="逻辑斯谛回归（Logistic Regression)"></a>逻辑斯谛回归（Logistic Regression)</h3><h4 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h4><p>给定集合$ \{ ({\bf x}_i, y_i \} ^ n _ {i=1} $, 其中$y_i \in \{0,1\}$,寻找映射：<br>$$<br>f:X\rightarrow Y, where\ X=(X_1,\cdots,X_d)\ and\ Y\in\{0,1\}<br>$$</p>
 <h4 id="基本假设："><a href="#基本假设：" class="headerlink" title="基本假设："></a>基本假设：</h4><ol>
 <li>$Y \sim Bern(P)$, $Y$ 服从伯努利二项分布，$P(Y=1) = p$.</li>
 <li>$X = (X_1,\cdots,X_d)$中的$X_j$是连续随机变量。</li>
-<li>高斯分布: $P(X_j|Y=0)\sim N(\mu _ {j0,\sigma _ j^2}),P(X_j|Y=1)\sim  N(\mu _ {j1,\sigma_j^2})$</li>
+<li>高斯分布: $P(X_j|Y=0)\sim N(\mu _ {j0}, \sigma _ j^2),P(X_j|Y=1)\sim  N(\mu _ {j1},\sigma_j^2)$</li>
 <li>$X_i, X_j$条件独立于$Y$, $\forall i\not=j$.</li>
 </ol>
 <h4 id="理论依据："><a href="#理论依据：" class="headerlink" title="理论依据："></a>理论依据：</h4><p>综上,</p>
@@ -519,7 +520,8 @@
 <p>令 $-L({\bf w}) = \sum_i(y_i \ln(P(Y=1|X_i,{\bf w}))+(1-y_i) \ln(P(Y=0|X_i,{\bf w})))$,则问题转化为：<br>$$<br>\hat{\bf w} = \arg \min_{\bf w}L({\bf w})<br>$$<br>那么似乎可以用梯度下降法来求解该问题。（解的存在性、唯一性（严格凸、强凸））</p>
 <p>采用正则化可以保证这两点：<br>$$<br>\hat {\bf w} = \arg \max_{\bf w} L({\bf w})+\frac{\lambda}{2}\Vert{\bf w}\Vert_2^2<br>$$</p>
 <p>对于多分类问题，可以训练多个分类器。其中$Y\in \cal{C} = {c_1, \cdots, c_k}$，可令</p>
-<p>$$<br>\begin{align}<br>P(Y\not=c_k|X) &amp;= \frac{1}{1+ \exp(\sum_jw_{k.j}X_j+w_0)}<br>\end{align}<br>$$</p>
+<p>$$<br>\begin{align}<br>P(Y\not=c_k|X) &amp;= \frac{1}{1+ \exp(\sum_jw_{kj}X_j+w_{k0})}<br>\end{align}<br>$$</p>
+<p>$$<br>P(Y=c_k|X) =<br>\begin{cases}<br>&amp;  \dfrac{\exp(\sum_j w_{kj}X_j + w_{k0})}{1 + \sum_{k=1}^{K-1}\exp(\sum_j w_{kj}X_j + w_{k0}) } &amp; k = 1, \cdots,K-1 \\<br>&amp; \dfrac{1}{1 + \sum_{k=1}^{K-1}\exp(\sum_j w_{kj}X_j + w_{k0}) } &amp; k = K-1<br>\end{cases}<br>$$</p>
 <h4 id="实际问题：数据的不平衡性"><a href="#实际问题：数据的不平衡性" class="headerlink" title="实际问题：数据的不平衡性"></a>实际问题：数据的不平衡性</h4><p>来自不同分类的数据数目不平衡时，回导致训练得出的决策平面有更大的偏移。</p>
 <p>解决方案包括：</p>
 <ul>
@@ -704,7 +706,7 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《【机器学习】3. Naive Bayes》
+                    《【机器学习笔记】3. Naive Bayes &amp; Logistic Regression》
                 </span> 由
             <a xmlns:cc="http://creativecommons.org/ns#" href="/ml-naive-bayes/" property="cc:attributionName"
                rel="cc:attributionURL">
@@ -746,34 +748,32 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/ml-naive-bayes/">
+                <a href="/ml-svm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="【机器学习】3. Naive Bayes">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="【机器学习笔记】4. Support Vector Machine & Lagrange Duality">
                         
-                        <span class="card-title">【机器学习】3. Naive Bayes</span>
+                        <span class="card-title">【机器学习笔记】4. Support Vector Machine & Lagrange Duality</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-整理自同学的笔记。监督学习是指有目标变量或预测目标的机器学习方法，包括分类和回归。
+整理自同学的笔记
 
-分类中的朴素贝叶斯方法（Naive Bayes Classifier)以垃圾邮件的分类（Span Detecor）为例。
-目标对于训练过的模型，给定${
+Support Vector MachineTraining data: $ \{ (\mathbf{\mathbf{x}}_i, y ) \} _ {i=1} ^ n$,  $y_i \in \mathcal{C} 
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-12-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -786,7 +786,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1016,7 +1015,7 @@
             <br>
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.2k</span>&nbsp;字
+                class="white-color">15.6k</span>&nbsp;字
             
             
             
