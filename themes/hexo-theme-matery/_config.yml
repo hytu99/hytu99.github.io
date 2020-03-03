@@ -99,12 +99,12 @@ indexbtn:
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  github: 
-  email: 
+  github: https://github.com/hytu99
+  email: tuhanyue@mail.ustc.edu.cn
   facebook: 
   twitter: 
   qq: 
-  weibo: 
+  weibo: https://www.weibo.com/tuhanyue
   zhihu: 
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
@@ -202,7 +202,7 @@ mySkills:
       percent: 80%
     Python:
       background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 75%
+      percent: 80%
     Pytorch:
       background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
       percent: 70%
