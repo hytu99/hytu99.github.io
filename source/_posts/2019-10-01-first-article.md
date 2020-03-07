@@ -10,6 +10,7 @@ summary:
 tags:
  - 随笔
 categories: 随笔
+description: 在十一这一天，断断续续地终于把博客建好啦！
 ---
 
 > 在十一这一天，断断续续地终于把博客建好了，感谢这位dalao的教程[超详细Hexo+Github博客搭建小白教程](https://zhuanlan.zhihu.com/p/35668237)!

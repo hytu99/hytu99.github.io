@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: THY's Blog
-subtitle: USTC_THY
+title: 山尤远
+subtitle: THY’s Blog
 description: 水远，怎知流水外，却是乱山尤远。
 keywords:
 author: ustcthy
@@ -77,7 +77,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-matery
+# theme: hexo-theme-matery
+theme: maupassant
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
