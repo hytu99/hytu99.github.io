@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Maupassant主题增加访问统计</title>
+      <link href="/revise-theme/"/>
+      <url>/revise-theme/</url>
+      
+        <content type="html"><![CDATA[<p>这两天准备写点新博客，还没开始写又总觉得之前的主题虽然很好看也很符合我的审美，但还是有一丢丢“花里胡哨“，于是找到了<a href="https://github.com/tufu9441/maupassant-hexo" target="_blank" rel="noopener">Maupassant</a>这个简洁一点的主题，感觉很符合我的气质（果然还是喜新厌旧😹）。</p><p>主题本身没有网站总的访问量和访客数统计，于是就自己参考了<a href="https://github.com/tufu9441/maupassant-hexo/issues/173#issuecomment-249463230" target="_blank" rel="noopener">issue</a>中的解决方案然后又各种尝试，最终成功获得了自己想要的样子，在这里也记录一下（虽然我的博客是写给自己的，但其实还是想看看有多少人看过了我的博客🤣，目前访客数貌似50+😀）。</p><h3 id="1-修改after-footer-pug"><a href="#1-修改after-footer-pug" class="headerlink" title="1. 修改after_footer.pug"></a>1. 修改after_footer.pug</h3><p>在<code>themes\maupassant\layout\_partial\after_footer.pug</code>里添加下面的代码。</p><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> theme.busuanzi == <span class="literal">true</span></span><br><span class="line">  script(<span class="attribute">src</span>=<span class="string">'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'</span>, async)</span><br></pre></td></tr></tbody></table></figure><h3 id="2-修改foot-pug"><a href="#2-修改foot-pug" class="headerlink" title="2. 修改foot.pug"></a>2. 修改foot.pug</h3><p>在<code>themes\maupassant\layout\_partial\footer.pug</code>里添加数据显示代码，完整内容如下。前面提到的各种尝试的主要原因还是不会jade语言，所以只能靠模仿别人的代码然后各种尝试，再次体会到了搜索能力的重要性。</p><figure class="highlight 1c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#footer</span></span><br><span class="line">  = 'Copyright © ' + date(Date.now(), 'YYYY') + ' '</span><br><span class="line">  a(href=url_for('.'), rel='nofollow')= config.title + '.'</span><br><span class="line">  <span class="string">|  Powered by</span></span><br><span class="line">  a(rel='nofollow', target='_blank', href='https://hexo.io')  Hexo.</span><br><span class="line">  a(rel='nofollow', target='_blank', href='https://github.com/tufu<span class="number">9441</span>/maupassant-hexo')  Theme</span><br><span class="line">  <span class="string">|  by</span></span><br><span class="line">  a(rel='nofollow', target='_blank', href='https://github.com/pagecho')  Cho.</span><br><span class="line">  if theme.busuanzi == true</span><br><span class="line">    span(style={'font-size':'14px'})<span class="meta">#busuanzi_container_site_pv</span></span><br><span class="line">      br</span><br><span class="line">      <span class="string">|  本站总访问量  </span></span><br><span class="line">      span(rel='nofollow')<span class="meta">#busuanzi_value_site_pv</span></span><br><span class="line">      <span class="string">|  人次,</span></span><br><span class="line">    span(style={'font-size':'14px'})<span class="meta">#busuanzi_container_site_uv</span></span><br><span class="line">      <span class="string">|  访客数  </span></span><br><span class="line">      span(rel='nofollow')<span class="meta">#busuanzi_value_site_uv</span></span><br><span class="line">      <span class="string">|  人.</span></span><br></pre></td></tr></tbody></table></figure><h3 id="3-开启不蒜子计数"><a href="#3-开启不蒜子计数" class="headerlink" title="3. 开启不蒜子计数"></a>3. 开启不蒜子计数</h3><p>在<code>themes\maupassant\ _config.yml</code>开启不蒜子计数，即修改为<code>busuanzi: true</code>。</p><p>完工！</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【机器学习笔记】4. Support Vector Machine &amp; Lagrange Duality</title>
       <link href="/ml-svm/"/>
       <url>/ml-svm/</url>
